@@ -1,6 +1,24 @@
 .s_header{
-    padding : 10px 30px;
+    padding : 20px 30px;
     position: sticky;
     top: 0;
     left: 0;
+    box-shadow: 0 10px 15px rgb(236, 236, 236);
+}
+.s_dropdwon_toogle::after{
+    display: none !important;
+}
+.s_mobile_menu{
+    padding: 15px 30px;
+    box-shadow: 0 10px 15px rgb(236, 236, 236);
+}
+.s_offcanvas{
+    width: 250px !important;
+}
+.s_footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 20px 100px;
+    width: 100%;
 }
