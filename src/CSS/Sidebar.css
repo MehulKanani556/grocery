@@ -1,0 +1,129 @@
+:root {
+    --theme: linear-gradient(270deg, #7774FF 0%, #C59FFF 100%);
+}
+
+
+
+/* above 768 size */
+
+.V_account_img {
+    width: 70px;
+    height: 70px;
+    /* margin-top: 10px; */
+}
+
+.V_account_img2 {
+    width: 70px;
+    height: 70px;
+    /* margin-top: 10px; */
+}
+
+.V_account {
+    margin-left: 40px;
+    margin-top: 25px;
+    background: var(--theme);
+    height: 90px;
+}
+
+.V_account_data {
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.V_account_icon {
+    margin-right: 20px;
+}
+
+.V_account_part_2 {
+    margin-left: 40px;
+    margin-top: 25px;
+    background: #f6f6f6;
+    height: 90px;
+    /* border-left: 2px solid #7774FF;
+    border-right: 2px solid black; */
+}
+
+.V_account_part_2:active {
+    margin-left: 40px;
+    margin-top: 25px;
+    background: #f6f6f6;
+    height: 90px;
+    border-left: 2px solid #7774FF;
+    border-right: 2px solid black;
+}
+
+/* below 768 size */
+
+.V_bar {
+    background: var(--theme);
+}
+
+.V_acc_heading {
+    font-size: 25px;
+    margin-left: 40px !important;
+}
+
+.V_account_part_small {
+    background: var(--theme);
+    height: 80px;
+}
+
+.V_account_small_img {
+    width: 70px;
+    height: 70px;
+}
+
+.V_small_user_data {
+    font-size: 16px;
+}
+
+.V_account_part_small_2 {
+    height: 80px;
+    background: #f6f6f6;
+}
+
+.V_account_small_img_2 {
+    width: 70px;
+    height: 70px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================    media query ============================================== */
+
+@media (max-width: 1920px) and (min-width:1650px) {}
+
+@media (max-width:1649px) and (min-width:1441px) {}
+
+@media (max-width:1440px) and (min-width:1200px) {}
+
+@media (max-width:1199px) and (min-width:992px) {}
+
+@media (max-width:991px) and (min-width:768px) {}
+
+@media (max-width:769px) and (min-width:577px) {}
+
+@media (max-width:576px) and (min-width:481px) {}
+
+@media (max-width:480px) and (min-width:320px) {}
