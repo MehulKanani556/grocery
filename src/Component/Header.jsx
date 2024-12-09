@@ -96,7 +96,7 @@ const Header = () => {
                                     </Dropdown>
                                 </li>
                                 <li className='mx-2'>
-                                    <img src={require('../Image/user.png')} alt="" className='rounded-full' />
+                                    <img src={require('../Image/user.png')} alt="" className='rounded-full w-[40px] h-[40px]' />
                                 </li>
                             </ul>
                         </Col>
