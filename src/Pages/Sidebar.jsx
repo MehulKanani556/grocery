@@ -13,7 +13,7 @@ import Payment from '../Image/payment.png'
 import { Accordion, Offcanvas } from 'react-bootstrap';
 // import { FaBagShopping } from 'react-icons/fa6';
 
-const Sidebar = () => {
+const Sidebar = ({setModalShow}) => {
 
   const [show, setShow] = useState(false);
 
@@ -23,10 +23,10 @@ const Sidebar = () => {
   return (
     <>
       <div className=' '>
-        <div className='d-flex justify-content-between'>
-          <h5 className='V_acc_heading py-4 m-0'>
+        <div className='d-flex justify-content-end'>
+          {/* <h5 className='V_acc_heading py-4 m-0'>
             Account
-          </h5>
+          </h5> */}
           <button className='d-md-none border-0 V_bar h4 m-0 text-white p-2 m-3' onClick={handleShow}>
             <FaBars />
           </button>
@@ -34,8 +34,8 @@ const Sidebar = () => {
       </div>
       <section className='d-none d-md-block'>
         <div className="row  m-0">
-          <div className="col-3">
-            <Link to={'/account'}>
+          <div className="col-12">
+            <Link to={'profile'}>
               <div className="ps-3 V_bg_color d-flex align-items-center V_account">
                 <div className="V_account_img d-flex justify-content-center align-items-center">
                   <img src={User} alt="User Avatar" />
@@ -53,7 +53,7 @@ const Sidebar = () => {
               </div>
             </Link>
 
-            <Link to={'/order'}>
+            <Link to={'order'}>
               <div className="ps-3 V_account_part_2 d-flex align-items-center ">
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={MyOrder} alt="My Order" />
@@ -64,7 +64,7 @@ const Sidebar = () => {
               </div>
             </Link>
 
-            <Link to={'/wishlist'}>
+            <Link to={'wishlist'}>
               <div className="ps-3 V_account_part_2 d-flex align-items-center ">
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Wishlist} alt="Wishlist" />
@@ -75,7 +75,7 @@ const Sidebar = () => {
               </div>
             </Link>
 
-            <Link to={'/coupon'}>
+            <Link to={'coupon'}>
               <div className="ps-3 V_account_part_2 d-flex align-items-center ">
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Coupon} alt="Apply Coupon" />
@@ -86,7 +86,7 @@ const Sidebar = () => {
               </div>
             </Link>
 
-            <Link to={'/payment'}>
+            <Link to={'payment'}>
               <div className="ps-3 V_account_part_2 d-flex align-items-center ">
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Payment} alt="payment" />
@@ -97,7 +97,7 @@ const Sidebar = () => {
               </div>
             </Link>
 
-            <Link to={'/address'}>
+            <Link to={'address'}>
               <div className="ps-3 V_account_part_2 d-flex align-items-center ">
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Address} alt="Delivery Address" />
@@ -108,7 +108,7 @@ const Sidebar = () => {
               </div>
             </Link>
 
-            <Link to={'/privacy'}>
+            <Link to={'privacy'}>
               <div className="ps-3 V_account_part_2 d-flex align-items-center ">
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Privacy} alt="Account Privacy" />
@@ -122,7 +122,7 @@ const Sidebar = () => {
 
 
             <Link >
-              <div className="ps-3 V_account_part_2 d-flex align-items-center ">
+              <div className="ps-3 V_account_part_2 d-flex align-items-center "  onClick={() => { setModalShow(true) }}>
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Logout} alt="Logout" />
                 </div>
@@ -146,7 +146,7 @@ const Sidebar = () => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div className="account" style={{ height: '100%', overflowY: 'auto' }}>
-            <Link to="/account">
+            <Link to="profile">
               <div className="V_account_part_small d-flex align-items-center">
                 <div className="V_account_small_img d-flex justify-content-center align-items-center px-2 ms-2">
                   <img src={User} alt="User" />
@@ -223,7 +223,7 @@ const Sidebar = () => {
               </div>
             </Link>
             <Link >
-              <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
+              <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2"  onClick={() => { setModalShow(true) }}>
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Logout} alt="Logout" />
                 </div>

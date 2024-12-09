@@ -1,0 +1,259 @@
+/* profile */
+
+
+
+.V_information {
+    /* margin-top: 70px; */
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.form {
+    height: 700px;
+    width: 1400px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.form .form-label {
+    font-size: 14px !important;
+    color: #6c6c6c !important;
+    padding-left: 12px;
+}
+
+.V_btn_profile_edit {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: var(--theme);
+    position: absolute;
+    left: 93%;
+}
+
+.V_btn_profile_edit:hover {
+    background: var(--theme);
+}
+
+.V_btn_profile_save {
+    border: none;
+    color: white;
+    padding: 10px 100px;
+    border-radius: 5px;
+    background: var(--theme);
+    bottom: 3%;
+}
+
+.V_btn_profile_save:hover {
+    background: var(--theme);
+}
+
+.form-control {
+    width: 100%;
+}
+
+.V_btn_profile_edit {
+    margin-right: 10px;
+    align-self: center;
+}
+
+.offcanvas-btn {
+    border: none;
+    display: none;
+    height: 30px;
+    width: 30px;
+    background: var(--theme);
+    border-radius: 5px;
+}
+
+.form-control:disabled {
+    background-color: transparent !important;
+}
+
+.form .form-control {
+    border-bottom: 1px solid #eaeaea !important;
+}
+
+.form .form-control::placeholder {
+    color: #212121 !important;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+
+
+/* Address */
+
+
+.V_btn_text {
+    color: #7343FF;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px 25px;
+}
+
+.V_add_border {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.V_add_dynamic_add {
+    font-size: 20px;
+    font-weight: 600;
+    color: #212121;
+    padding: 20px 25px;
+}
+
+.V_delete {
+    height: 20px;
+}
+
+.btn-success {
+    --bs-btn-bg: #;
+    --bs-btn-border-color: #198754;
+}
+
+.V_drop_menu {
+    position: absolute !important;
+    inset: 0px 0px auto auto !important;
+    transform: translate3d(-20px, 30px, 0px) !important;
+}
+
+.V_top {
+    margin-top: -40px;
+}
+
+.V_Ptag{
+    font-size: 16px;
+}
+
+
+/* privacy */
+
+
+.V_Ptag2{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.V_pri_del_btn{
+    background: var(--theme);
+}
+/* =========================================================    media query ============================================== */
+
+@media (max-width: 1920px) and (min-width:1651px) {
+
+    /* profile */
+    .V_btn_profile_edit {
+        left: 93%;
+
+    }
+
+   
+
+}
+
+@media (max-width:1650px) and (min-width:1440px) {
+
+    /* profile */
+
+    .V_btn_profile_edit {
+        left: 91%;
+    }
+
+   
+
+}
+
+@media (max-width:1439px) and (min-width:1201px) {
+    /* profile */
+
+
+    .V_btn_profile_edit {
+        left: 91%;
+    }
+
+   
+
+
+}
+
+@media (max-width:1200px) and (min-width:992px) {
+
+    /* profile */
+
+    .V_btn_profile_edit {
+        left: 86%;
+    }
+
+   
+
+}
+
+@media (max-width:991px) and (min-width:768px) {
+
+    /* profile */
+
+    .V_btn_profile_edit {
+        left: 80%;
+    }
+
+   
+
+}
+
+@media (max-width:767px) and (min-width:577px) {
+    /* profile */
+
+    .V_btn_profile_edit {
+        left: 85%;
+    }
+
+   
+
+}
+
+@media (max-width:576px) and (min-width:481px) {
+    /* profile */
+
+    .V_btn_profile_edit {
+        left: 80%;
+    }
+
+   
+
+}
+
+@media (max-width:480px) and (min-width:375px) {
+    /* profile */
+
+    .V_btn_profile_edit {
+        left: 74%;
+    }
+
+   
+
+}
+
+@media (max-width:374px) and (min-width:320px) {
+    /* profile */
+
+    .V_btn_profile_edit {
+        left: 65%;
+    }
+
+   
+}
