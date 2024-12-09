@@ -1,4 +1,4 @@
-import { BrowserRouter, Route,  Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './CSS/shweta.css';
 import './App.css';
@@ -6,21 +6,22 @@ import Home from './Pages/Home';
 import Category from './Pages/Category';
 import Main from './Pages/Main';
 import Sidebar from './Pages/Sidebar';
+import Cart from './Pages/Cart';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Home/>}>
-          <Route index element={<Main />} />
+          <Route path='/' element={<Home />} />
+            <Route index element={<Main />} />
 
 
-          {/* sidebar */}
+            {/* sidebar */}
 
-          <Route path='/sidebar' element={<Sidebar />} />
-          <Route path='/category' element={<Category/>} />
-          </Route>
+            <Route path='/sidebar' element={<Sidebar />} />
+            <Route path='/category' element={<Category />} />
+            <Route path='/cart' element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </div>
