@@ -26,6 +26,9 @@ const User = () => {
         if (location.pathname === '/privacy') { 
             navigate('/user/privacy'); 
         }
+        if (location.pathname === '/order') { 
+            navigate('/user/order'); 
+        }
     }, [location, navigate]); 
     return (
         <React.Fragment>

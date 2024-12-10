@@ -12,6 +12,8 @@ import User from './Pages/User';
 import Profile from './Pages/Profile';
 import Adderess from './Pages/Adderess';
 import Privacy from './Pages/Privacy';
+import Deatail from './Pages/Deatail';
+import Order from './Pages/Order';
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
             <Route path='/sidebar' element={<Sidebar />} />
             <Route path='/category' element={<Category />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/detail' element={<Deatail />} />
 
           {/* <Route path='/sidebar' element={<Sidebar />} /> */}
           <Route path='/category' element={<Category/>} />
@@ -36,6 +39,7 @@ function App() {
             <Route path='profile' element={<Profile />} />
             <Route path='address' element={<Adderess />} />
             <Route path='privacy' element={<Privacy />} />
+            <Route path='order' element={<Order />} />
           </Route>
          
         </Routes>

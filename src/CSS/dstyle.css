@@ -1,0 +1,1270 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.d_cur {
+    cursor: pointer;
+}
+
+.d_100vh {
+    height: 100vh;
+}
+
+.d_left {
+    padding: 16px 0 0 40px;
+    box-shadow: 8.13px 8.13px 12.2px 0px #0000000F;
+    display: flex;
+    flex-direction: column;
+}
+
+.d_left .d_box {
+    background-color: #F6F6F6;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.d_left .d_box .d_img {
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.d_left .d_box .d_img img {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.d_left .d_box .d_text h6 {
+    font-size: 20px;
+    color: #000000;
+    font-weight: 500;
+}
+
+.d_left .d_box .d_text p {
+    font-size: 14px;
+    color: #212121;
+    font-weight: 300;
+}
+
+.d_left .d_bill {
+    background-color: #F6F6F6;
+    padding: 12px 20px;
+}
+
+.d_left .d_bill h6 {
+    font-size: 18px;
+    color: #000000;
+    font-weight: 700;
+}
+
+.d_left .d_bill .d_title,
+.d_left .d_total .d_title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.d_left .d_bill .d_price,
+.d_left .d_total .d_price {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.d_left .d_bill .d_price span {
+    color: #616161;
+    margin-right: 6px;
+}
+
+.d_left .d_total {
+    background-color: #D6E7E4;
+    padding: 18px 15px;
+    margin-bottom: 10px;
+}
+
+.d_left .d_proceedbtn {
+    background: linear-gradient(90deg, #CEA5FF 0%, #6C6EFF 100%);
+    padding: 9px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.d_left .d_proceedbtn .d_totalprice {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.d_left .d_proceedbtn .d_totaldesc {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.d_left .d_proceedbtn .d_btnname {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.d_left .d_proceedbtn .d_icon {
+    color: #fff;
+}
+
+.d_right {
+    padding: 20px 0;
+}
+
+.d_right .d_heading {
+    margin-bottom: 25px;
+}
+
+.d_right .d_heading h6 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.d_right .d_heading .d_price {
+    font-size: 20px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.d_right .d_item {
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    border: 0.48px solid #212121;
+    border-radius: 6px;
+    padding: 12px 17px;
+}
+
+.d_right .d_item .d_img {
+    width: 165px;
+    height: 180px;
+}
+
+.d_right .d_item .d_img img {
+    width: 100%;
+    height: 100%;
+}
+
+.d_right .d_item .d_later {
+    font-size: 14px;
+    color: #ADADAD;
+    font-weight: 400;
+}
+
+.d_right .d_item .d_type {
+    font-size: 15px;
+    font-weight: 400;
+    color: #ADADAD;
+}
+
+.d_right .d_item .d_name {
+    font-size: 21px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.d_right .d_item .d_size {
+    font-size: 21px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.d_right .d_item .d_saved {
+    font-size: 15px;
+    font-weight: 400;
+    color: #ADADAD;
+}
+
+.d_right .d_item .d_price {
+    font-size: 24px;
+    font-weight: 600;
+    color: #AB92F3;
+}
+
+.d_right .d_item .d_removesize {
+    font-size: 20px;
+    font-weight: 500;
+    color: #ADADAD;
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+
+.d_right .d_item .d_cartbtn {
+    width: 140px;
+    padding: 5px 0;
+    background: linear-gradient(90deg, #CEA5FF 0%, #6C6EFF 100%);
+    border-radius: 3px;
+}
+
+.d_right .d_item .d_carticon {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+
+.d_logoutmodal .modal-dialog {
+    max-width: 720px;
+}
+
+.d_logoutmodal .modal-body {
+    padding: 0;
+}
+
+.d_logoutmodal .modal-content {
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    border: 0.48px solid #212121;
+    border-radius: 20px;
+}
+
+.d_logoutmodal .d_con {
+    padding: 10px;
+}
+
+.d_logoutmodal .d_closeicon {
+    color: #000;
+}
+
+.d_logoutmodal .d_main {
+    width: 375px;
+    margin: auto;
+}
+
+.d_logoutmodal .d_img {
+    width: 100%;
+}
+
+.d_logoutmodal .d_img img {
+    width: 100%;
+}
+
+.d_logoutmodal .d_textwidth {
+    max-width: 230px;
+}
+
+.d_logoutmodal .d_heading {
+    margin-bottom: 20px;
+}
+
+.d_logoutmodal .d_heading h6 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111111;
+}
+
+.d_logoutmodal .d_heading p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #212121;
+}
+
+.d_logoutmodal .d_modalbtn {
+    box-shadow: 0px 4px 4px 0px #0000000A;
+}
+
+.d_logoutmodal .d_modalbtn a {
+    background: linear-gradient(90deg, #C39EFF 0%, #7B76FF 100%);
+    border-radius: 6px;
+    padding: 7px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.d_logoutmodal .d_nobtn a {
+    background: linear-gradient(90deg, #C39EFF 0%, #7B76FF 100%);
+    opacity: 50%;
+}
+
+.d_paymentmodal .d_img {
+    width: 245px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.d_paymentmodal .d_img img {
+    width: 245px;
+}
+
+.d_paymentmodal h6 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.d_paymentmodal p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.d_addressmodal .modal-dialog {
+    max-width: 800px;
+}
+
+.d_addressmodal .modal-body {
+    padding: 0;
+}
+
+.d_addressmodal .modal-content {
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    border: 0.48px solid #212121;
+    border-radius: 20px;
+}
+
+.d_addressmodal .d_content {
+    padding: 36px 40px;
+}
+
+.d_addressmodal .d_search {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.d_searchicon {
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    transform: translateY(-50%);
+    color: #7343FF;
+    font-size: 18px;
+}
+
+.d_searchinput {
+    box-shadow: 0px 4px 9px 0px #5C58751F;
+    width: 100%;
+    cursor: pointer;
+    padding: 15px 30px 15px 50px;
+    border: 1px solid #212121;
+    border-radius: 24px;
+    background-color: transparent;
+    font-size: 14px;
+    color: #000;
+}
+
+.d_searchinput::placeholder {
+    color: #616161;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.d_addressmodal .d_gaddress h6 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000000;
+    margin: 10px 0;
+}
+
+.d_addressmodal iframe {
+    height: 530px;
+}
+
+.d_addressmodal .d_gaddress .d_box {
+    padding: 16px;
+    border: 1.14px solid #212121;
+    border-radius: 10px;
+}
+
+.d_addressmodal .d_gaddress .d_box img {
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+}
+
+.d_addressmodal .d_gaddress .d_box p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.d_addressmodal .d_enteraddress {
+    padding: 14px 20px;
+    box-shadow: 0px 4px 9px 0px #5C58751F;
+    border: 1px solid #212121;
+    border-radius: 10px;
+}
+
+.d_addressmodal .d_enteraddress .d_head {
+    border-bottom: 1px solid #E1E1E1;
+}
+
+.d_addressmodal .d_enteraddress h6 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.d_addressmodal .d_ordering {
+    padding: 12px 0;
+}
+
+.d_addressmodal .d_ordering .d_que {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.d_addressmodal .d_ordering .d_radio input {
+    width: 24px;
+    height: 24px;
+}
+
+.d_addressmodal .d_ordering .d_radio label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.d_addressmodal .d_ordering input[type="radio"] {
+    accent-color: #7343FF;
+}
+
+.d_addressmodal .d_savetype p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #616161;
+}
+
+.d_addressmodal .d_savetype a.active {
+    background-color: #EFEAFF;
+    border: 0.5px solid #7343FF;
+}
+
+.d_addressmodal .d_savetype a.active .d_addressicon {
+    color: #7343FF;
+}
+
+.d_addressmodal .d_savetype a {
+    padding: 2px 5px;
+    border-radius: 2px;
+    border: 0.5px solid #ABABAB;
+}
+
+.d_addressmodal .d_savetype .d_addressicon {
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+}
+
+.d_addressmodal .d_savetype p {
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+}
+
+.d_form {
+    padding: 20px 0;
+}
+
+.d_addressmodal .d_form input {
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0px 4px 9px 0px #5C58751F;
+    border: 1px solid #ABABAB;
+    border-radius: 10px;
+    color: #212121;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.d_addressmodal .d_form input::placeholder {
+    color: #616161;
+}
+
+.d_addressmodal .d_form p {
+    font-size: 12px;
+    font-weight: 400;
+    color: #616161;
+}
+
+.d_addressmodal .d_form .d_saveaddbtn {
+    background: linear-gradient(90deg, #CEA5FF 0%, #6C6EFF 100%);
+    border-radius: 5px;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.d_deliveryadd {
+    padding: 16px 0;
+    box-shadow: 8.13px 8.13px 12.2px 0px #0000000F;
+}
+
+.d_deliveryadd .d_select {
+    padding: 32px 26px;
+    background-color: #F6F6F6;
+    margin-bottom: 10px;
+}
+
+.d_deliveryadd .d_select h6 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #212121;
+}
+
+.d_deliveryadd .d_addinput {
+    background-color: #F6F6F6;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.d_deliveryadd .d_addinput .d_img {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.d_deliveryadd .d_addinput .d_img img {
+    width: 25px;
+}
+
+.d_deliveryadd .d_addinput p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #212121;
+}
+
+.d_deliveryadd p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #212121;
+}
+.d_deliveryadd .d_savedaddress .d_img img{
+    width: 60px;
+}
+.d_deliveryadd .d_addinput .d_desc{
+    font-size: 14px;
+    font-weight: 400;
+    color: #212121;
+}
+
+
+
+/* Detail css start */
+
+.d_delleft {
+    padding: 30px;
+    border-right: 1px solid #ADADAD40;
+}
+
+.d_delleft .d_mainimg {
+    padding: 25px;
+}
+
+.d_delleft .d_mainimg .d_img {
+    box-shadow: 0px 1.5px 3.37px 0px #5C58751F;
+    width: 285px;
+    height: 315px;
+    border: 0.37px solid #212121;
+    border-radius: 5px;
+}
+
+.d_delleft .d_subimg {
+    padding: 15px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.d_delleft .d_subimg img {
+    width: 90px;
+}
+
+.d_delleft .d_del {
+    margin-top: 20px;
+}
+
+.d_delleft .d_head .d_title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.d_delleft .d_head .d_desc {
+    font-size: 20px;
+    font-weight: 500;
+    color: #616161;
+}
+
+.d_delleft .d_del .d_title {
+    font-size: 21px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.d_delleft .d_del .d_desc {
+    max-width: 570px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #616161;
+}
+
+
+.d_delright .d_pad {
+    padding: 20px;
+}
+
+.d_delright .d_desc {
+    max-width: 420px;
+    border-bottom: 0.68px solid #ADADAD40;
+}
+
+.d_delright .d_type {
+    font-size: 15px;
+    font-weight: 400;
+    color: #ADADAD;
+}
+
+.d_delright .d_name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.d_delright .d_size {
+    font-size: 22px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.d_delright .d_saved {
+    font-size: 15px;
+    font-weight: 400;
+    color: #ADADAD;
+}
+
+.d_delright .d_price {
+    font-size: 24px;
+    font-weight: 600;
+    color: #AB92F3;
+}
+
+.d_delright .d_removesize {
+    font-size: 20px;
+    font-weight: 500;
+    color: #ADADAD;
+    margin-left: 15px;
+}
+
+.d_delright .d_cartbtn {
+    background: linear-gradient(90deg, #CEA5FF 0%, #6C6EFF 100%);
+    border-radius: 4px;
+    width: 140px;
+    padding: 5px 0;
+}
+
+.d_delright .d_carticon {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.d_delright .d_tax {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.d_delright .d_addcartbtn a {
+    background: linear-gradient(90deg, #B195FF 0%, #7875FF 100%);
+    border-radius: 6px;
+    padding: 7px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.d_delright .d_say h6 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 30px;
+}
+
+.d_delright .d_freshbox .d_img {
+    width: 70px;
+    height: 70px;
+    background-color: #D6E7E4;
+    border-radius: 7px;
+    margin-right: 16px;
+}
+
+.d_delright .d_freshbox .d_img img {
+    width: 45px;
+    height: 45px;
+}
+
+.d_delright .d_freshbox h6 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.d_delright .d_freshbox p {
+    font-size: 15px;
+    font-weight: 400;
+    color: #616161;
+    max-width: 450px;
+}
+
+.d_delright .d_review h6 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.d_delright .d_review .d_ratebox {
+    padding: 10px 0;
+    border-bottom: 1.72px solid #E1E1E1;
+}
+
+.d_delright .d_review .d_rate {
+    font-size: 26px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.d_delright .d_review .d_star {
+    color: #F5BF0D;
+    font-size: 18px;
+    margin-left: 8px;
+}
+
+.d_delright .d_review .d_rightarrow {
+    color: #191919;
+    font-size: 28px;
+}
+
+.d_delright .d_review p {
+    color: #000000;
+    font-size: 20px;
+    font-size: 500;
+}
+
+.d_delright .d_review .d_ratebox1 {
+    padding: 10px 0;
+    border-bottom: 1.72px solid #E1E1E1;
+}
+
+.d_delright .d_ratebox1 .d_box {
+    padding: 5px;
+    background-color: #FBF0D6;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.d_delright .d_ratebox1 .d_rate {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.d_delright .d_ratebox1 p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.d_delright .d_ratebox1 .d_username {
+    font-size: 14px;
+    font-weight: 500;
+    color: #616161;
+}
+
+.d_delright .d_view a {
+    font-size: 20px;
+    font-weight: 600;
+    color: #7343FF;
+}
+
+
+/* Detail css end */
+
+/* order css start */
+
+.d_order{
+    padding: 30px 40px 0 0;
+}
+.d_order .d_heading{
+    font-size: 20px;
+    color: #212121;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.d_order .d_search {
+    position: relative;
+}
+
+.d_order .d_searchicon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #7343FF;
+    font-size: 18px;
+}
+
+.d_order .d_searchinput {
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    width: 320px;
+    cursor: pointer;
+    padding: 10px 10px 10px 35px;
+    border: 0.48px solid #212121;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 14px;
+    color: #000;
+}
+
+.d_order .d_searchinput::placeholder {
+    color: #616161;
+    font-size: 14px;
+    font-weight: 500;
+}
+.d_order .d_orderbox{
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    border: 0.48px solid #212121;
+    border-radius: 6px;
+}
+.d_order .d_orderbox .d_firstsec{
+    padding: 13px 16px;
+    border-bottom: 1.43px solid #E1E1E1;
+}
+.d_order .d_orderbox .d_firstsec .d_text{
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+}
+.d_order .d_orderbox .d_firstsec .d_desc{
+    color: #616161;
+    font-size: 12px;
+    font-weight: 500;
+}
+.d_order .d_orderbox .d_firstsec .d_ship{
+    font-size: 14px;
+    color: #616161;
+    font-weight: 500;
+}
+.d_order .d_orderbox .d_firstsec .d_ship span{
+    color: #212121;
+}
+.d_rightspace{
+    margin-right: 45px;
+}
+.d_order .d_orderbox .d_firstsec .d_orderid{
+    font-size: 13px;
+    font-weight: 400;
+    color: #616161;
+}
+.d_order .d_orderbox .d_firstsec .d_orderviewdel{
+    font-size: 14px;
+    font-weight: 600;
+    color: #212121;
+}
+.d_order .d_orderbox .d_secondsec{
+    padding: 13px 14px;
+    border-bottom: 1.43px solid #E1E1E1;
+}
+.d_order .d_orderbox .d_suppiler{
+    font-size: 14px;
+    font-weight: 500;
+    color: #616161;
+}
+.d_order .d_orderbox .d_suppiler span{
+    font-size: 14px;
+    font-weight: 700;
+    color: #212121;
+}
+.d_order .d_orderbox .d_mainbox{
+    padding: 10px 14px;
+    border-bottom: 1.43px solid #E1E1E1;
+}
+.d_order .d_orderbox .d_mainbox .d_ordertrack{
+    font-size: 14px;
+    font-weight: 700;
+    color: #212121;
+}
+.d_order .d_orderbox .d_mainbox .d_img{
+    width: 70px;
+    height: 70px;
+}
+.d_order .d_orderbox .d_mainbox .d_img img{
+    width: 70px;
+    height: 70px;
+}
+
+/* order css end */
+
+
+@media(max-width:1199px) {
+    .d_paymentmodal h6 {
+        font-size: 20px;
+    }
+
+    .d_paymentmodal p {
+        font-size: 18px;
+    }
+
+    .d_delleft .d_subimg {
+        padding: 5px;
+    }
+
+    .d_delleft {
+        padding: 20px;
+    }
+
+    .d_delleft .d_head .d_title {
+        font-size: 22px;
+    }
+
+    .d_delleft .d_head .d_desc {
+        font-size: 18px;
+    }
+
+    .d_delleft .d_del {
+        margin-top: 10px;
+    }
+
+    .d_delleft .d_del .d_title {
+        font-size: 18px;
+    }
+
+    .d_delleft .d_del .d_desc {
+        font-size: 16px;
+    }
+
+    .d_delright .d_name {
+        font-size: 20px;
+    }
+
+    .d_delright .d_size {
+        font-size: 20px;
+    }
+
+    .d_delright .d_price {
+        font-size: 22px;
+    }
+
+    .d_delright .d_removesize {
+        font-size: 18px;
+    }
+
+    .d_delright .d_carticon {
+        font-size: 18px;
+    }
+
+    .d_delright .d_pad {
+        padding: 15px;
+    }
+
+    .d_delright .d_say h6 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .d_delright .d_freshbox .d_img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .d_delright .d_freshbox .d_img img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .d_delright .d_freshbox h6 {
+        font-size: 16px;
+    }
+
+    .d_delright .d_freshbox p {
+        font-size: 13px;
+    }
+
+    .d_delright .d_review h6 {
+        font-size: 20px;
+    }
+
+    .d_delright .d_review .d_rate {
+        font-size: 18px;
+    }
+
+    .d_delright .d_review p {
+        font-size: 16px;
+    }
+
+    .d_delright .d_view a {
+        font-size: 18px;
+    }
+}
+
+@media(max-width:991px) {
+    .d_100vh {
+        height: inherit;
+    }
+
+    .d_left {
+        padding: 15px;
+    }
+
+    .d_left .d_box {
+        padding: 10px;
+    }
+
+    .d_left .d_box .d_img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .d_left .d_box .d_img img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .d_left .d_box .d_text h6 {
+        font-size: 18px;
+    }
+
+    .d_left .d_proceedbtn {
+        padding: 8px;
+    }
+
+    .d_left .d_proceedbtn .d_totalprice {
+        font-size: 18px;
+    }
+
+    .d_left .d_proceedbtn .d_btnname {
+        font-size: 18px;
+    }
+
+    .d_right .d_item .d_img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .d_right .d_item .d_name {
+        font-size: 18px;
+    }
+
+    .d_right .d_item .d_price {
+        font-size: 22px;
+    }
+
+    .d_right .d_item .d_removesize {
+        font-size: 18px;
+    }
+
+    .d_right .d_item .d_size {
+        font-size: 18px;
+    }
+
+    .d_right .d_item .d_carticon {
+        font-size: 18px;
+    }
+
+    .d_logoutmodal .d_heading h6 {
+        font-size: 26px;
+    }
+
+    .d_delleft .d_mainimg .d_img {
+        width: 200px;
+        height: 220px;
+    }
+
+    .d_delleft .d_subimg {
+        margin-right: 5px;
+    }
+
+    .d_delleft .d_subimg img {
+        width: 100px;
+        height: 70px;
+    }
+
+    .d_delright .d_pad {
+        padding: 10px;
+    }
+
+    .d_delright .d_freshbox .d_img {
+        margin-right: 10px;
+    }
+
+    .d_delright .d_desc {
+        max-width: 100%;
+    }
+
+    .d_delright .d_freshbox p {
+        max-width: 100%;
+    }
+
+    .d_delleft {
+        padding: 10px;
+    }
+
+    .d_delright .d_freshbox .d_img {
+        width: 60px;
+        height: 40px;
+    }
+
+    .d_delright .d_freshbox .d_img img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .d_addressmodal .modal-dialog {
+        max-width: 700px;
+    }
+
+    .d_addressmodal .d_content {
+        padding: 20px;
+    }
+
+    .d_searchinput {
+        padding: 10px 10px 10px 50px;
+    }
+
+    .d_addressmodal iframe {
+        height: 420px;
+    }
+
+    .d_addressmodal .d_enteraddress {
+        padding: 10px;
+    }
+
+    .d_addressmodal .d_form input {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .d_addressmodal .d_form .d_saveaddbtn {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .d_addressmodal .d_gaddress .d_box {
+        padding: 10px;
+    }
+
+    .d_addressmodal .d_gaddress .d_box img {
+        width: 25px;
+        height: 25px;
+    }
+    .d_deliveryadd .d_select{
+        padding: 20px;
+    }
+    .d_deliveryadd .d_select h6{
+        font-size: 18px;
+    }
+    .d_deliveryadd .d_addinput{
+        padding: 10px;
+    }
+    .d_deliveryadd .d_addinput .d_img{
+        padding: 15px;
+    }
+    .d_deliveryadd .d_addinput p{
+        font-size: 18px;
+    }
+    .d_deliveryadd .d_savedaddress .d_img img{
+        width: 40px;
+    }
+}
+
+@media(max-width:425px) {
+    .d_left .d_proceedbtn .d_btnname {
+        font-size: 16px;
+    }
+
+    .d_left .d_proceedbtn .d_btnname {
+        font-size: 16px;
+    }
+
+    .d_right .d_item .d_img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .d_right .d_item .d_name {
+        font-size: 16px;
+    }
+
+    .d_right .d_item .d_size {
+        font-size: 16px;
+    }
+
+    .d_right .d_item .d_price {
+        font-size: 20px;
+    }
+
+    .d_right .d_item .d_removesize {
+        font-size: 16px;
+    }
+
+    .d_right .d_item .d_saved {
+        font-size: 14px;
+    }
+
+    .d_right .d_item .d_carticon {
+        font-size: 16px;
+    }
+
+    .d_logoutmodal .d_textwidth {
+        max-width: 100%;
+    }
+
+    .d_logoutmodal .d_heading h6 {
+        font-size: 24px;
+    }
+
+    .d_logoutmodal .d_modalbtn a {
+        font-size: 18px;
+    }
+
+    .d_logoutmodal .d_con {
+        padding: 10px 20px;
+    }
+
+    .d_paymentmodal h6 {
+        font-size: 18px;
+    }
+
+    .d_paymentmodal p {
+        font-size: 16px;
+    }
+
+    .d_delleft {
+        border-right: none;
+    }
+
+
+}
+
+@media(max-width:320px) {
+    .d_logoutmodal .d_heading h6 {
+        font-size: 22px;
+    }
+
+    .d_delleft {
+        padding: 0;
+    }
+
+    .d_delright .d_pad {
+        padding: 5px 0;
+    }
+
+    .d_addressmodal .d_savetype .d_other {
+        margin-top: 5px;
+    }
+
+}
