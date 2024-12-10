@@ -18,26 +18,26 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />} >
             <Route index element={<Main />} />
-
-
-            {/* sidebar */}
-
-
-            <Route path='/sidebar' element={<Sidebar />} />
             <Route path='/category' element={<Category />} />
-            <Route path='/cart' element={<Cart />} />
+          </Route>
+
+          {/* sidebar */}
+
+
+          <Route path='/sidebar' element={<Sidebar />} />
+          <Route path='/cart' element={<Cart />} />
 
           {/* <Route path='/sidebar' element={<Sidebar />} /> */}
-          <Route path='/category' element={<Category/>} />
+          {/* <Route path='/category' element={<Category/>} /> */}
 
           <Route path="/user" element={<User />}>
             <Route path='profile' element={<Profile />} />
             <Route path='address' element={<Adderess />} />
             <Route path='privacy' element={<Privacy />} />
           </Route>
-         
+
         </Routes>
       </BrowserRouter>
     </div>
