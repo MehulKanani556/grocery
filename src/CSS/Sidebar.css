@@ -114,16 +114,116 @@
 
 @media (max-width: 1920px) and (min-width:1650px) {}
 
-@media (max-width:1649px) and (min-width:1441px) {}
+@media (max-width:1649px) and (min-width:1441px) {
 
-@media (max-width:1440px) and (min-width:1200px) {}
+    /* sidebar */
 
-@media (max-width:1199px) and (min-width:992px) {}
+    .V_account_data {
+        font-size: 18px;
+        margin-left: 24px;
+    }
+}
 
-@media (max-width:991px) and (min-width:768px) {}
+@media (max-width:1440px) and (min-width:1200px) {
 
-@media (max-width:769px) and (min-width:577px) {}
+    /* sidebar */
 
-@media (max-width:576px) and (min-width:481px) {}
+    .V_account_data {
+        font-size: 18px;
+        margin-left: 24px;
+    }
 
-@media (max-width:480px) and (min-width:320px) {}
+    .V_account_img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .V_account_img2 {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width:1199px) and (min-width:992px) {
+
+    /* sidebar */
+
+    .V_account_data {
+        font-size: 18px;
+        margin-left: 24px;
+    }
+
+    .V_account_img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .V_account_img2 {
+        width: 50px;
+        height: 50px;
+    }
+    .V_account {
+        margin-left: 10px;
+    }
+    .V_account_part_2 {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width:991px) and (min-width:768px) {
+
+    /* sidebar */
+
+    .V_account_data {
+        font-size: 18px;
+        margin-left: 24px;
+    }
+
+    .V_account_img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .V_account_img2 {
+        width: 40px;
+        height: 40px;
+    }
+
+    .V_account {
+        margin-left: 10px;
+    }
+
+    .V_account_part_2 {
+        margin-left: 10px;
+    }
+
+    .V_account_data {
+        font-size: 14px;
+        margin-left: 12px;
+    }
+}
+
+@media (max-width:769px) and (min-width:577px) {
+
+    /* sidebar */
+
+    .offcanvas {
+        --bs-offcanvas-width: 300px !important;
+    }
+}
+
+@media (max-width:576px) and (min-width:481px) {
+
+    /* sidebar */
+    .offcanvas {
+        --bs-offcanvas-width: 300px !important;
+    }
+}
+
+@media (max-width:480px) and (min-width:320px) {
+
+    /* sidebar */
+    .offcanvas {
+        --bs-offcanvas-width: 300px !important;
+    }
+}

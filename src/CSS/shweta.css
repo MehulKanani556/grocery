@@ -1,3 +1,6 @@
+/* ====================================================================================================================================================
+                                                            HEADER AND FOOTER
+======================================================================================================================================================*/
 .s_header{
     padding : 20px 30px;
     position: sticky;
@@ -16,9 +19,106 @@
     width: 250px !important;
 }
 .s_footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
     padding: 20px 100px;
-    width: 100%;
+}
+
+/* ====================================================================================================================================================
+                                                                HOME PAGE
+======================================================================================================================================================*/
+.s_carousel_img{
+    height: 500px;
+    object-fit: cover;
+}
+.carousel-caption {
+    bottom: 50% !important;
+    color: #000 !important;
+    text-align: left !important;
+    transform: translateY(50%);
+}
+.s_btn_puprle{
+    background: rgb(171,146,243);
+    background: linear-gradient(90deg, rgba(171,146,243,1) 0%, rgba(120,117,255,1) 73%);
+    padding: 8px 25px;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon{
+    display: none !important;
+}
+.carousel-indicators [data-bs-target]{
+    background-color: transparent !important;
+    border: 1px solid #34293b !important;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+}
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: #CBA9E5 !important;
+    border: 1px solid #CBA9E5 !important;
+}
+.s_img_contant {
+    position: absolute ;
+    left: 16%;
+    top: 34%;
+}
+.s_btn_white{
+    background-color: white;
+    padding: 8px 25px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid black;
+}   
+
+.s_container{
+    padding: 0 8%;
+}
+
+.s_card img{
+    height: 150px;
+    object-fit: cover;
+}
+
+/* ====================================================================================================================================================
+                                                                MEDIA QUERY
+======================================================================================================================================================*/
+@media (max-width:1440px) {
+    .s_img_contant{
+        top: 27%;
+    }
+}
+@media(max-width:1024px){
+    .s_carousel_img{
+       height: 400px;
+    }
+}
+@media(max-width:768px) {
+    .s_sub_header{
+        overflow-x: scroll;
+        white-space: nowrap;
+       text-wrap: nowrap;
+    }
+    .s_sub_header li{
+        padding: 0 40px;
+    }
+    .s_img_contant{
+        top: 15%;
+    }
+}
+@media(max-width:425px){
+    .s_footer{
+        padding: 20px 50px;
+    }
+    .s_carousel_img{
+        height: 250px;
+     }
+     .s_img_contant{
+        top: 19%;
+    }
+}
+@media (max-width:320px) {
+    .s_img_contant{
+        top: 15%;
+    }
 }

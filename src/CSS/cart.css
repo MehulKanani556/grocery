@@ -1,0 +1,455 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.d_cur{
+    cursor: pointer;
+}
+.d_100vh{
+    height: 100vh;
+}
+.d_left {
+    padding: 16px 0 0 40px;
+    box-shadow: 8.13px 8.13px 12.2px 0px #0000000F;
+    display: flex;
+    flex-direction: column;
+}
+
+.d_left .d_box {
+    background-color: #F6F6F6;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.d_left .d_box .d_img {
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.d_left .d_box .d_img img {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.d_left .d_box .d_text h6 {
+    font-size: 20px;
+    color: #000000;
+    font-weight: 500;
+}
+
+.d_left .d_box .d_text p {
+    font-size: 14px;
+    color: #212121;
+    font-weight: 300;
+}
+
+.d_left .d_bill {
+    background-color: #F6F6F6;
+    padding: 12px 20px;
+}
+
+.d_left .d_bill h6 {
+    font-size: 18px;
+    color: #000000;
+    font-weight: 700;
+}
+
+.d_left .d_bill .d_title,
+.d_left .d_total .d_title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.d_left .d_bill .d_price,
+.d_left .d_total .d_price {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.d_left .d_bill .d_price span {
+    color: #616161;
+    margin-right: 6px;
+}
+
+.d_left .d_total {
+    background-color: #D6E7E4;
+    padding: 18px 15px;
+    margin-bottom: 10px;
+}
+
+.d_left .d_proceedbtn {
+    background: linear-gradient(90deg, #CEA5FF 0%, #6C6EFF 100%);
+    padding: 9px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.d_left .d_proceedbtn .d_totalprice {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.d_left .d_proceedbtn .d_totaldesc {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.d_left .d_proceedbtn .d_btnname {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.d_left .d_proceedbtn .d_icon {
+    color: #fff;
+}
+
+.d_right {
+    padding: 20px 0;
+}
+
+.d_right .d_heading {
+    margin-bottom: 25px;
+}
+
+.d_right .d_heading h6 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.d_right .d_heading .d_price {
+    font-size: 20px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.d_right .d_item {
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    border: 0.48px solid #212121;
+    border-radius: 6px;
+    padding: 12px 17px;
+}
+
+.d_right .d_item .d_img {
+    width: 165px;
+    height: 180px;
+}
+
+.d_right .d_item .d_img img {
+    width: 100%;
+    height: 100%;
+}
+
+.d_right .d_item .d_later {
+    font-size: 14px;
+    color: #ADADAD;
+    font-weight: 400;
+}
+
+.d_right .d_item .d_type {
+    font-size: 15px;
+    font-weight: 400;
+    color: #ADADAD;
+}
+
+.d_right .d_item .d_name {
+    font-size: 21px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.d_right .d_item .d_size {
+    font-size: 21px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.d_right .d_item .d_saved {
+    font-size: 15px;
+    font-weight: 400;
+    color: #ADADAD;
+}
+
+.d_right .d_item .d_price {
+    font-size: 24px;
+    font-weight: 600;
+    color: #AB92F3;
+}
+
+.d_right .d_item .d_removesize {
+    font-size: 20px;
+    font-weight: 500;
+    color: #ADADAD;
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+
+.d_right .d_item .d_cartbtn {
+    width: 140px;
+    padding: 5px 0;
+    background: linear-gradient(90deg, #CEA5FF 0%, #6C6EFF 100%);
+    border-radius: 3px;
+}
+
+.d_right .d_item .d_carticon {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+
+.d_logoutmodal .modal-dialog{
+    max-width: 720px;
+}
+.d_logoutmodal .modal-body{
+    padding: 0;
+}
+.d_logoutmodal .modal-content{
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    border: 0.48px solid #212121;
+    border-radius: 20px;
+}
+.d_logoutmodal .d_con{
+    padding: 10px;
+}
+.d_logoutmodal .d_closeicon{
+    color: #000;
+}
+.d_logoutmodal .d_main{
+    width: 375px;
+    margin: auto;
+}
+.d_logoutmodal .d_img{
+    width: 100%;
+}
+.d_logoutmodal .d_img img{
+    width: 100%;
+}
+.d_logoutmodal .d_textwidth{
+    max-width: 230px;
+}
+.d_logoutmodal .d_heading {
+    margin-bottom: 20px;
+}
+.d_logoutmodal .d_heading h6{
+    font-size: 32px;
+    font-weight: 700;
+    color: #111111;
+}
+.d_logoutmodal .d_heading p{
+    font-size: 16px;
+    font-weight: 400;
+    color: #212121;
+}
+.d_logoutmodal .d_modalbtn{
+    box-shadow: 0px 4px 4px 0px #0000000A;
+}
+.d_logoutmodal .d_modalbtn a{
+    background: linear-gradient(90deg, #C39EFF 0%, #7B76FF 100%);
+    border-radius: 6px;
+    padding: 7px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+.d_logoutmodal .d_nobtn a{
+    background: linear-gradient(90deg, #C39EFF 0%, #7B76FF 100%);
+    opacity: 50%;
+}
+.d_paymentmodal .d_img{
+    width: 245px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.d_paymentmodal .d_img img{
+    width: 245px;
+}
+.d_paymentmodal h6{
+    font-size: 22px;
+    font-weight: 700;
+    color: #000000;
+}
+.d_paymentmodal p{
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.d_addressmodal .modal-dialog{
+    max-width: 720px;
+}
+.d_addressmodal .modal-body{
+    padding: 0;
+}
+.d_addressmodal .modal-content{
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    border: 0.48px solid #212121;
+    border-radius: 20px;
+}
+.d_addressmodal .d_content{
+    padding: 36px 40px;
+}
+.d_addressmodal .d_search{
+    position: relative;
+}
+
+  .d_searchicon {
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    transform: translateY(-50%);
+    color: #7343FF;
+    font-size: 18px;
+  }
+  .d_searchinput {
+    box-shadow: 0px 4px 9px 0px #5C58751F;
+    width: 100%;
+    cursor: pointer;
+    padding: 15px 30px 15px 50px;
+    border: 1px solid #212121;
+    border-radius: 24px;
+    background-color: transparent;
+    font-size: 14px;
+    color: #000;
+  }
+  
+  .d_searchinput::placeholder {
+    color: #616161;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+
+@media(max-width:1199px){
+    .d_paymentmodal h6{
+        font-size: 20px;
+    }
+    .d_paymentmodal p{
+        font-size: 18px;
+    }
+}
+@media(max-width:991px) {
+    .d_100vh {
+        height: inherit;
+    }
+    .d_left {
+        padding: 15px;
+    }
+
+    .d_left .d_box {
+        padding: 10px;
+    }
+
+    .d_left .d_box .d_img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .d_left .d_box .d_img img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .d_left .d_box .d_text h6 {
+        font-size: 18px;
+    }
+
+    .d_left .d_proceedbtn {
+        padding: 8px;
+    }
+
+    .d_left .d_proceedbtn .d_totalprice {
+        font-size: 18px;
+    }
+
+    .d_left .d_proceedbtn .d_btnname {
+        font-size: 18px;
+    }
+
+    .d_right .d_item .d_img {
+        width: 100%;
+        height: 100%;
+    }
+    .d_right .d_item .d_name{
+        font-size: 18px;
+    }
+    .d_right .d_item .d_price{
+        font-size: 22px;
+    }
+    .d_right .d_item .d_removesize{
+        font-size: 18px;
+    }
+    .d_right .d_item .d_size{
+        font-size: 18px;
+    }
+    .d_right .d_item .d_carticon{
+        font-size: 18px;
+    }
+    .d_logoutmodal .d_heading h6{
+        font-size: 26px;
+    }
+}
+@media(max-width:425px){
+    .d_left .d_proceedbtn .d_btnname{
+        font-size: 16px;
+    }
+    .d_left .d_proceedbtn .d_btnname{
+        font-size: 16px;
+    }
+    .d_right .d_item .d_img{
+        width: 100px;
+        height: 100px;
+    }
+    .d_right .d_item .d_name{
+        font-size: 16px;
+    }
+    .d_right .d_item .d_size{
+        font-size: 16px;
+    }
+    .d_right .d_item .d_price{
+        font-size: 20px;
+    }
+    .d_right .d_item .d_removesize{
+        font-size: 16px;
+    }
+    .d_right .d_item .d_saved{
+        font-size: 14px;
+    }
+    .d_right .d_item .d_carticon{
+        font-size: 16px;
+    }
+    .d_logoutmodal .d_textwidth{
+        max-width: 100%;
+    }
+    .d_logoutmodal .d_heading h6{
+        font-size: 24px;
+    }
+    .d_logoutmodal .d_modalbtn a{
+        font-size: 18px;
+    }
+    .d_logoutmodal .d_con{
+        padding: 10px 20px;
+    }
+    .d_paymentmodal h6{
+        font-size: 18px;
+    }
+    .d_paymentmodal p{
+        font-size: 16px;
+    }
+}
+@media(max-width:320px){
+    .d_logoutmodal .d_heading h6{
+        font-size: 22px;
+    }
+}
