@@ -136,7 +136,7 @@
     margin-top: -40px;
 }
 
-.V_Ptag{
+.V_Ptag {
     font-size: 16px;
 }
 
@@ -144,13 +144,175 @@
 /* privacy */
 
 
-.V_Ptag2{
+.V_Ptag2 {
     font-size: 18px;
     font-weight: 400;
 }
 
-.V_pri_del_btn{
+.V_pri_del_btn {
     background: var(--theme);
+    border-radius: 10px;
+}
+
+.V_pd_size {
+    width: 16px;
+    height: 18px;
+}
+
+
+/* payment */
+
+.accordion-button:focus {
+
+    box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: black;
+    background: transparent;
+    box-shadow: none;
+}
+
+.V_upi_img_size {
+    width: 40px;
+    height: 40px;
+}
+
+.V_upi_text {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.accordion {
+    --bs-accordion-border-color: black !important;
+}
+
+.accordion-body {
+    padding: 0px 14px 16px 14px;
+}
+
+.V_gpay_size {
+    width: 40px;
+    height: 40px;
+}
+
+.V_phpe_size {
+    width: 30px;
+    height: 30px;
+}
+
+.V_bhim_size {
+    width: 60px;
+    height: 40px;
+}
+
+.V_ptm_size {
+    width: 60px;
+    height: 40px;
+}
+
+.V_input_upi {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.V_pay_check {
+    background: var(--theme);
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 10px;
+    width: 220px;
+}
+
+.V_net_border {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.V_ici_img_size {
+    border: 0.5px solid #a69d9d;
+    border-radius: 3px;
+    width: 40px;
+    height: 40px;
+}
+
+.V_gpay_text {
+    font-size: 12px;
+}
+
+
+/* Coupon */
+
+.V_flat {
+    font-size: 14px;
+}
+
+.V_use_coupon {
+    font-size: 10px;
+}
+
+.V_apply {
+    border: 0.5px solid #a69d9d;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.V_dashed {
+    border-bottom: 1px dashed #a69d9d;
+}
+
+.V_shop_width {
+    width: 170px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.V_shop {
+    background: #E7FFFF;
+    border-radius: 10px;
+}
+
+.V_unorder {
+    list-style-type: disc !important;
+}
+
+.V_li {
+    font-size: 12px;
+    font-weight: 500;
+    color: #616161;
+}
+
+.V_read_less {
+    padding-left: 32px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #616161;
+}
+
+.V_hide {
+    font-size: 11.08px;
+    font-weight: 400;
+    color: #3081BC;
+}
+
+.V_pad {
+    padding-left: 32px !important;
+}
+
+.V_upto {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.V_use_code {
+    color: #616161;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.V_down_size{
+    width: 25px;
+    height: 18px;
 }
 /* =========================================================    media query ============================================== */
 
@@ -162,8 +324,25 @@
 
     }
 
-   
+    /* payment */
 
+    .V_upi_text {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .accordion-body {
+        padding: 0px 14px 16px 14px;
+    }
+
+    .V_pay_check {
+        font-size: 20px;
+        width: 220px;
+    }
+
+    .V_gpay_text {
+        font-size: 16px;
+    }
 }
 
 @media (max-width:1650px) and (min-width:1440px) {
@@ -174,7 +353,24 @@
         left: 91%;
     }
 
-   
+    /* payment */
+    .V_upi_text {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .accordion-body {
+        padding: 0px 14px 16px 14px;
+    }
+
+    .V_pay_check {
+        font-size: 20px;
+        width: 220px;
+    }
+
+    .V_gpay_text {
+        font-size: 16px;
+    }
 
 }
 
@@ -186,8 +382,24 @@
         left: 91%;
     }
 
-   
+    /* payment */
+    .V_upi_text {
+        font-size: 18px;
+        font-weight: 600;
+    }
 
+    .accordion-body {
+        padding: 0px 14px 16px 14px;
+    }
+
+    .V_pay_check {
+        font-size: 20px;
+        width: 220px;
+    }
+
+    .V_gpay_text {
+        font-size: 16px;
+    }
 
 }
 
@@ -199,7 +411,24 @@
         left: 86%;
     }
 
-   
+    /* payment */
+    .V_upi_text {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .accordion-body {
+        padding: 0px 14px 16px 14px;
+    }
+
+    .V_pay_check {
+        font-size: 20px;
+        width: 160px;
+    }
+
+    .V_gpay_text {
+        font-size: 16px;
+    }
 
 }
 
@@ -211,7 +440,45 @@
         left: 80%;
     }
 
-   
+    /* payment */
+    .V_upi_text {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .accordion-body {
+        padding: 0px 14px 16px 14px;
+    }
+
+    .V_pay_check {
+        font-size: 14px;
+        width: 100px;
+    }
+
+    .V_gpay_text {
+        font-size: 10px;
+    }
+
+    .V_gpay_size {
+        width: 30px;
+        height: 30px;
+    }
+
+    .V_phpe_size {
+        width: 30px;
+        height: 30px;
+    }
+
+    .V_bhim_size {
+        width: 60px;
+        height: 40px;
+    }
+
+    .V_ptm_size {
+        width: 60px;
+        height: 40px;
+    }
+
 
 }
 
@@ -222,7 +489,44 @@
         left: 85%;
     }
 
-   
+    /* payment */
+    .V_upi_text {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .accordion-body {
+        padding: 0px 14px 16px 14px;
+    }
+
+    .V_pay_check {
+        font-size: 14px;
+        width: 150px;
+    }
+
+    .V_gpay_text {
+        font-size: 10px;
+    }
+
+    .V_gpay_size {
+        width: 30px;
+        height: 30px;
+    }
+
+    .V_phpe_size {
+        width: 30px;
+        height: 30px;
+    }
+
+    .V_bhim_size {
+        width: 60px;
+        height: 40px;
+    }
+
+    .V_ptm_size {
+        width: 60px;
+        height: 40px;
+    }
 
 }
 
@@ -233,7 +537,45 @@
         left: 80%;
     }
 
-   
+    /* payment */
+    .V_upi_text {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .accordion-body {
+        padding: 0px 14px 16px 14px;
+    }
+
+    .V_pay_check {
+        font-size: 14px;
+        width: 130px;
+    }
+
+    .V_gpay_text {
+        font-size: 10px;
+    }
+
+    .V_gpay_size {
+        width: 30px;
+        height: 30px;
+    }
+
+    .V_phpe_size {
+        width: 30px;
+        height: 30px;
+    }
+
+    .V_bhim_size {
+        width: 60px;
+        height: 40px;
+    }
+
+    .V_ptm_size {
+        width: 60px;
+        height: 40px;
+    }
+
 
 }
 
@@ -244,7 +586,46 @@
         left: 74%;
     }
 
-   
+    /* payment */
+    .V_upi_text {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .accordion-body {
+        padding: 0px 10px 16px 10px;
+    }
+
+    .V_pay_check {
+        font-size: 14px;
+        width: 100px;
+    }
+
+    .V_gpay_text {
+        font-size: 10px;
+    }
+
+    .V_gpay_size {
+        width: 30px;
+        height: 30px;
+    }
+
+    .V_phpe_size {
+        width: 20px;
+        height: 20px;
+    }
+
+    .V_bhim_size {
+        width: 50px;
+        height: 30px;
+    }
+
+    .V_ptm_size {
+        width: 50px;
+        height: 30px;
+    }
+
+
 
 }
 
@@ -255,5 +636,44 @@
         left: 65%;
     }
 
-   
+    /* payment */
+    .V_upi_text {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .accordion-body {
+        padding: 0px 14px 16px 14px;
+    }
+
+    .V_pay_check {
+        font-size: 14px;
+        width: 100px;
+    }
+
+    .V_gpay_text {
+        font-size: 10px;
+    }
+
+    .V_gpay_size {
+        width: 30px;
+        height: 30px;
+    }
+
+    .V_phpe_size {
+        width: 20px;
+        height: 20px;
+    }
+
+    .V_bhim_size {
+        width: 50px;
+        height: 30px;
+    }
+
+    .V_ptm_size {
+        width: 50px;
+        height: 30px;
+    }
+
+
 }

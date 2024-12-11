@@ -162,7 +162,7 @@ const Sidebar = ({setModalShow}) => {
                 </div>
               </div>
             </Link>
-            <Link to="/order" className="text-decoration-none ">
+            <Link to="order" className="text-decoration-none ">
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={MyOrder} alt="my order" />
@@ -172,7 +172,7 @@ const Sidebar = ({setModalShow}) => {
                 </div>
               </div>
             </Link>
-            <Link to="/wishlist" className="text-decoration-none ">
+            <Link to="wishlist" className="text-decoration-none ">
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Wishlist} alt="wishlist" />
@@ -182,7 +182,7 @@ const Sidebar = ({setModalShow}) => {
                 </div>
               </div>
             </Link>
-            <Link to="/coupon" className="text-decoration-none ">
+            <Link to="coupon" className="text-decoration-none ">
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Coupon} alt="coupon" />
@@ -192,7 +192,7 @@ const Sidebar = ({setModalShow}) => {
                 </div>
               </div>
             </Link>
-            <Link to="/payment" className="text-decoration-none ">
+            <Link to="payment" className="text-decoration-none ">
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Payment} alt="" />
@@ -202,7 +202,7 @@ const Sidebar = ({setModalShow}) => {
                 </div>
               </div>
             </Link>
-            <Link to="/address" className="text-decoration-none ">
+            <Link to="address" className="text-decoration-none ">
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Address} alt="Address" />
@@ -212,7 +212,7 @@ const Sidebar = ({setModalShow}) => {
                 </div>
               </div>
             </Link>
-            <Link to="/privacy" className="text-decoration-none ">
+            <Link to="privacy" className="text-decoration-none ">
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Privacy} alt="Privacy" />

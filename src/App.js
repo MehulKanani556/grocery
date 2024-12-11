@@ -7,13 +7,14 @@ import Category from './Pages/Category';
 import Main from './Pages/Main';
 import Sidebar from './Pages/Sidebar';
 import Cart from './Pages/Cart';
-// import Sidebar from './Pages/Sidebar';
+import Payment from './Pages/Payment';
 import User from './Pages/User';
 import Profile from './Pages/Profile';
 import Adderess from './Pages/Adderess';
 import Privacy from './Pages/Privacy';
 import Deatail from './Pages/Deatail';
 import Order from './Pages/Order';
+import Coupon from './Pages/Coupon';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             {/* sidebar */}
 
 
-            <Route path='/sidebar' element={<Sidebar />} />
+            {/* <Route path='/sidebar' element={<Sidebar />} /> */}
             <Route path='/category' element={<Category />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/detail' element={<Deatail />} />
@@ -40,6 +41,10 @@ function App() {
             <Route path='address' element={<Adderess />} />
             <Route path='privacy' element={<Privacy />} />
             <Route path='order' element={<Order />} />
+
+            <Route path='payment' element={<Payment />} />
+            <Route path='coupon' element={<Coupon />} />
+
           </Route>
          
         </Routes>
