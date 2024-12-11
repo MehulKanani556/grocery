@@ -10,12 +10,14 @@ import Address from '../Image/address (2).png';
 import Privacy from '../Image/privacy.png';
 import Logout from '../Image/logout.png';
 import Payment from '../Image/payment.png'
-import { Accordion, Offcanvas } from 'react-bootstrap';
+import { Accordion, Modal, Offcanvas } from 'react-bootstrap';
+import { IoCloseSharp } from 'react-icons/io5';
 // import { FaBagShopping } from 'react-icons/fa6';
 
 const Sidebar = ({setModalShow}) => {
 
   const [show, setShow] = useState(false);
+  const [logoutmodalShow, setLogoutModalShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -122,7 +124,7 @@ const Sidebar = ({setModalShow}) => {
 
 
             <Link >
-              <div className="ps-3 V_account_part_2 d-flex align-items-center "  onClick={() => { setModalShow(true) }}>
+              <div className="ps-3 V_account_part_2 d-flex align-items-center "  onClick={() => { setLogoutModalShow(true) }}>
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Logout} alt="Logout" />
                 </div>
@@ -223,7 +225,7 @@ const Sidebar = ({setModalShow}) => {
               </div>
             </Link>
             <Link >
-              <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2"  onClick={() => { setModalShow(true) }}>
+              <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2"  onClick={() => { setLogoutModalShow(true) }}>
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Logout} alt="Logout" />
                 </div>
@@ -236,6 +238,50 @@ const Sidebar = ({setModalShow}) => {
           </div>
         </Offcanvas.Body>
       </Offcanvas>
+
+
+            {/* Logout modal */}
+
+            <Modal
+                show={logoutmodalShow}
+                onHide={() => setLogoutModalShow(false)}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                className='d_logoutmodal'
+            >
+                <Modal.Body className='ps-lg-5 ps-sm-3'>
+                    <div className="d_con">
+                        <div className='d-flex justify-content-end d_cur' onClick={() => setLogoutModalShow(false)}><IoCloseSharp className='d_closeicon' /></div>
+                        <div className="row align-items-center my-xl-5 my-lg-4 my-3">
+                            <div className="col-12 col-sm-7">
+                                <div className="d_textwidth">
+                                    <div className="d_heading">
+                                        <h6>logout</h6>
+                                        <p className='mb-0'>Do you Want to Exit this page ?</p>
+                                    </div>
+                                    <div className="d_modalbtn mb-3">
+                                        <Link to="" className='d-block text-center'>Yes</Link>
+                                    </div>
+                                    <div className="d_modalbtn d_nobtn" onClick={() => setLogoutModalShow(false)}>
+                                        <Link to="" className='d-block text-center'>No</Link>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-12 col-sm-5 d-sm-block d-none">
+                                <div className="d_img">
+                                    <img src={require('../Image/logoutimg.png')} alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Modal.Body>
+            </Modal>
+
+
+            {/* Logout modal */}
+
+
     </>
   )
 }

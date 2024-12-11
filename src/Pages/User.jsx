@@ -29,6 +29,12 @@ const User = () => {
         if (location.pathname === '/order') { 
             navigate('/user/order'); 
         }
+        if (location.pathname === '/cancelorder') { 
+            navigate('/user/cancelorder'); 
+        }
+        if (location.pathname === '/wishlist') { 
+            navigate('/user/wishlist'); 
+        }
     }, [location, navigate]); 
     return (
         <React.Fragment>

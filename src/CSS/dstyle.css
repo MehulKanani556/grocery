@@ -3,7 +3,12 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+.d_yellow{
+    color: #FDC040;
+}
+.d_gray{
+    color: #D4D4D4;
+}
 .d_cur {
     cursor: pointer;
 }
@@ -211,6 +216,7 @@
     color: #fff;
 }
 
+/* Modal css start */
 
 .d_logoutmodal .modal-dialog {
     max-width: 720px;
@@ -550,6 +556,7 @@
     color: #212121;
 }
 
+/* Modal css end */
 
 
 /* Detail css start */
@@ -799,10 +806,12 @@
     padding: 30px 40px 0 0;
 }
 .d_order .d_heading{
+    margin-bottom: 20px;
+}
+.d_order .d_heading h6{
     font-size: 20px;
     color: #212121;
     font-weight: 600;
-    margin-bottom: 20px;
 }
 
 .d_order .d_search {
@@ -890,7 +899,7 @@
     color: #212121;
 }
 .d_order .d_orderbox .d_mainbox{
-    padding: 10px 14px;
+    padding: 10px 14px 24px 14px;
     border-bottom: 1.43px solid #E1E1E1;
 }
 .d_order .d_orderbox .d_mainbox .d_ordertrack{
@@ -901,13 +910,355 @@
 .d_order .d_orderbox .d_mainbox .d_img{
     width: 70px;
     height: 70px;
+    margin-right: 15px;
 }
 .d_order .d_orderbox .d_mainbox .d_img img{
     width: 70px;
     height: 70px;
 }
+.d_order .d_orderbox .d_mainbox .d_ordertype{
+    font-size: 15px;
+    font-weight: 400;
+    color: #ADADAD;
+}
+.d_order .d_orderbox .d_mainbox .d_ordername{
+    font-size: 21px;
+    font-weight: 600;
+    color: #212121;
+}
+.d_order .d_orderbox .d_mainbox .d_orderreturn{
+    font-size: 15px;
+    font-weight: 400;
+    color: #ADADAD;
+}
+
+.d_order .d_orderbox .d_mainbox .d_cancelbtn a{
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    border: 0.48px solid #212121;
+    padding: 8px 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+}
+.d_order .d_orderbox .d_mainbox .d_ordersuccess{
+    color: #00900E;
+    font-size: 12px;
+    font-weight: 500;
+}
+.d_order .d_orderbox .d_mainbox .d_buyagain a{
+    background: linear-gradient(90deg, #CEA5FF 0%, #6C6EFF 100%);
+    border-radius: 3px;
+    padding: 7px 10px;
+    width: 160px;
+}
+.d_order .d_orderbox .d_mainbox .d_buyagain img{
+    width: 18px;
+}
+.d_order .d_orderbox .d_mainbox .d_buyagain p{
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+}
+.d_order .d_orderbox .d_thirdsec{
+    padding: 21px 30px;
+}
+.d_order .d_orderbox .d_thirdsec .d_ratetext{
+   font-size: 14px;
+   font-weight: 700;
+   color: #212121;
+   margin-bottom: 7px;
+}
+/* .d_order .d_orderbox .d_thirdsec  .d_staryellow{
+    color: #FDC040;
+}
+.d_order .d_orderbox .d_thirdsec  .d_stargray{
+    color: #D4D4D4;
+} */
+.d_order .d_orderbox .d_thirdsec  .d_totalrate{
+    color: #ADADAD;
+    font-size: 12px;
+    font-weight: 500;
+}
+.d_emptyorder .d_img{
+    width: 400px;
+}
+.d_emptyorder .d_img img{
+    width: 400px;
+}
+.d_emptyorder .d_img p{
+    max-width: 210px;
+    margin: auto;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+}
+.d_cancelorder{
+    padding: 30px 0;
+}
+.d_cancelorder .d_heading h6{
+    font-size: 20px;
+    font-weight: 600;
+    color: #212121;
+}
+.d_cancelorder .d_cancelbox{
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    border: 0.48px solid #212121;
+    border-radius: 6px;
+}
+.d_cancelorder .d_cancelbox .d_suppierbox{
+    padding: 14px 8px;
+    border-bottom: 1.43px solid #E1E1E1;
+}
+.d_cancelorder .d_cancelbox .d_suppierbox p{
+    font-size: 14px;
+    font-weight: 500;
+    color: #616161;
+}
+.d_cancelorder .d_cancelbox .d_suppierbox p span{
+    font-weight: 700;
+    color: #212121;
+}
+.d_cancelorder .d_itembox{
+    padding: 8px 10px;
+}
+.d_cancelorder .d_itembox .d_procate{
+    font-size: 14px;
+    font-weight: 600;
+    color: #212121;
+    margin-bottom: 12px;
+}
+.d_cancelorder .d_itembox .d_img{
+    width: 70px;
+    height: 70px;
+    margin-right: 12px;
+}
+.d_cancelorder .d_itembox .d_proprice{
+    font-size: 16px;
+    font-weight: 400;
+    color: #ADADAD;
+}
+.d_cancelorder .d_itembox .d_proname{
+    font-size: 21px;
+    font-weight: 600;
+    color: #212121;
+}
+.d_cancelorder .d_cancelreason{
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    border: 0.48px solid #212121;
+    padding: 35px 20px;
+    border-radius: 6px;
+    height: 415px;
+}
+.d_cancelorder .d_cancelreason p{
+    font-size: 16px;
+    font-weight: 700;
+    color: #212121;
+    margin-bottom: 16px;
+}
+.d_cancelorder .d_cancelreason textarea{
+    width: 100%;
+    color: #212121;
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 1px solid #ADADAD40;
+}
+.d_cancelorder .d_cancelreason .d_cancelprobtn {
+    width: 300px;
+}
+.d_cancelorder .d_cancelreason .d_cancelprobtn a{
+    background: linear-gradient(90deg, #CEA5FF 0%, #6C6EFF 100%);
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 5px;
+}
+
 
 /* order css end */
+
+/* wishlist css start */
+
+.d_wishlist{
+    padding: 30px 0;
+}
+.d_wishlist .d_heart{
+    color: #FD7171;
+}
+.d_wishlist .d_addcart{
+    background: linear-gradient(90deg, #CEA5FF 0%, #6C6EFF 100%);
+    border-radius: 4px;
+    width: 140px;
+    padding: 5px 0;
+}
+.d_wishlist .d_addcart .d_carticon{
+    font-size: 14px;
+    font-weight: 500;
+}
+.d_wishlist  .d_addcart p{
+    font-size: 14px;
+    color: #ffd;
+    font-weight: 500;
+}
+.d_wishlist .d_starrate{
+    font-size: 12px;
+}
+.d_wishlist .d_totalrate{
+    font-size: 12px;
+    font-weight: 500;
+    color: #ADADAD;
+}
+
+/* wishlist css end */
+
+/* login modal css start */
+
+.d_loginmodal .modal-dialog{
+    max-width: 800px;
+    margin: auto;
+}
+
+.d_loginmodal .modal-body {
+    padding: 0;
+}
+
+.d_loginmodal .modal-content {
+    box-shadow: 0px 1.9px 4.28px 0px #5C58751F;
+    border: 0.48px solid #212121;
+    border-radius: 20px;
+}
+.d_loginmodal .d_loginwrapper{
+    padding: 10px;
+}
+.d_loginmodal .d_closeicon{
+    color: #000000;
+}
+.d_loginmodal .d_loginbox{
+    padding: 30px;
+}
+.d_loginmodal h5{
+    font-size: 32px;
+    font-weight: 700;
+    color: #111111;
+}
+.d_loginmodal h6{
+    font-size: 16px;
+    font-weight: 400;
+    color: #212121;
+}
+.d_loginmodal p{
+    font-size: 13px;
+    font-weight: 500;
+    color: #666666CC;
+}
+.d_loginmodal span{
+    font-weight: 600;
+    color: #000000;
+}
+.d_loginmodal .d_mixinput{
+    box-shadow: 0px 4px 9px 0px #5C58751F;
+    border: 1px solid #212121;
+    border-radius: 5px;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+.d_loginmodal .d_mixinput img{
+    width: 16px;
+}
+.d_loginmodal .d_mixinput p{
+   color: #333333;
+   font-size: 14px;
+   font-weight: 500;
+}
+.d_loginmodal .d_or{
+    font-size: 12px;
+    font-weight: 700;
+    color: #66666673;
+    position: relative;
+}
+.d_loginmodal .d_or::before{
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 2px;
+    left: 0;
+    top: 50%;
+    background-color: #66666640;
+}
+.d_loginmodal .d_or::after{
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 2px;
+    right: 0;
+    top: 50%;
+    background-color: #66666640;
+}
+.d_loginmodal .d_mixinput input{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    color: #212121;
+    outline: 0;
+}
+.d_loginmodal .d_agree{
+    font-size: 13px;
+    font-weight: 400;
+    color: #66666680;
+}
+.d_loginmodal .d_agree a{
+    color: #111111;
+    text-decoration: underline;
+}
+.d_loginmodal .d_loginbtn{
+    width: 310px;
+}
+.d_loginmodal .d_loginbtn a{
+    background: linear-gradient(90deg, #C39EFF 0%, #7B76FF 100%);
+    box-shadow: 0px 4px 4px 0px #0000000A;  
+    border-radius: 6px;
+    padding: 13px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+.d_loginmodal .d_img{
+    width: 100%;
+}
+
+/* login modal css end */
+
+/* otp modal css start */
+
+.d_otpmodal .d_text{
+    max-width: 310px;
+    margin: auto;
+}
+.d_otpmodal .d_otpdesc{
+    font-size: 14px;
+    color: #616161;
+    font-weight: 600;
+}
+.d_otpmodal .d_phone{
+    color: #000000;
+    font-weight: 700;
+}
+.d_otpmodal input{
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #ABABAB;
+    text-align: center;
+}
+.d_otpmodal .d_resendotp{
+    font-size: 14px;
+    font-weight: 600;
+    color: #7343FF;
+}
+
+
+/* otp modal css end */
 
 
 @media(max-width:1199px) {
@@ -1008,6 +1359,43 @@
 
     .d_delright .d_view a {
         font-size: 18px;
+    }
+    .d_order .d_searchinput{
+        padding: 8px 8px 8px 35px;
+    }
+    .d_order .d_heading h6{
+        font-size: 18px;
+    }
+    .d_order .d_heading{
+        margin-bottom: 10px;
+    }
+    .d_order .d_orderbox .d_thirdsec{
+        padding: 20px;
+    }
+    .d_cancelorder .d_heading h6{
+        font-size: 18px;
+    }
+    .d_cancelorder .d_itembox .d_proname{
+        font-size: 18px;
+    }
+    .d_cancelorder .d_cancelreason{
+        padding: 20px;
+        height: 350px;
+    }
+    .d_cancelorder .d_cancelreason .d_cancelprobtn{
+        width: 260px;
+    }
+    .d_cancelorder .d_cancelreason .d_cancelprobtn a{
+        font-size: 18px;
+    }
+    .d_loginmodal .modal-dialog{
+        max-width: 700px;
+    }
+    .d_loginmodal .d_loginbox{
+        padding: 20px;
+    }
+    .d_loginmodal .d_loginbtn a{
+        padding: 8px 0;
     }
 }
 
@@ -1179,6 +1567,37 @@
     .d_deliveryadd .d_savedaddress .d_img img{
         width: 40px;
     }
+    .d_order{
+        padding: 20px 20px 0 0;
+    }
+    .d_order .d_orderbox .d_firstsec{
+        padding: 10px;
+    }
+    .d_order .d_orderbox .d_secondsec{
+        padding: 10px;
+    }
+    .d_order .d_orderbox .d_mainbox{
+        padding: 15px;
+    }
+    .d_order .d_orderbox .d_thirdsec{
+        padding: 10px;
+    }
+    .d_warp{
+        flex-wrap: wrap;
+    }
+    .d_warp .d_leftside{
+        flex-wrap: wrap;
+        margin-bottom: 5px;
+    }
+    .d_order .d_orderbox .d_mainbox .d_ordername{
+        font-size: 18px;
+    }
+    .d_loginmodal h5{
+        font-size: 26px;
+    }
+    .d_loginmodal .d_loginbtn a{
+        font-size: 18px;
+    }
 }
 
 @media(max-width:425px) {
@@ -1246,10 +1665,51 @@
     .d_delleft {
         border-right: none;
     }
-
-
+    .d_order{
+        padding: 10px;
+    }
+    .d_order .d_searchinput{
+        width: 230px;
+    }
+    .d_order .d_orderbox .d_mainbox .d_orderreturn{
+        margin-bottom: 7px;
+    }
+    .d_cancelorder{
+        padding: 20px;
+    }
+    .d_cancelorder .d_cancelreason .d_cancelprobtn a{
+        font-size: 16px;
+    }
+    .d_cancelorder .d_cancelreason .d_cancelprobtn{
+        width: 220px;
+    }
+    .d_wishlist{
+        padding: 0px 0;
+    }
+    .d_wishlist .d_addcart{
+        width: 120px;
+    }
+    .d_loginmodal .d_loginbox{
+        padding: 10px;
+    }
+    .d_loginmodal h5{
+        font-size: 22px;
+    }
+    .d_loginmodal .modal-dialog{
+        max-width: 400px;
+    }
 }
-
+@media(max-width:375px){
+    .d_loginmodal .modal-dialog{
+        max-width: 350px;
+    }
+    .d_loginmodal .d_or::before{
+        width: 135px;
+    }
+    .d_loginmodal .d_or::after{
+        width: 135px;
+    }
+}
 @media(max-width:320px) {
     .d_logoutmodal .d_heading h6 {
         font-size: 22px;
@@ -1266,5 +1726,17 @@
     .d_addressmodal .d_savetype .d_other {
         margin-top: 5px;
     }
-
+    .d_order .d_searchinput{
+        width: 175px;
+    }
+    .d_loginmodal .modal-dialog{
+        max-width: 300px;
+    }
+    .d_loginmodal .d_loginbtn a{
+        width: 260px;
+        font-size: 16px;
+    }
+    .d_loginmodal h5{
+        font-size: 20px;
+    }
 }

@@ -15,6 +15,8 @@ import Privacy from './Pages/Privacy';
 import Deatail from './Pages/Deatail';
 import Order from './Pages/Order';
 import Coupon from './Pages/Coupon';
+import Cancelorder from './Pages/Cancelorder';
+import Wishlist from './Pages/Wishlist';
 
 function App() {
   return (
@@ -56,6 +58,8 @@ function App() {
 
             <Route path='payment' element={<Payment />} />
             <Route path='coupon' element={<Coupon />} />
+            <Route path='cancelorder' element={<Cancelorder />} />
+            <Route path='wishlist' element={<Wishlist />} />
           </Route>
 
         </Routes>

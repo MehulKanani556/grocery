@@ -3,6 +3,8 @@ import './../CSS/dstyle.css'
 import { FaStar } from 'react-icons/fa'
 import { MdKeyboardArrowRight } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import SubHeader from '../Component/SubHeader'
+import Footer from '../Component/Footer'
 
 const Deatail = () => {
 
@@ -15,6 +17,8 @@ const Deatail = () => {
 
     return (
         <>
+
+        <SubHeader />
 
             <div className="container-fluid">
                 <div className="row">
@@ -220,6 +224,8 @@ const Deatail = () => {
                     </div>
                 </div>
             </div>
+
+            <Footer />
 
         </>
     )

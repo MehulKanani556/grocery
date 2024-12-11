@@ -10,12 +10,10 @@ import { RiHome4Line } from 'react-icons/ri'
 import { MdOutlineHomeRepairService } from 'react-icons/md'
 import { PiBuildingApartmentDuotone } from 'react-icons/pi'
 import { FaArrowLeftLong } from 'react-icons/fa6'
+import SubHeader from '../Component/SubHeader'
 
 const Cart = () => {
 
-    const [logoutmodalShow, setLogoutModalShow] = useState(false);
-    const [deleteaccountmodalShow, setDeleteaccountModalShow] = useState(false);
-    const [paymentmodalShow, setPaymentModalShow] = useState(false);
     const [addaddressmodalShow, setAddaddressModalShow] = useState(false);
 
     const [currentSection, setCurrentSection] = useState("cart");
@@ -28,6 +26,8 @@ const Cart = () => {
 
     return (
         <>
+
+            <SubHeader />
 
             <div className="container-fluid">
                 <div className="row d_100vh flex-lg-row flex-column-reverse">
@@ -99,12 +99,12 @@ const Cart = () => {
                         <div className={`d_deliveryadd d_100vh ${currentSection === "delivery" ? "" : "d-none"}`}>
                             <div className="d_select">
                                 <div className="d-flex align-items-center">
-                                    <FaArrowLeftLong className='me-xl-5 me-3 d_cur'  onClick={() => setCurrentSection("cart")} />
+                                    <FaArrowLeftLong className='me-xl-5 me-3 d_cur' onClick={() => setCurrentSection("cart")} />
                                     <h6>Select Delivery Address</h6>
                                 </div>
                             </div>
-                            <div className="d_addinput">
-                                <div className="d-flex align-items-center">
+                            <div className="d_addinput d_cur" onClick={() => setAddaddressModalShow(true)}>
+                                <div className="d-flex align-items-center"> 
                                     <div className="d_img">
                                         <img src={require('../Image/plus.png')} alt="" />
                                     </div>
@@ -150,6 +150,41 @@ const Cart = () => {
                                             <div className="col-9">
                                                 <div className="d_desc">
                                                     <div className="d_type">Bakery & Biscuits</div>
+                                                    <div className="d-flex flex-sm-nowrap flex-wrap align-items-center justify-content-between">
+                                                        <div className="d_name">Britannia Brown Bread </div>
+                                                        <div className="d_size">1 Packet</div>
+                                                    </div>
+                                                    <div className="d_saved">You Saved $1 </div>
+                                                    <div className="d-flex align-items-center">
+                                                        <div className="d_price">$10</div>
+                                                        <div className="d_removesize">$11</div>
+                                                    </div>
+                                                    <div className="d-flex justify-content-end">
+                                                        <div className="d_cartbtn">
+                                                        <div className="d-flex justify-content-around align-items-center">
+                                                                <button className='d_carticon'>-</button>
+                                                                <div className='d_carticon'>1</div>
+                                                                <button className='d_carticon'>+</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="d_later">Save for Later</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-12 col-xl-6">
+                                    <div className="d_item">
+                                        <div className="row align-items-center">
+                                            <div className="col-3">
+                                                <div className="d_img">
+                                                    <img src={require('./../Image/bread.png')} alt="" />
+                                                </div>
+                                            </div>
+                                            <div className="col-9">
+                                                <div className="d_desc">
+                                                    <div className="d_type">Bakery & Biscuits</div>
                                                     <div className="d-flex align-items-center justify-content-between">
                                                         <div className="d_name">Britannia Brown Bread </div>
                                                         <div className="d_size">1 Packet</div>
@@ -161,10 +196,45 @@ const Cart = () => {
                                                     </div>
                                                     <div className="d-flex justify-content-end">
                                                         <div className="d_cartbtn">
-                                                            <div className="d-flex justify-content-around align-items-center">
-                                                                <div className='d_carticon'>-</div>
+                                                        <div className="d-flex justify-content-around align-items-center">
+                                                                <button className='d_carticon'>-</button>
                                                                 <div className='d_carticon'>1</div>
-                                                                <div className='d_carticon'>+</div>
+                                                                <button className='d_carticon'>+</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="d_later">Save for Later</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-12 col-xl-6">
+                                    <div className="d_item">
+                                        <div className="row align-items-center">
+                                            <div className="col-3">
+                                                <div className="d_img">
+                                                    <img src={require('./../Image/bread.png')} alt="" />
+                                                </div>
+                                            </div>
+                                            <div className="col-9">
+                                                <div className="d_desc">
+                                                    <div className="d_type">Bakery & Biscuits</div>
+                                                    <div className="d-flex align-items-center justify-content-between">
+                                                        <div className="d_name">Britannia Brown Bread </div>
+                                                        <div className="d_size">1 Packet</div>
+                                                    </div>
+                                                    <div className="d_saved">You Saved $1 </div>
+                                                    <div className="d-flex align-items-center">
+                                                        <div className="d_price">$10</div>
+                                                        <div className="d_removesize">$11</div>
+                                                    </div>
+                                                    <div className="d-flex justify-content-end">
+                                                        <div className="d_cartbtn">
+                                                        <div className="d-flex justify-content-around align-items-center">
+                                                                <button className='d_carticon'>-</button>
+                                                                <div className='d_carticon'>1</div>
+                                                                <button className='d_carticon'>+</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -197,79 +267,9 @@ const Cart = () => {
                                                     <div className="d-flex justify-content-end">
                                                         <div className="d_cartbtn">
                                                             <div className="d-flex justify-content-around align-items-center">
-                                                                <div className='d_carticon'>-</div>
+                                                                <button className='d_carticon'>-</button>
                                                                 <div className='d_carticon'>1</div>
-                                                                <div className='d_carticon'>+</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="d_later">Save for Later</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-xl-6">
-                                    <div className="d_item">
-                                        <div className="row align-items-center">
-                                            <div className="col-3">
-                                                <div className="d_img">
-                                                    <img src={require('./../Image/bread.png')} alt="" />
-                                                </div>
-                                            </div>
-                                            <div className="col-9">
-                                                <div className="d_desc">
-                                                    <div className="d_type">Bakery & Biscuits</div>
-                                                    <div className="d-flex align-items-center justify-content-between">
-                                                        <div className="d_name">Britannia Brown Bread </div>
-                                                        <div className="d_size">1 Packet</div>
-                                                    </div>
-                                                    <div className="d_saved">You Saved $1 </div>
-                                                    <div className="d-flex align-items-center">
-                                                        <div className="d_price">$10</div>
-                                                        <div className="d_removesize">$11</div>
-                                                    </div>
-                                                    <div className="d-flex justify-content-end">
-                                                        <div className="d_cartbtn">
-                                                            <div className="d-flex justify-content-around align-items-center">
-                                                                <div className='d_carticon'>-</div>
-                                                                <div className='d_carticon'>1</div>
-                                                                <div className='d_carticon'>+</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="d_later">Save for Later</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-xl-6">
-                                    <div className="d_item">
-                                        <div className="row align-items-center">
-                                            <div className="col-3">
-                                                <div className="d_img">
-                                                    <img src={require('./../Image/bread.png')} alt="" />
-                                                </div>
-                                            </div>
-                                            <div className="col-9">
-                                                <div className="d_desc">
-                                                    <div className="d_type">Bakery & Biscuits</div>
-                                                    <div className="d-flex align-items-center justify-content-between">
-                                                        <div className="d_name">Britannia Brown Bread </div>
-                                                        <div className="d_size">1 Packet</div>
-                                                    </div>
-                                                    <div className="d_saved">You Saved $1 </div>
-                                                    <div className="d-flex align-items-center">
-                                                        <div className="d_price">$10</div>
-                                                        <div className="d_removesize">$11</div>
-                                                    </div>
-                                                    <div className="d-flex justify-content-end">
-                                                        <div className="d_cartbtn">
-                                                            <div className="d-flex justify-content-around align-items-center">
-                                                                <div className='d_carticon'>-</div>
-                                                                <div className='d_carticon'>1</div>
-                                                                <div className='d_carticon'>+</div>
+                                                                <button className='d_carticon'>+</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -284,113 +284,6 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Logout modal */}
-
-            <Modal
-                show={logoutmodalShow}
-                onHide={() => setLogoutModalShow(false)}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-                className='d_logoutmodal'
-            >
-                <Modal.Body className='ps-lg-5 ps-sm-3'>
-                    <div className="d_con">
-                        <div className='d-flex justify-content-end d_cur' onClick={() => setLogoutModalShow(false)}><IoCloseSharp className='d_closeicon' /></div>
-                        <div className="row align-items-center my-xl-5 my-lg-4 my-3">
-                            <div className="col-12 col-sm-7">
-                                <div className="d_textwidth">
-                                    <div className="d_heading">
-                                        <h6>logout</h6>
-                                        <p className='mb-0'>Do you Want to Exit this page ?</p>
-                                    </div>
-                                    <div className="d_modalbtn mb-3">
-                                        <Link to="" className='d-block text-center'>Yes</Link>
-                                    </div>
-                                    <div className="d_modalbtn d_nobtn" onClick={() => setLogoutModalShow(false)}>
-                                        <Link to="" className='d-block text-center'>No</Link>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-sm-5 d-sm-block d-none">
-                                <div className="d_img">
-                                    <img src={require('../Image/logoutimg.png')} alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Modal.Body>
-            </Modal>
-
-
-            {/* Logout modal */}
-
-            {/* Delete Account Modal */}
-
-            <Modal
-                show={deleteaccountmodalShow}
-                onHide={() => setDeleteaccountModalShow(false)}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-                className='d_logoutmodal'
-            >
-                <Modal.Body className='ps-lg-5 ps-sm-3'>
-                    <div className="d_con">
-                        <div className='d-flex justify-content-end d_cur' onClick={() => setDeleteaccountModalShow(false)}><IoCloseSharp className='d_closeicon' /></div>
-                        <div className="row align-items-center my-xl-5 my-lg-4 my-3">
-                            <div className="col-12 col-sm-7">
-                                <div className="d_textwidth">
-                                    <div className="d_heading">
-                                        <h6>Delete Account</h6>
-                                        <p className='mb-0'>Do you Want to This Account ?</p>
-                                    </div>
-                                    <div className="d_modalbtn mb-3">
-                                        <Link to="" className='d-block text-center'>Yes</Link>
-                                    </div>
-                                    <div className="d_modalbtn d_nobtn" onClick={() => setDeleteaccountModalShow(false)}>
-                                        <Link to="" className='d-block text-center'>No</Link>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-sm-5 d-sm-block d-none">
-                                <div className="d_img">
-                                    <img src={require('../Image/deleteaccount.png')} alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Modal.Body>
-            </Modal>
-
-            {/* Delete Account Modal */}
-
-            {/* Payment Modal */}
-
-            <Modal
-                show={paymentmodalShow}
-                onHide={() => setPaymentModalShow(false)}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-                className='d_logoutmodal d_paymentmodal'
-            >
-                <Modal.Body className='text-center'>
-                    <div className="d_con">
-                        <div className='d-flex justify-content-end d_cur' onClick={() => setPaymentModalShow(false)}><IoCloseSharp className='d_closeicon' /></div>
-                        <div className="my-xl-5 my-lg-4 my-3'">
-                            <div className="d_img text-center">
-                                <img src={require('../Image/paymentimg.png')} alt="" />
-                            </div>
-                            <h6>Order Placed Successfully!</h6>
-                            <p className='mb-0'>Congratulations! Your order has been placed.</p>
-                        </div>
-                    </div>
-                </Modal.Body>
-            </Modal>
-
-            {/* Payment Modal */}
 
             {/* Add Address Modal */}
 

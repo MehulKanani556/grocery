@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import UPI from '../Image/UPI.png';
 import Gpay from '../Image/Gpay.png';
@@ -11,9 +11,14 @@ import ICICI from '../Image/ICICI.png';
 import Plus from '../Image/+.png';
 import { FaAngleRight } from "react-icons/fa6";
 import COD from '../Image/COD.png';
+import { Modal } from 'react-bootstrap';
+import { IoCloseSharp } from 'react-icons/io5';
 
 
 const Privacy = () => {
+
+    const [paymentmodalShow, setPaymentModalShow] = useState(false);
+
     return (
         <>
             <div className='px-3 px-md-0 pe-md-5'>
@@ -69,7 +74,7 @@ const Privacy = () => {
                                 <div className='pe-2  px-md-3 px-lg-4 w-100'>
                                     <input type="text" className='V_input_upi py-2 px-2 w-100' placeholder='example@upi' />
                                 </div>
-                                <div className='  pe-sm-3 pe-md-5 '>
+                                <div className='  pe-sm-3 pe-md-5 ' onClick={() => setPaymentModalShow(true)}>
                                     <button className='V_pay_check text-white py-2  '>
                                         Checkout
                                     </button>
@@ -120,7 +125,7 @@ const Privacy = () => {
                                     <input type="text" className='V_input_upi px-3 py-2 w-100' placeholder='CVV' />
                                 </div>
                             </div>
-                            <div className='text-center py-2 py-lg-4'>
+                            <div className='text-center py-2 py-lg-4' onClick={() => setPaymentModalShow(true)}>
                                 <button className='V_pay_check text-white py-2  '>
                                     Checkout
                                 </button>
@@ -201,6 +206,34 @@ const Privacy = () => {
                     </div>
                 </div >
             </div>
+
+        {/* Payment Modal */}
+
+        <Modal
+
+                show={paymentmodalShow}
+                onHide={() => setPaymentModalShow(false)}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                className='d_logoutmodal d_paymentmodal'
+            >
+                <Modal.Body className='text-center'>
+                    <div className="d_con">
+                        <div className='d-flex justify-content-end d_cur' onClick={() => setPaymentModalShow(false)}><IoCloseSharp className='d_closeicon' /></div>
+                        <div className="my-xl-5 my-lg-4 my-3'">
+                            <div className="d_img text-center">
+                                <img src={require('../Image/paymentimg.png')} alt="" />
+                            </div>
+                            <h6>Order Placed Successfully!</h6>
+                            <p className='mb-0'>Congratulations! Your order has been placed.</p>
+                        </div>
+                    </div>
+                </Modal.Body>
+            </Modal>
+
+            {/* Payment Modal */}
+
         </>
     )
 }
