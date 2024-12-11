@@ -21,32 +21,27 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Home />} />
-            <Route index element={<Main />} />
-
-
-            {/* sidebar */}
-
-
+          <Route path='/' element={<Home />} >
+            <Route index element={<Main />} />      
             {/* <Route path='/sidebar' element={<Sidebar />} /> */}
             <Route path='/category' element={<Category />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/detail' element={<Deatail />} />
-
+            <Route path='/category' element={<Category />} />
+          </Route>          
+          {/* sidebar */}
+          <Route path='/sidebar' element={<Sidebar />} />
+          <Route path='/cart' element={<Cart />} />
           {/* <Route path='/sidebar' element={<Sidebar />} /> */}
-          <Route path='/category' element={<Category/>} />
-
+          {/* <Route path='/category' element={<Category/>} /> */}
           <Route path="/user" element={<User />}>
             <Route path='profile' element={<Profile />} />
             <Route path='address' element={<Adderess />} />
             <Route path='privacy' element={<Privacy />} />
             <Route path='order' element={<Order />} />
-
             <Route path='payment' element={<Payment />} />
             <Route path='coupon' element={<Coupon />} />
-
           </Route>
-         
         </Routes>
       </BrowserRouter>
     </div>
