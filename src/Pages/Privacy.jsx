@@ -6,8 +6,8 @@ const Privacy = () => {
         <>
             <div className="col-12  pe-md-5  px-3 px-sm-4 px-md-0 ">
                 <div className="V_information">
-                    <div className=" pt-3 d-flex align-items-center justify-content-between">
-                        <h2 className="py-4">Account Privacy</h2>
+                    <div className=" pt-md-3 d-flex align-items-center justify-content-between">
+                        <h2 className="pb-4 py-md-4">Account Privacy</h2>
                     </div>
                     <div className='fw-lighter V_Ptag2 '>
                         <p className='py-2'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaAngleRight, FaBars } from 'react-icons/fa'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import '../CSS/Sidebar.css';
 import User from '../Image/user.png';
 import MyOrder from '../Image/MyOrder.png';
@@ -13,7 +13,7 @@ import Payment from '../Image/payment.png'
 import { Accordion, Offcanvas } from 'react-bootstrap';
 // import { FaBagShopping } from 'react-icons/fa6';
 
-const Sidebar = ({setModalShow}) => {
+const Sidebar = () => {
 
   const [show, setShow] = useState(false);
 
@@ -35,8 +35,8 @@ const Sidebar = ({setModalShow}) => {
       <section className='d-none d-md-block'>
         <div className="row  m-0">
           <div className="col-12">
-            <Link to={'profile'}>
-              <div className="ps-3 V_bg_color d-flex align-items-center V_account">
+            <NavLink to={'profile'}>
+              <div className="ps-3 d-flex align-items-center V_account">
                 <div className="V_account_img d-flex justify-content-center align-items-center">
                   <img src={User} alt="User Avatar" />
                 </div>
@@ -51,10 +51,12 @@ const Sidebar = ({setModalShow}) => {
                   {/* <FontAwesomeIcon icon={faAngleRight}  /> */}
                 </div>
               </div>
-            </Link>
+            </NavLink>
 
-            <Link to={'order'}>
-              <div className="ps-3 V_account_part_2 d-flex align-items-center ">
+            <NavLink to="/user/order" className={({ isActive }) =>
+              `ps-3 V_account_part_2 d-flex align-items-center ${isActive ? "V_account_part_2_active" : ""}`
+            }>
+              <div className="d-flex" >
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={MyOrder} alt="My Order" />
                 </div>
@@ -62,10 +64,12 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0">My Order</p>
                 </div>
               </div>
-            </Link>
+            </NavLink>
 
-            <Link to={'wishlist'}>
-              <div className="ps-3 V_account_part_2 d-flex align-items-center ">
+            <NavLink to="/user/wishlist" className={({ isActive }) =>
+              `ps-3 V_account_part_2 d-flex align-items-center ${isActive ? "V_account_part_2_active" : ""}`
+            }>
+              <div className=" d-flex">
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Wishlist} alt="Wishlist" />
                 </div>
@@ -73,10 +77,12 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0">Wishlist</p>
                 </div>
               </div>
-            </Link>
+            </NavLink>
 
-            <Link to={'coupon'}>
-              <div className="ps-3 V_account_part_2 d-flex align-items-center ">
+            <NavLink to="/user/coupon" className={({ isActive }) =>
+              `ps-3 V_account_part_2 d-flex align-items-center ${isActive ? "V_account_part_2_active" : ""}`
+            }>
+              <div className=" d-flex">
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Coupon} alt="Apply Coupon" />
                 </div>
@@ -84,10 +90,12 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0">Apply Coupon</p>
                 </div>
               </div>
-            </Link>
+            </NavLink>
 
-            <Link to={'payment'}>
-              <div className="ps-3 V_account_part_2 d-flex align-items-center ">
+            <NavLink to="/user/payment" className={({ isActive }) =>
+              `ps-3 V_account_part_2 d-flex align-items-center ${isActive ? "V_account_part_2_active" : ""}`
+            }>
+              <div className=" d-flex">
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Payment} alt="payment" />
                 </div>
@@ -95,10 +103,12 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0">Payment</p>
                 </div>
               </div>
-            </Link>
+            </NavLink>
 
-            <Link to={'address'}>
-              <div className="ps-3 V_account_part_2 d-flex align-items-center ">
+            <NavLink to="/user/address" className={({ isActive }) =>
+              `ps-3 V_account_part_2 d-flex align-items-center ${isActive ? "V_account_part_2_active" : ""}`
+            }>
+              <div className=" d-flex">
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Address} alt="Delivery Address" />
                 </div>
@@ -106,10 +116,12 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0">Delivery Address</p>
                 </div>
               </div>
-            </Link>
+            </NavLink>
 
-            <Link to={'privacy'}>
-              <div className="ps-3 V_account_part_2 d-flex align-items-center ">
+            <NavLink to="/user/privacy" className={({ isActive }) =>
+              `ps-3 V_account_part_2 d-flex align-items-center ${isActive ? "V_account_part_2_active" : ""}`
+            }>
+              <div className=" d-flex">
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Privacy} alt="Account Privacy" />
                 </div>
@@ -117,12 +129,12 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0">Account Privacy</p>
                 </div>
               </div>
-            </Link>
+            </NavLink>
 
 
 
-            <Link >
-              <div className="ps-3 V_account_part_2 d-flex align-items-center "  onClick={() => { setModalShow(true) }}>
+            <NavLink >
+              <div className="ps-3 V_account_part_2 d-flex align-items-center "  >
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Logout} alt="Logout" />
                 </div>
@@ -130,7 +142,7 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0">Logout</p>
                 </div>
               </div>
-            </Link>
+            </NavLink>
           </div>
         </div>
       </section>
@@ -146,7 +158,7 @@ const Sidebar = ({setModalShow}) => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div className="account" style={{ height: '100%', overflowY: 'auto' }}>
-            <Link to="profile">
+            <NavLink to="/user/profile" onClick={handleClose}>
               <div className="V_account_part_small d-flex align-items-center">
                 <div className="V_account_small_img d-flex justify-content-center align-items-center px-2 ms-2">
                   <img src={User} alt="User" />
@@ -161,8 +173,8 @@ const Sidebar = ({setModalShow}) => {
                   <FaAngleRight className="text-white " />
                 </div>
               </div>
-            </Link>
-            <Link to="order" className="text-decoration-none ">
+            </NavLink>
+            <NavLink to="order" className="text-decoration-none " onClick={handleClose}>
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={MyOrder} alt="my order" />
@@ -171,8 +183,8 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0 ">My Order</p>
                 </div>
               </div>
-            </Link>
-            <Link to="wishlist" className="text-decoration-none ">
+            </NavLink>
+            <NavLink to="wishlist" className="text-decoration-none " onClick={handleClose}>
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Wishlist} alt="wishlist" />
@@ -181,8 +193,8 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0 ">Wishlist</p>
                 </div>
               </div>
-            </Link>
-            <Link to="coupon" className="text-decoration-none ">
+            </NavLink>
+            <NavLink to="coupon" className="text-decoration-none " onClick={handleClose}>
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Coupon} alt="coupon" />
@@ -191,8 +203,8 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0 ">Apply Coupon</p>
                 </div>
               </div>
-            </Link>
-            <Link to="payment" className="text-decoration-none ">
+            </NavLink>
+            <NavLink to="payment" className="text-decoration-none " onClick={handleClose}>
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Payment} alt="" />
@@ -201,8 +213,8 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0 ">Payment</p>
                 </div>
               </div>
-            </Link>
-            <Link to="address" className="text-decoration-none ">
+            </NavLink>
+            <NavLink to="address" className="text-decoration-none " onClick={handleClose}>
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Address} alt="Address" />
@@ -211,8 +223,8 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0 ">Delivery Address</p>
                 </div>
               </div>
-            </Link>
-            <Link to="privacy" className="text-decoration-none ">
+            </NavLink>
+            <NavLink to="privacy" className="text-decoration-none " onClick={handleClose}>
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Privacy} alt="Privacy" />
@@ -221,9 +233,9 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0 ">Account Privacy</p>
                 </div>
               </div>
-            </Link>
-            <Link >
-              <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2"  onClick={() => { setModalShow(true) }}>
+            </NavLink>
+            <NavLink >
+              <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2"  >
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Logout} alt="Logout" />
                 </div>
@@ -231,8 +243,8 @@ const Sidebar = ({setModalShow}) => {
                   <p className="mb-0 ">Logout</p>
                 </div>
               </div>
-            </Link>
-          
+            </NavLink>
+
           </div>
         </Offcanvas.Body>
       </Offcanvas>
