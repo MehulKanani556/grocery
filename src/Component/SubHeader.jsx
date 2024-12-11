@@ -36,7 +36,7 @@ const SubHeader = () => {
                     <Col>
                         <ul className="my-3 flex justify-evenly ">
                             <li>
-                                <Link className="flex ">
+                                <Link to={'/'} className="flex ">
                                     <img src={homeIcon} alt="" className="mx-2" />
                                     <p>Home</p>
                                 </Link>
