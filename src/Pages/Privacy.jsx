@@ -1,12 +1,45 @@
 import React, { useState } from 'react'
 import PDelete from '../Image/privacydelete.png';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 import { IoCloseSharp } from 'react-icons/io5';
+import axios from 'axios';
 
 const Privacy = () => {
 
     const [deleteaccountmodalShow, setDeleteaccountModalShow] = useState(false);
+    const navigate = useNavigate('');
+
+    const BaseUrl = process.env.REACT_APP_BASEURL;
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+
+    const handleDeleteuserAccount = async () => {
+        const userid = localStorage.getItem('userId');
+        // console.log("Attempting to delete account for user ID:", userid);
+
+        if (!userid) {
+            console.error('User ID not found in local storage.');
+            return;
+        }
+
+        try {
+            const response = await axios.delete(`${BaseUrl}/api/deleteUser/${userId}`, {
+                headers: {
+                    Authorization: `Bearar ${token}`
+                }
+            });
+            // console.log("Account deleted successfully:", response.data);
+
+            localStorage.removeItem('token'); 
+            localStorage.removeItem('userId');
+            setDeleteaccountModalShow(false);
+            navigate('/');
+        } catch (error) {
+            console.error('Error deleting account:', error.response ? error.response.data : error.message);
+        }
+    }
+
 
     return (
         <>
@@ -35,9 +68,9 @@ const Privacy = () => {
             </div>
 
 
-        {/* Delete Account Modal */}
+            {/* Delete Account Modal */}
 
-        <Modal
+            <Modal
                 show={deleteaccountmodalShow}
                 onHide={() => setDeleteaccountModalShow(false)}
                 size="lg"
@@ -56,7 +89,7 @@ const Privacy = () => {
                                         <p className='mb-0'>Do you Want to This Account ?</p>
                                     </div>
                                     <div className="d_modalbtn mb-3">
-                                        <Link to="" className='d-block text-center'>Yes</Link>
+                                        <Link to="" className='d-block text-center' onClick={handleDeleteuserAccount}>Yes</Link>
                                     </div>
                                     <div className="d_modalbtn d_nobtn" onClick={() => setDeleteaccountModalShow(false)}>
                                         <Link to="" className='d-block text-center'>No</Link>

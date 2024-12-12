@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaAngleRight, FaBars } from 'react-icons/fa'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import '../CSS/Sidebar.css';
 import User from '../Image/user.png';
 import MyOrder from '../Image/MyOrder.png';
@@ -12,16 +12,33 @@ import Logout from '../Image/logout.png';
 import Payment from '../Image/payment.png'
 import { Accordion, Modal, Offcanvas } from 'react-bootstrap';
 import { IoCloseSharp } from 'react-icons/io5';
+import LogoutModal from './LogoutModal';
 // import { FaBagShopping } from 'react-icons/fa6';
 
 const Sidebar = () => {
 
+
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [logoutmodalShow, setLogoutModalShow] = useState(false);
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handlelogout = () => {
+    setLogoutModalShow(false);
+  }
+
+  const logoutUser =() => {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('token');
+
+    setLogoutModalShow(false); 
+  }
+
+  const UserId = localStorage.getItem('userId');
+  
   return (
     <>
       <div className=' '>
@@ -253,46 +270,11 @@ const Sidebar = () => {
       </Offcanvas>
 
 
-            {/* Logout modal */}
-
-            <Modal
-                show={logoutmodalShow}
-                onHide={() => setLogoutModalShow(false)}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-                className='d_logoutmodal'
-            >
-                <Modal.Body className='ps-lg-5 ps-sm-3'>
-                    <div className="d_con">
-                        <div className='d-flex justify-content-end d_cur' onClick={() => setLogoutModalShow(false)}><IoCloseSharp className='d_closeicon' /></div>
-                        <div className="row align-items-center my-xl-5 my-lg-4 my-3">
-                            <div className="col-12 col-sm-7">
-                                <div className="d_textwidth">
-                                    <div className="d_heading">
-                                        <h6>logout</h6>
-                                        <p className='mb-0'>Do you Want to Exit this page ?</p>
-                                    </div>
-                                    <div className="d_modalbtn mb-3">
-                                        <Link to="" className='d-block text-center'>Yes</Link>
-                                    </div>
-                                    <div className="d_modalbtn d_nobtn" onClick={() => setLogoutModalShow(false)}>
-                                        <Link to="" className='d-block text-center'>No</Link>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-sm-5 d-sm-block d-none">
-                                <div className="d_img">
-                                    <img src={require('../Image/logoutimg.png')} alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Modal.Body>
-            </Modal>
-
-
-            {/* Logout modal */}
+      <LogoutModal
+        isOpen={logoutmodalShow}
+        onClose={handlelogout}
+        onLogoutUser={logoutUser}
+      />
 
 
     </>
