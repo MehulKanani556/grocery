@@ -137,7 +137,7 @@ const Sidebar = () => {
 
             {/* <Link >
               <div className="ps-3 V_account_part_2 d-flex align-items-center "  onClick={() => { setLogoutModalShow(true) }}> */}
-            <NavLink >
+            <NavLink onClick={() => { setLogoutModalShow(true) }}>
               <div className="ps-3 V_account_part_2 d-flex align-items-center "  >
                 <div className="V_account_img2 d-flex justify-content-center align-items-center">
                   <img src={Logout} alt="Logout" />
@@ -238,7 +238,7 @@ const Sidebar = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink >
+            <NavLink onClick={() => { setLogoutModalShow(true) }}>
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2"  >
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Logout} alt="Logout" />
@@ -248,7 +248,6 @@ const Sidebar = () => {
                 </div>
               </div>
             </NavLink>
-
           </div>
         </Offcanvas.Body>
       </Offcanvas>
