@@ -1,9 +1,32 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
 import { BiSolidRightArrow } from 'react-icons/bi'
 import { FaHeart, FaStar } from 'react-icons/fa'
 import { FiShoppingCart } from 'react-icons/fi'
 
 const Wishlist = () => {
+
+    const BaseUrl = process.env.REACT_APP_BASEURL;
+
+    useEffect(() => {
+        const fetchwishlist = async () => {
+            try {
+                const res = await axios.get(`${BaseUrl}/api/allWishList`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+                console.log(res);
+            }
+            catch (error) {
+                console.error("Not Fetch Wishlist:", error);
+            }
+        }
+
+        fetchwishlist();
+
+    },[])
+
     return (
         <>
 
