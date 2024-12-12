@@ -49,8 +49,8 @@ const Main = () => {
     return (
         <>
             <div>
-                <Carousel fade>
-                    <Carousel.Item>
+                <Carousel fade style={{ zIndex: "-1" }}>
+                    <Carousel.Item  >
                         <img src={require('../Image/img3.avif')} alt="" width="100%" className="s_carousel_img" />
                         <Carousel.Caption>
                             <h3 className="md:text-5xl text-2xl font-bold">Eat Fresh Fruits</h3>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Header from '../Component/Header';
 // import Footer from '../Component/Footer'
 // import './user.css';
@@ -8,7 +8,7 @@ import { Col, Row } from 'react-bootstrap';
 // import LogoutModel from './LogoutModel';
 import Sidebar from '../Pages/Sidebar';
 // import '../CSS/Sidebar.css';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import SubHeader from '../Component/SubHeader';
 
 const User = () => {
