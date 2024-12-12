@@ -5,7 +5,7 @@ import './App.css';
 import Home from './Pages/Home';
 import Category from './Pages/Category';
 import Main from './Pages/Main';
-import Sidebar from './Pages/Sidebar';
+// import Sidebar from './Pages/Sidebar';
 import Cart from './Pages/Cart';
 import Payment from './Pages/Payment';
 import User from './Pages/User';
@@ -17,6 +17,7 @@ import Order from './Pages/Order';
 import Coupon from './Pages/Coupon';
 import Cancelorder from './Pages/Cancelorder';
 import Wishlist from './Pages/Wishlist';
+// import Wishlist from './Pages/Wishlist';
 
 function App() {
   return (
@@ -41,19 +42,16 @@ function App() {
 
           {/* sidebar */}
 
-
-          <Route path='/sidebar' element={<Sidebar />} />
           <Route path='/cart' element={<Cart />} />
 
 
-          {/* <Route path='/sidebar' element={<Sidebar />} /> */}
+
           {/* <Route path='/category' element={<Category/>} /> */}
 
           <Route path="/user" element={<User />}>
             <Route path='profile' element={<Profile />} />
             <Route path='address' element={<Adderess />} />
             <Route path='privacy' element={<Privacy />} />
-
             <Route path='order' element={<Order />} />
 
             <Route path='payment' element={<Payment />} />

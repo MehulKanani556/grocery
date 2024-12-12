@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-// import Header from '../header/Header'
-// import Footer from '../footer/Footer'
+import Header from '../Component/Header';
+// import Footer from '../Component/Footer'
 // import './user.css';
 // import '../common.css'
 // import '../CSS/Sidebar.css'
@@ -9,36 +9,35 @@ import { Col, Row } from 'react-bootstrap';
 import Sidebar from '../Pages/Sidebar';
 // import '../CSS/Sidebar.css';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import SubHeader from '../Component/SubHeader';
 
 const User = () => {
 
-   
-    const location = useLocation();
-    const navigate = useNavigate(); 
 
-    useEffect(() => {
-        if (location.pathname === '/user') { 
-            navigate('/user/profile'); 
-        }
-        if (location.pathname === '/address') { 
-            navigate('/user/address'); 
-        }
-        if (location.pathname === '/privacy') { 
-            navigate('/user/privacy'); 
-        }
-        if (location.pathname === '/order') { 
-            navigate('/user/order'); 
-        }
-        if (location.pathname === '/cancelorder') { 
-            navigate('/user/cancelorder'); 
-        }
-        if (location.pathname === '/wishlist') { 
-            navigate('/user/wishlist'); 
-        }
-    }, [location, navigate]); 
+    // const location = useLocation();
+    // const navigate = useNavigate(); 
+
+    // useEffect(() => {
+    //     if (location.pathname === '/user') { 
+    //         navigate('/user/profile'); 
+    //     }
+    //     if (location.pathname === '/address') { 
+    //         navigate('/user/address'); 
+    //     }
+    //     if (location.pathname === '/privacy') { 
+    //         navigate('/user/privacy'); 
+    //     }
+    //     if (location.pathname === '/order') { 
+    //         navigate('/user/order'); 
+    //     }
+    //     if (location.pathname === '/coupon') { 
+    //         navigate('/user/coupon'); 
+    //     }
+    // }, [location, navigate]); 
     return (
         <React.Fragment>
-          
+            <Header />
+            <SubHeader />
             <section className=''>
                 <div className=''>
                     <aside className='inter'>
@@ -46,7 +45,7 @@ const User = () => {
                             <Row className='gx-0'>
                                 {/* user Side Bar */}
                                 <Col xxl={3} md={4} className='pe-lg-4  pb-md-0 '>
-                                    <Sidebar  />
+                                    <Sidebar />
                                 </Col>
                                 <Col xxl={9} md={8} className=' '>
                                     <Outlet />
@@ -57,9 +56,9 @@ const User = () => {
                 </div>
             </section>
 
+            {/* <Footer /> */}
 
-
-{/* 
+            {/* 
             <LogoutModel show={modalShow}
                 onHide={() => setModalShow(false)} /> */}
 

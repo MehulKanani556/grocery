@@ -25,8 +25,8 @@ const Adderess = () => {
     <>
       <div className="col-12  pe-md-5 V_marg px-3 px-sm-4 px-md-0 ">
         <div className="V_information">
-          <div className=" pt-3 d-flex align-items-center justify-content-between">
-            <h2 className="py-4">Manage Address</h2>
+          <div className=" pt-md-3 d-flex align-items-center justify-content-between">
+            <h2 className=" pb-4 py-md-4">Manage Address</h2>
           </div>
           <div className='V_add_border' onClick={() => setAddaddressModalShow(true)}>
             <button type="button" className="V_btn_text" >

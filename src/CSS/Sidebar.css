@@ -35,21 +35,21 @@
 }
 
 .V_account_part_2 {
-    margin-left: 40px;
-    margin-top: 25px;
-    background: #f6f6f6;
-    height: 90px;
+    margin-left: 40px !important;
+    margin-top: 25px !important;
+    background: #f6f6f6 !important;
+    height: 90px !important;
     /* border-left: 2px solid #7774FF;
     border-right: 2px solid black; */
 }
 
-.V_account_part_2:active {
-    margin-left: 40px;
-    margin-top: 25px;
-    background: #f6f6f6;
-    height: 90px;
-    border-left: 2px solid #7774FF;
-    border-right: 2px solid black;
+.V_account_part_2_active {
+    margin-left: 40px !important;
+    margin-top: 25px !important;
+    background: #f6f6f6 !important;
+    height: 90px !important;
+    border-left: 3px solid #7774FF !important;
+    border-right: 3px solid #7774FF !important;
 }
 
 /* below 768 size */
@@ -166,7 +166,7 @@
         margin-left: 10px;
     }
     .V_account_part_2 {
-        margin-left: 10px;
+        margin-left: 10px  !important;
     }
 }
 
@@ -194,7 +194,7 @@
     }
 
     .V_account_part_2 {
-        margin-left: 10px;
+        margin-left: 10px !important;
     }
 
     .V_account_data {

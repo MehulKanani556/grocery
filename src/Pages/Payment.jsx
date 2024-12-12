@@ -22,10 +22,10 @@ const Privacy = () => {
     return (
         <>
             <div className='px-3 px-md-0 pe-md-5'>
-                <div className="col-12  pe-md-5  px-3 px-sm-4 px-md-0 ">
+                <div className="col-12  pe-md-5   px-md-0 ">
                     <div className="V_information">
-                        <div className=" pt-3 d-flex align-items-center justify-content-between">
-                            <h2 className="py-4">Pay by any UPI ID</h2>
+                        <div className=" pt-md-3 d-flex align-items-center justify-content-between">
+                            <h2 className="pb-4 py-md-4">Pay by any UPI ID</h2>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ const Privacy = () => {
                 </Accordion>
 
 
-                <div className="col-12  pe-md-5  px-md-3 px-sm-4 px-md-0 ">
+                <div className="col-12  pe-md-5    px-md-0 ">
                     <div className="V_information">
                         <div className=" pt-3 d-flex align-items-center justify-content-between">
                             <h2 className="py-4">Add credit or debit cards</h2>
@@ -136,7 +136,7 @@ const Privacy = () => {
                 </Accordion>
 
 
-                <div className="col-12  pe-md-5  px-3 px-sm-4 px-md-0 ">
+                <div className="col-12  pe-md-5    px-md-0 ">
                     <div className="V_information">
                         <div className=" pt-3 d-flex  justify-content-between">
                             <h2 className="py-4">Netbanking</h2>
@@ -184,7 +184,7 @@ const Privacy = () => {
 
 
 
-                <div className="col-12  pe-md-5  px-3 px-sm-4 px-md-0 ">
+                <div className="col-12  pe-md-5   px-md-0 ">
                     <div className="V_information">
                         <div className=" pt-3 d-flex  justify-content-between">
                             <h2 className="py-4">Cash on Delievery</h2>

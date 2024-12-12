@@ -26,8 +26,8 @@ const Profile = () => {
     <>
       <div className="col-12  pe-md-5 V_marg px-3 px-sm-4 px-md-0 ">
         <div className="V_information">
-          <div className="d-flex align-items-center justify-content-between">
-            <h2 className="py-4">Account Information</h2>
+          <div className="pt-md-3 d-flex align-items-center justify-content-between">
+            <h2 className=" pb-4 py-md-4">Account Information</h2>
             <button
               className="offcanvas-btn"
               type="button"
