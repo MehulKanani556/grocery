@@ -1,18 +1,23 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { MdKeyboardDoubleArrowRight, MdOutlineShoppingCart } from "react-icons/md";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import SubHeader from "../Component/SubHeader";
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Dropdown } from "react-bootstrap";
 import { BiSortAlt2 } from "react-icons/bi";
+import { jwtDecode } from 'jwt-decode';
+import Login from "../Component/Login";
+
 
 const BaseUrl = process.env.REACT_APP_BASEURL;
+const token = localStorage.getItem('token');
+// console.log("token",token);
 
 const Category = () => {
 
     const location = useLocation();
-    const id = location.state.id;   // Get the category ID from location state
+    const id = location.state?.id;   // Get the category ID from location state
 
 
     const [categoryData, setCategoryData] = useState([]);  // State to store category data
@@ -22,6 +27,19 @@ const Category = () => {
     const [activeSubCategory, setActiveSubCategory] = useState(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [selectedSort, setSelectedSort] = useState('relevance');
+    const [loginmodalShow, setLoginModalShow] = useState(false);
+    const [otpmodalShow, setOtpModalShow] = useState(false);
+
+    const [wishlist, setWishlist] = useState(() => {
+        // Load wishlist from localStorage when the component mounts
+        const savedWishlist = localStorage.getItem("wishlist");
+        return savedWishlist ? JSON.parse(savedWishlist) : [];
+    });
+
+    // Save wishlist to localStorage whenever it changes
+    useEffect(() => {
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    }, [wishlist]);
 
     // Function to toggle sidebar
     const toggleSidebar = () => {
@@ -69,7 +87,7 @@ const Category = () => {
                         (selectedId ? product.subCategoryId === selectedId : true)
                 );
 
-                console.log("matchingProducts", matchingProducts);
+                // console.log("matchingProducts", matchingProducts);
                 setProductData(matchingProducts);
 
             } catch (error) {
@@ -98,13 +116,68 @@ const Category = () => {
             case 'discount-high-to-low':
                 sortedData.sort((a, b) => b.discount - a.discount);
                 break;
-            case 'relevance':
+            default:
+                // console.warn(`Unknown sort option: ${sortOption}`);
                 break;
         }
 
         setProductData(sortedData);
     };
+    const handleAddWishList = async (productId) => {
+        console.log("token", token);
 
+        if (!token) {
+            setLoginModalShow(true);
+            return;
+        }
+
+        if (wishlist.includes(productId)) {
+            // setWishlist(wishlist.filter(id => id !== productId));
+        } else {
+            setWishlist([...wishlist, productId]);
+
+            try {
+                const decodedToken = jwtDecode(token);
+                const userId = decodedToken._id;
+
+                await axios.post(`${BaseUrl}/api/createWishList`, {
+                    productId,
+                    userId
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+            } catch (error) {
+                console.error('Data fetching error:', error);
+            }
+        }
+    };
+
+    const handleAddToCart = async (id, quantity) => {
+        console.log("djhfchnjksn");
+
+        if (!token) {
+            setLoginModalShow(true);
+            return;
+        }
+        try {
+            const decodedToken = jwtDecode(token);
+            const userId = decodedToken._id;
+
+            await axios.post(`${BaseUrl}/api/addToCart`, {
+                productId: id,
+                userId: userId,
+                quantity: quantity
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+        } catch (error) {
+            console.error('Data Fetching Error');
+        }
+    }
     return (
         <>
             <div className="my-3 border-b s_sub_header">
@@ -122,9 +195,9 @@ const Category = () => {
                 <div className={`
                     md:w-80 w-64 shadow-md h-lvh 
                     md:block 
-                    ${isSidebarOpen ? 'block absolute top-0 left-10 z-50 ' : 'hidden'}
+                    ${isSidebarOpen ? 'block absolute top-0 left-10 ' : 'hidden'}
                     bg-white
-                `}>
+                `} style={{ zIndex: '-1' }}>
                     <ul className="ps-4 s_subCat_ul">
                         {categoryData.map((item, index) => (
                             <li
@@ -231,8 +304,13 @@ const Category = () => {
                                                 Save {item.discount}%
                                             </small>
                                         </div>
-                                        <div className="px-4 pt-3 text-[#FD7171]">
-                                            <FaRegHeart />
+                                        <div className="px-4 pt-3 text-[#FD7171] cursor-pointer">
+                                            {/* <FaRegHeart onClick={() => handleAddWishList(item._id)} /> */}
+                                            {wishlist.includes(item._id) ? (
+                                                <FaHeart onClick={() => handleAddWishList(item._id)} />
+                                            ) : (
+                                                <FaRegHeart onClick={() => handleAddWishList(item._id)} />
+                                            )}
                                         </div>
                                     </div>
                                     <div className="px-4 pb-4">
@@ -248,11 +326,11 @@ const Category = () => {
                                             <span className="text-gray-400 line-through">${item.price}</span>
                                         </p>
                                         <small>Qty : {item.totalQuantity ? item.totalQuantity : item.quantity}</small>
-                                        <button className="mt-3 s_btn_puprle text-white w-full">
-                                            <Link>
-                                                <MdOutlineShoppingCart className="inline-block mr-2" />
-                                                Add to cart
-                                            </Link>
+                                        <button className="mt-3 s_btn_puprle text-white w-full cursor-pointer" onClick={() => handleAddToCart(item._id, 1)}  >
+                                            {/* <Link> */}
+                                            <MdOutlineShoppingCart className="inline-block mr-2" />
+                                            Add to cart
+                                            {/* </Link> */}
                                         </button>
                                     </div>
                                 </div>
@@ -262,6 +340,13 @@ const Category = () => {
                 </div>
 
             </div>
+
+            <Login
+                loginmodalShow={loginmodalShow}
+                setLoginModalShow={setLoginModalShow}
+                otpmodalShow={otpmodalShow}
+                setOtpModalShow={setOtpModalShow}
+            />
         </>
     );
 };
