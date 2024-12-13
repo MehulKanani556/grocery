@@ -691,13 +691,14 @@
     margin-bottom: 15px;
 }
 
-.d_delright .d_addcartbtn a {
+.d_delright .d_addcartbtn button {
     background: linear-gradient(90deg, #B195FF 0%, #7875FF 100%);
     border-radius: 6px;
     padding: 7px 0;
     font-size: 14px;
     font-weight: 600;
     color: #fff;
+    width: 100%;
 }
 
 .d_delright .d_say h6 {

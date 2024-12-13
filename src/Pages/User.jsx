@@ -37,7 +37,9 @@ const User = () => {
     return (
         <React.Fragment>
             <Header />
-            <SubHeader />
+            <div className='my-3 border-b s_sub_header'>
+                <SubHeader />
+            </div>
             <section className=''>
                 <div className=''>
                     <aside className='inter'>

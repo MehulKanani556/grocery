@@ -2,20 +2,28 @@ import React, { useEffect, useState } from 'react'
 import './../CSS/dstyle.css'
 import { FaStar } from 'react-icons/fa'
 import { MdKeyboardArrowRight } from 'react-icons/md'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import SubHeader from '../Component/SubHeader'
 import Footer from '../Component/Footer'
 import axios from 'axios'
+import Login from '../Component/Login'
 
 const Deatail = () => {
 
+    const { id } = useParams();
     const BaseUrl = process.env.REACT_APP_BASEURL;
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
 
     const [mainImage, setMainImage] = useState("");
     const [productdetail, setPrdouctDetail] = useState({})
     const [subCategoryName, setSubCategoryName] = useState("");
     const [reviewdata, setReviewdata] = useState([]);
     const [filteredReviews, setFilteredReviews] = useState([]);
+    const [aditionalPro, setAditionalPro] = useState([]);
+    const [loginmodalShow, setLoginModalShow] = useState(false);
+    const [otpmodalShow, setOtpModalShow] = useState(false);
+    const [quantity, setQuantity] = useState(1);
 
     const handleImageClick = (imageUrl) => {
         setMainImage(imageUrl);
@@ -23,7 +31,7 @@ const Deatail = () => {
 
     const fetchsinglepoduct = async () => {
         try {
-            const res = await axios.get(`${BaseUrl}/api/getProduct/675aa27570798bb7c25e84aa`, {
+            const res = await axios.get(`${BaseUrl}/api/getProduct/${id}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -63,7 +71,42 @@ const Deatail = () => {
             console.error("Not Fetch review:", error);
         }
     }
+    const AditionalProduct = async () => {
+        try {
+            const response = await axios.get(`${BaseUrl}/api/allProductAditional`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            // console.log("response",response.data.productAditional);
+            const matchingProduct = response.data.productAditional.filter((item => item.productId === id));
 
+            // console.log("matchingProduct",matchingProduct);
+            setAditionalPro(matchingProduct);
+
+        } catch (error) {
+            console.error('Data Fetching Error:', error);
+        }
+    }
+    const handleAddToCart = async (id) => {
+        if (!token) {
+            setLoginModalShow(true);
+            return;
+        }
+        try {
+            await axios.post(`${BaseUrl}/api/addToCart`, {
+                productId: id,
+                userId: userId,
+                quantity: quantity
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+        } catch (error) {
+            console.error('Data Fetching Error');
+        }
+    }
     useEffect(() => {
         if (productdetail?.productImage?.length > 0) {
             setMainImage(productdetail.productImage[0]);
@@ -78,20 +121,27 @@ const Deatail = () => {
             setFilteredReviews(reviewfilter);
             console.log("filtered reviews", reviewfilter);
         }
-    }, [productdetail,reviewdata]);
+    }, [productdetail, reviewdata]);
 
+    const handleIncrement = () => {
+        setQuantity(prevQuantity => prevQuantity + 1);
+    };
 
+    const handleDecrement = () => {
+        setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
+    };
     useEffect(() => {
         fetchsinglepoduct();
         fetchreview();
+        AditionalProduct();
     }, []);
-
-
 
     return (
         <>
 
-            <SubHeader />
+            <div className='my-3 border-b s_sub_header'>
+                <SubHeader />
+            </div>
 
             <div className="container-fluid">
                 <div className="row">
@@ -99,7 +149,7 @@ const Deatail = () => {
                         <div className="d_delleft">
                             <div className="d_mainimg d-flex justify-content-center">
                                 <div className="d_img">
-                                    <img src={`${BaseUrl}/${mainImage.replace('/\\/g','/')}`} alt="" />
+                                    <img src={`${BaseUrl}/${mainImage.replace('/\\/g', '/')}`} alt="" />
                                 </div>
                             </div>
                             <div className="d-flex justify-content-center mb-xl-4 mb-2">
@@ -170,23 +220,24 @@ const Deatail = () => {
                                         <div className="d_name">{productdetail?.productName}</div>
                                         <div className="d_size">{productdetail?.productDetails}</div>
                                     </div>
-                                    <div className="d_saved">You Saved ${productdetail?.discount}</div>
+                                    <div className="d_saved">You Saved ${productdetail?.discount} %</div>
                                     <div className="d-flex align-items-center justify-content-between">
                                         <div className='d-flex align-items-center'>
-                                            <div className="d_price">${productdetail?.price}</div>
-                                            <div className="d_removesize">${productdetail?.discount}</div>
+                                            <div className="d_price">${(productdetail?.price * (1 - productdetail.discount / 100) * quantity).toFixed(2)}
+                                            </div>
+                                            <div className="d_removesize"> ${(productdetail?.price * quantity).toFixed(2)}</div>
                                         </div>
                                         <div className="d_cartbtn">
                                             <div className="d-flex justify-content-around align-items-center">
-                                                <button className='d_carticon'>-</button>
-                                                <div className='d_carticon'>{productdetail?.quantity}</div>
-                                                <button className='d_carticon'>+</button>
+                                                <button className='d_carticon' onClick={handleDecrement}>-</button>
+                                                <div className='d_carticon'>{quantity}</div>
+                                                <button className='d_carticon'  onClick={handleIncrement} >+</button>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="d_tax">(Inclusive of all taxes)</div>
                                     <div className="d_addcartbtn">
-                                        <Link to="" className='text-center d-block'>Add to Cart</Link>
+                                        <button className='text-center d-block' onClick={() => handleAddToCart(productdetail._id)}>Add to Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -195,51 +246,30 @@ const Deatail = () => {
                                     <h6>Say Yes to fresh!</h6>
                                 </div>
                                 <div className="d_freshbox">
-                                    <div className="d-flex align-items-center mb-lg-4 mb-3">
-                                        <div className="d_img d-flex justify-content-center align-items-center">
-                                            <img src={require('../Image/say1.png')} alt="" />
+                                    {aditionalPro.map((item, index) => (
+                                        <div key={index}>
+                                            {item.data.map((dataItem, dataIndex) => (
+
+                                                <div
+                                                    key={dataIndex}
+                                                    className="d-flex align-items-center mb-lg-4 mb-3"
+                                                >
+                                                    <React.Fragment key={dataIndex}>
+                                                        <div className="d_img d-flex justify-content-center align-items-center">
+                                                            <img
+                                                                src={`${BaseUrl}/${dataItem.image?.replace(/\\/g, '/')}`}
+                                                                alt={dataItem.title}
+                                                            />
+                                                        </div>
+                                                        <div className="d_text">
+                                                            <h6>{dataItem.title}</h6>
+                                                            <p>{dataItem.description}</p>
+                                                        </div>
+                                                    </React.Fragment>
+                                                </div>
+                                            ))}
                                         </div>
-                                        <div className="d_text">
-                                            <h6>Sourced Fresh Daily</h6>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-center mb-lg-4 mb-3">
-                                        <div className="d_img d-flex justify-content-center align-items-center">
-                                            <img src={require('../Image/say2.png')} alt="" />
-                                        </div>
-                                        <div className="d_text">
-                                            <h6>Sourced By Experts</h6>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-center mb-lg-4 mb-3">
-                                        <div className="d_img d-flex justify-content-center align-items-center">
-                                            <img src={require('../Image/say3.png')} alt="" />
-                                        </div>
-                                        <div className="d_text">
-                                            <h6>Daily Thorough Quality Checks</h6>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-center mb-lg-4 mb-3">
-                                        <div className="d_img d-flex justify-content-center align-items-center">
-                                            <img src={require('../Image/say4.png')} alt="" />
-                                        </div>
-                                        <div className="d_text">
-                                            <h6>High Packaging Standards</h6>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-center">
-                                        <div className="d_img d-flex justify-content-center align-items-center">
-                                            <img src={require('../Image/say5.png')} alt="" />
-                                        </div>
-                                        <div className="d_text">
-                                            <h6>Quality Assurance At Stores</h6>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
                             <div className="d_pad">
@@ -256,7 +286,7 @@ const Deatail = () => {
                                         <p className='mb-0'>125 Ratings & 25 Reviews</p>
                                     </div>
                                     {
-                                        filteredReviews.slice(0,3).map((review, i) => {
+                                        filteredReviews.slice(0, 3).map((review, i) => {
                                             return (
                                                 <div className="d_ratebox1">
                                                     <div className="d_box mb-2">
@@ -280,7 +310,12 @@ const Deatail = () => {
                     </div>
                 </div>
             </div>
-
+            <Login
+                loginmodalShow={loginmodalShow}
+                setLoginModalShow={setLoginModalShow}
+                otpmodalShow={otpmodalShow}
+                setOtpModalShow={setOtpModalShow}
+            />
             <Footer />
 
         </>

@@ -17,6 +17,7 @@ import Order from './Pages/Order';
 import Coupon from './Pages/Coupon';
 import Cancelorder from './Pages/Cancelorder';
 import Wishlist from './Pages/Wishlist';
+import SubCategory from './Pages/SubCategory';
 // import Wishlist from './Pages/Wishlist';
 
 function App() {
@@ -28,16 +29,16 @@ function App() {
             <Route index element={<Main />} />
 
 
-
             {/* sidebar */}
 
 
             {/* <Route path='/sidebar' element={<Sidebar />} /> */}
             <Route path='/category' element={<Category />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/detail' element={<Deatail />} />
+            <Route path='/subCategory' element={<SubCategory />} />
+            <Route path='/detail/:id' element={<Deatail />} />
 
             <Route path='/category' element={<Category />} />
+            <Route path='/cart' element={<Cart />} />
           </Route>
 
           {/* sidebar */}

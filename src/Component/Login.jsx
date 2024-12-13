@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { IoCloseSharp } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 const Login = ({ 
     loginmodalShow, 
@@ -74,11 +75,16 @@ const Login = ({
                 otp: otpAsNumber,
             });
 
-            const data = response.data;
+            const token = response.data.token;
+            console.log("token",token);
+            
 
-            if (data.success) {
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('userId', data.id);
+            if (response.data.success) {
+                const decodedToken = jwtDecode(token);
+                const userId = decodedToken._id;
+                
+                localStorage.setItem('token', token);
+                localStorage.setItem('userId',userId);
 
                 setOtpModalShow(false);
                 navigate('/');

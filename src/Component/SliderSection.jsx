@@ -7,11 +7,11 @@ import { MdOutlineShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Login from './Login';
-import { jwtDecode } from 'jwt-decode';
 
 const Slider = ({ title, data, type, BaseUrl }) => {
 
     const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
 
     const [loginmodalShow, setLoginModalShow] = useState(false);
     const [otpmodalShow, setOtpModalShow] = useState(false);
@@ -47,9 +47,7 @@ const Slider = ({ title, data, type, BaseUrl }) => {
             return;
         }
         try {
-            const decodedToken = jwtDecode(token);
-            const userId = decodedToken._id;
-
+        
             await axios.post(`${BaseUrl}/api/addToCart`, {
                 productId: id,
                 userId: userId,
@@ -73,7 +71,7 @@ const Slider = ({ title, data, type, BaseUrl }) => {
                 <div className="s_container">
                     <div className="flex justify-between mb-3">
                         <h2 className="text-2xl font-bold">{title}</h2>
-                        <Link className="font-semibold">See All</Link>
+                        <Link to={'/subCategory'} className="font-semibold">See All</Link>
                     </div>
 
                     <Swiper
