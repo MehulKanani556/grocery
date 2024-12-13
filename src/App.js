@@ -42,7 +42,7 @@ function App() {
 
           {/* sidebar */}
 
-          <Route path='/cart' element={<Cart />} />
+          {/* <Route path='/cart' element={<Cart />} /> */}
 
 
 
@@ -53,7 +53,6 @@ function App() {
             <Route path='address' element={<Adderess />} />
             <Route path='privacy' element={<Privacy />} />
             <Route path='order' element={<Order />} />
-
             <Route path='payment' element={<Payment />} />
             <Route path='coupon' element={<Coupon />} />
             <Route path='cancelorder' element={<Cancelorder />} />
