@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import { IoCloseSharp } from 'react-icons/io5';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import '../CSS/dstyle.css';
 
 const LogoutModal = ({isOpen, onClose, onLogoutUser}) => {

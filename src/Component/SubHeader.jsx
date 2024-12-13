@@ -44,7 +44,7 @@ const SubHeader = () => {
                             {data.map((item, index) => (
                                 <li key={index} onClick={() => handleNavigate(item._id)} className="cursor-pointer">
                                     <div className="flex ">
-                                        <img src={`${BaseUrl}/${item.vectorImage.replace(/\\/g, '/')}`} alt="" className="mx-2" />
+                                        <img src={`${BaseUrl}/${item?.vectorImage?.replace(/\\/g, '/')}`} alt="" className="mx-2" />
                                         <p>{item.categoryName}</p>
                                     </div>
                                 </li>

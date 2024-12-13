@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../CSS/Profile.css';
 import { Dropdown, Modal } from 'react-bootstrap';
 import Drop from '../Image/dropdot.png';
@@ -10,16 +10,50 @@ import { IoCloseSharp } from 'react-icons/io5';
 import { RiHome4Line } from 'react-icons/ri';
 import { MdOutlineHomeRepairService } from 'react-icons/md';
 import { PiBuildingApartmentDuotone } from 'react-icons/pi';
+import AddressModal from '../Pages/AddressModal';
+import axios from 'axios';
 
 const Adderess = () => {
 
   const [addaddressmodalShow, setAddaddressModalShow] = useState(false);
+  const [myAddress, setMyAddress] = useState([]);
+  const [deleteAddress, setdeleteAddress] = useState(0);
 
-  const handleActiveClass = (event) => {
-    const links = document.querySelectorAll(".d_cur");
-    links.forEach((link) => link.classList.remove("active")); // Remove active from all
-    event.currentTarget.classList.add("active"); // Add active to clicked
-};
+  const BaseUrl = process.env.REACT_APP_BASEURL;
+  const userId = localStorage.getItem('userId');
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    axios
+      .get(`${BaseUrl}/api/getAllMyAddress/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((Response) => {
+        setMyAddress(Response?.data?.data || []);
+        console.log("Addresses:", Response?.data?.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching addresses:", error);
+      });
+  }, [BaseUrl, token, userId, deleteAddress]);
+
+  const handleDeleteAddress = async (id) => {
+    console.log('id', id);
+    try {
+      await axios.delete(`${BaseUrl}/api/deleteAddress/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        });
+        setdeleteAddress(deleteAddress + 1)
+    }
+    catch (error) {
+      console.error('Id is not found for delete address', error);
+    }
+  }
 
   return (
     <>
@@ -33,36 +67,52 @@ const Adderess = () => {
               + Add A New Address
             </button>
           </div>
-          <div className='V_add_border my-3'>
-            <div className='d-flex justify-content-end'>
 
-              <Dropdown>
-                <Dropdown.Toggle id="dropdown-basic" className='V_drop_icon bg-transparent border-0'>
-                  <img src={Drop} alt="" className='V_delete' />
-                </Dropdown.Toggle>
+          <div>
+            {myAddress.map((element) => (
+              <div className="V_add_border my-3" key={element._id}>
+                <div className="d-flex justify-content-end">
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      id="dropdown-basic"
+                      className="V_drop_icon bg-transparent border-0"
+                    >
+                      <img src={Drop} alt="" className="V_delete" />
+                    </Dropdown.Toggle>
 
-                <Dropdown.Menu className='V_drop_menu'>
-                  <Dropdown.Item href="#/edit" className='d-flex'>
-                    <img src={Edit} alt="" className='V_delete pe-3' />
-                    <p> Edit</p></Dropdown.Item>
-                  <Dropdown.Item href="#/delete" className='d-flex'>
-                    <img src={Delete} alt="" className='V_delete pe-3' />
-                    <p >Delete</p>     </Dropdown.Item>
-
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-            <div className='V_top' >
-              <h2 className="py-4 V_add_dynamic_add">Robert Anderson</h2>
-              <p className='V_Ptag fw-lighter px-4 pb-3'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley  </p>
-            </div>
+                    <Dropdown.Menu className="V_drop_menu">
+                      <Dropdown.Item
+                        href="#edit"
+                        className="d-flex"
+                        onClick={() => setAddaddressModalShow(true)}
+                      >
+                        <img src={Edit} alt="" className="V_delete pe-3" />
+                        <p>Edit</p>
+                      </Dropdown.Item>
+                      <Dropdown.Item href="" className="d-flex" onClick={() => handleDeleteAddress(element._id)}>
+                        <img src={Delete} alt="" className="V_delete pe-3" />
+                        <p>Delete</p>
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
+                <div className="V_top">
+                  <h2 className="py-4 V_add_dynamic_add">{element.yourName}</h2>
+                  <p className="V_Ptag fw-lighter px-4 pb-3">
+                    {element.address}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
+
+
         </div>
       </div>
 
       {/* Add Address Modal */}
 
-      <Modal
+      {/* <Modal
         show={addaddressmodalShow}
         onHide={() => setAddaddressModalShow(false)}
         size="lg"
@@ -171,8 +221,11 @@ const Adderess = () => {
             </div>
           </div>
         </Modal.Body>
-      </Modal>
-
+      </Modal> */}
+      <AddressModal
+        isOpen={addaddressmodalShow}
+        onClose={() => setAddaddressModalShow(false)}
+      />
 
       {/* Add Address Modal */}
 

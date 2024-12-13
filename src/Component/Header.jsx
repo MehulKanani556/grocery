@@ -5,7 +5,7 @@ import { MdOutlineKeyboardVoice } from "react-icons/md";
 import { FiShoppingCart } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GoHeart } from 'react-icons/go';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Login from './Login';
 
@@ -19,9 +19,9 @@ const Header = () => {
     const [loginmodalShow, setLoginModalShow] = useState(false);
     const [otpmodalShow, setOtpModalShow] = useState(false);
     const [catogeroDrop, setCatogeryDrop] = useState([]);
-    const [wishList,setWishList] = useState('');
-    const [AddToCart,setAddToCart] = useState('');
-    
+    const [wishList, setWishList] = useState('');
+    const [AddToCart, setAddToCart] = useState('');
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true)
 
@@ -60,7 +60,7 @@ const Header = () => {
             console.error("Data Fetching Error:", error);
         }
     };
-    
+
     const fetchAddCart = async () => {
         try {
             const response = await axios.get(`${BaseUrl}/api/allCarts`, {
@@ -75,12 +75,12 @@ const Header = () => {
             console.error("Data Fetching Error:", error);
         }
     };
-    
+
     useEffect(() => {
         fetchcatogerydrop();
         fetchWishList();
         fetchAddCart();
-          // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -119,20 +119,24 @@ const Header = () => {
                         </Col>
                         <Col xl={5} lg={12}>
                             <ul className='flex items-center xl:justify-end justify-center xl:mt-0 mt-3'>
-                                <li className='flex items-center mx-2 relative'>
-                                    <GoHeart className='text-2xl mx-2' />
-                                    <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-1 left-3 transform translate-x-1/2 -translate-y-1/2'>
-                                    {wishList || 0}
-                                    </span>
-                                    <p className='text-sm ml-3'>Wishlist</p>
-                                </li>
-                                <li className='flex items-center mx-2 relative'>
-                                    <FiShoppingCart className='text-2xl mx-2 fw-bold' />
-                                    <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-2 left-3 transform translate-x-1/2 -translate-y-1/2'>
-                                        {AddToCart || 0}
-                                    </span>
-                                    <p className='text-sm ml-3'>My Cart <p className='text-xs text-[#AB92F3] fw-bold'>$10</p></p>
-                                </li>
+                                <Link to={'/user/wishlist'} >
+                                    <li className='flex items-center mx-2 relative'>
+                                        <GoHeart className='text-2xl mx-2' />
+                                        <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-1 left-3 transform translate-x-1/2 -translate-y-1/2'>
+                                            {wishList || 0}
+                                        </span>
+                                        <p className='text-sm ml-3' >Wishlist</p>
+                                    </li>
+                                </Link>
+                                <Link to={'/cart'} >
+                                    <li className='flex items-center mx-2 relative'>
+                                        <FiShoppingCart className='text-2xl mx-2 fw-bold' />
+                                        <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-2 left-3 transform translate-x-1/2 -translate-y-1/2'>
+                                            {AddToCart || 0}
+                                        </span>
+                                        <p className='text-sm ml-3'>My Cart <p className='text-xs text-[#AB92F3] fw-bold'>$10</p></p>
+                                    </li>
+                                </Link>
                                 <li className='flex items-center mx-2'>
                                     <MdOutlineLocationOn className='text-2xl mx-2 fw-bold' />
                                     <p className='text-xs'>Diliver To Karnataka
@@ -212,7 +216,7 @@ const Header = () => {
                             <li className='flex items-center my-3 relative'>
                                 <FiShoppingCart className='text-2xl mx-2 fw-bold' />
                                 <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-2 left-3 transform translate-x-1/2 -translate-y-1/2'>
-                                {AddToCart || 0}
+                                    {AddToCart || 0}
                                 </span>
                                 <p className='text-sm ml-3'>My Cart <p className='text-xs text-[#AB92F3] fw-bold'>$10</p></p>
                             </li>
@@ -245,7 +249,7 @@ const Header = () => {
                 </Offcanvas>
             </header>
 
-            <Login 
+            <Login
                 loginmodalShow={loginmodalShow}
                 setLoginModalShow={setLoginModalShow}
                 otpmodalShow={otpmodalShow}
