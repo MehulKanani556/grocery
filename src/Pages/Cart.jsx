@@ -12,6 +12,13 @@ import { PiBuildingApartmentDuotone } from 'react-icons/pi'
 import { FaArrowLeftLong } from 'react-icons/fa6'
 import SubHeader from '../Component/SubHeader'
 import axios from 'axios'
+import AddressModal from './AddressModal'
+
+const Cart = () => {
+
+    
+
+    const [addaddressmodalShow, setAddaddressModalShow] = useState(false);
 
 const BaseUrl = process.env.REACT_APP_BASEURL;
 const token = localStorage.getItem('token');
@@ -22,6 +29,7 @@ const Cart = () => {
 
     const [addaddressmodalShow, setAddaddressModalShow] = useState(false);
     const [currentSection, setCurrentSection] = useState("cart");
+    
     const [productData, setProductData] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0); // total price define
     const [quantity, setQuantity] = useState(1);
