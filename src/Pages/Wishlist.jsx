@@ -1,10 +1,32 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
 import { BiSolidRightArrow } from 'react-icons/bi'
 import { FaHeart, FaStar } from 'react-icons/fa'
 import { FiShoppingCart } from 'react-icons/fi'
 
 const Wishlist = () => {
 
+    const BaseUrl = process.env.REACT_APP_BASEURL;
+
+    const userId = localStorage.getItem('userId');
+
+    const fetchwishlist = async () => {
+        try {
+            const res = await axios.get(`${BaseUrl}/api/allMyWishList/${userId}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            console.log("response", res.data.data);
+        }
+        catch (error) {
+            console.error("Not Fetch product details:", error);
+        }
+    }
+
+    useEffect(() => {
+        fetchwishlist();
+    },[])
 
     return (
         <>
@@ -30,8 +52,8 @@ const Wishlist = () => {
                                         <div className="col-9">
                                             <div className="d_desc">
                                                 <div className="d_type">Bakery & Biscuits</div>
-                                                <div className="d_name">Britannia Brown Bread </div>
-                                                <div className="d_saved">You Saved $1 </div>
+                                                <div className="d_name">Britannia Brown Bread</div>
+                                                <div className="d_saved">You Saved $1</div>
                                                 <div className="d-flex align-items-center">
                                                     <FaStar className='me-2 d_starrate d_yellow' />
                                                     <FaStar className='me-2 d_starrate d_yellow' />
