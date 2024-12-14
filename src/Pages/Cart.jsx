@@ -11,14 +11,8 @@ import { MdOutlineHomeRepairService } from 'react-icons/md'
 import { PiBuildingApartmentDuotone } from 'react-icons/pi'
 import { FaArrowLeftLong } from 'react-icons/fa6'
 import SubHeader from '../Component/SubHeader'
-import axios from 'axios'
 import AddressModal from './AddressModal'
-
-const Cart = () => {
-
-    
-
-    const [addaddressmodalShow, setAddaddressModalShow] = useState(false);
+import axios from 'axios'
 
 const BaseUrl = process.env.REACT_APP_BASEURL;
 const token = localStorage.getItem('token');
@@ -26,20 +20,13 @@ const userId = localStorage.getItem('userId');
 
 const Cart = () => {
 
-
     const [addaddressmodalShow, setAddaddressModalShow] = useState(false);
     const [currentSection, setCurrentSection] = useState("cart");
-    
     const [productData, setProductData] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0); // total price define
     const [quantity, setQuantity] = useState(1);
 
-    const handleActiveClass = (event) => {
-        const links = document.querySelectorAll(".d_cur");
-        links.forEach((link) => link.classList.remove("active")); // Remove active from all
-        event.currentTarget.classList.add("active"); // Add active to clicked
-    };
-
+   
     const fetchData = async () => {
         try {
             const response = await axios.get(`${BaseUrl}/api/allMyCarts/${userId}`, {
@@ -47,7 +34,7 @@ const Cart = () => {
                     Authorization: `Bearer ${token}`
                 }
             });
-            // console.log("response", response.data.data);
+            console.log("response", response.data.data);
             const products = response.data.data;
             setProductData(products);
 
@@ -64,39 +51,17 @@ const Cart = () => {
     useEffect(() => {
         fetchData();
     }, []);
-    const handleIncrement = (index) => {
-        setProductData((prevData) => {
-            const updatedData = [...prevData];
-            updatedData[index].quantity += 1; // Increment quantity for the specific product
-            return updatedData;
-        });
-        recalculateTotalPrice();
-    };
 
-    const handleDecrement = (index) => {
-        setProductData((prevData) => {
-            const updatedData = [...prevData];
-            if (updatedData[index].quantity > 1) {
-                updatedData[index].quantity -= 1; // Decrement quantity, but ensure it's at least 1
-            }
-            return updatedData;
-        });
-        recalculateTotalPrice();
-    };
+    const handleDecrement = () => {
+        
+    }
+    const handleIncrement = () => {
 
-    const recalculateTotalPrice = () => {
-        const total = productData.reduce((acc, item) => {
-            const discountedPrice = item.productId.price * (1 - item.productId.discount / 100);
-            return acc + discountedPrice * item.quantity;
-        }, 0);
-        setTotalPrice(total);
-    };
-
+    }
     return (
         <>
-            <div className='my-3 border-b s_sub_header'>
-                <SubHeader />
-            </div>
+
+            <SubHeader />
 
             <div className="container-fluid">
                 <div className="row d_100vh flex-lg-row flex-column-reverse">
@@ -204,165 +169,45 @@ const Cart = () => {
                             <div className="d_heading">
                                 <div className="d-flex justify-content-between align-items-center">
                                     <h6>Your Cart(4)</h6>
-                                    <div className="d_price">${totalPrice.toFixed(2)}</div>
+                                    <div className="d_price">Total Price</div>
                                 </div>
                             </div>
                             <div className="row gy-3">
                                 <div className="col-12 col-xl-6">
                                     <div className="d_item">
                                         {productData.map((item, index) => {
-                                            { console.log("productData", productData.productId) }
                                             return (
                                                 <div className="row align-items-center" key={index}>
-                                                    <div className="col-3">
-                                                        <div className="d_img">
-                                                            <img src={`${BaseUrl}/${item.productId.productImage[0]}`} alt="" />
+                                                <div className="col-3">
+                                                    <div className="d_img">
+                                                        <img src={`${BaseUrl}/${item.productId.productImage[0]}`} alt="" />
+                                                    </div>
+                                                </div>
+                                                <div className="col-9">
+                                                    <div className="d_desc">
+                                                        <div className="d_type">{item.productId.subCategoryId}</div>
+                                                        <div className="d-flex flex-sm-nowrap flex-wrap align-items-center justify-content-between">
+                                                            <div className="d_name">{item.productId.productName}</div>
+                                                            <div className="d_size">{item.productId.productDetails}</div>
                                                         </div>
-                                                    </div>
-                                                    <div className="d_saved">You Saved $1 </div>
-                                                    <div className="d-flex align-items-center">
-                                                        <div className="d_price">$10</div>
-                                                        <div className="d_removesize">$11</div>
-                                                    </div>
-                                                    <div className="d-flex justify-content-end">
-                                                        <div className="d_cartbtn">
-                                                            <div className="d-flex justify-content-around align-items-center">
-                                                                <button className='d_carticon'>-</button>
-                                                                <div className='d_carticon'>1</div>
-                                                                <button className='d_carticon'>+</button>
-                                                    <div className="col-9">
-                                                        <div className="d_desc">
-                                                            <div className="d_type">{item.productId.subCategoryId}</div>
-                                                            <div className="d-flex flex-sm-nowrap flex-wrap align-items-center justify-content-between">
-                                                                <div className="d_name">{item.productId.productName}</div>
-                                                                <div className="d_size">{item.productId.productDetails}</div>
-                                                            </div>
-                                                            <div className="d_saved">Yoy Saved {item.productId.discount}%</div>
-                                                            <div className="d-flex align-items-center">
-                                                                <div className="d_price">${(item.productId.price * (1 - item.productId.discount / 100)).toFixed(2)}</div>
-                                                                <div className="d_removesize">${(item.productId.price) * (item.quantity)}</div>
-                                                            </div>
-                                                            <div className="d-flex justify-content-end">
-                                                                <div className="d_cartbtn">
-                                                                    <div className="d-flex justify-content-around align-items-center">
-                                                                        <button className='d_carticon' onClick={() => handleDecrement(index)}>-</button>
-                                                                        <div className='d_carticon'>{item.quantity}</div>
-                                                                        <button className='d_carticon' onClick={() => handleIncrement(index)}>+</button>
-                                                                    </div>
+                                                        <div className="d_saved">Yoy Saved {item.productId.discount}%</div>
+                                                        <div className="d-flex align-items-center">
+                                                            <div className="d_price">${(item.productId.price * (1 - item.productId.discount / 100)).toFixed(2)}</div>
+                                                            <div className="d_removesize">${(item.productId.price) * (item.quantity)}</div>
+                                                        </div>
+                                                        <div className="d-flex justify-content-end">
+                                                            <div className="d_cartbtn">
+                                                                <div className="d-flex justify-content-around align-items-center">
+                                                                    <button className='d_carticon' onClick={() => handleDecrement(index)}>-</button>
+                                                                    <div className='d_carticon'>{item.quantity}</div>
+                                                                    <button className='d_carticon' onClick={() => handleIncrement(index)}>+</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="d_later">Save for Later</div>
                                                 </div>
+                                                <div className="d_later">Save for Later</div>
                                             </div>
-                                            <div className="d_later">Save for Later</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-xl-6">
-                                    <div className="d_item">
-                                        <div className="row align-items-center">
-                                            <div className="col-3">
-                                                <div className="d_img">
-                                                    <img src={require('./../Image/bread.png')} alt="" />
-                                                </div>
-                                            </div>
-                                            <div className="col-9">
-                                                <div className="d_desc">
-                                                    <div className="d_type">Bakery & Biscuits</div>
-                                                    <div className="d-flex align-items-center justify-content-between">
-                                                        <div className="d_name">Britannia Brown Bread </div>
-                                                        <div className="d_size">1 Packet</div>
-                                                    </div>
-                                                    <div className="d_saved">You Saved $1 </div>
-                                                    <div className="d-flex align-items-center">
-                                                        <div className="d_price">$10</div>
-                                                        <div className="d_removesize">$11</div>
-                                                    </div>
-                                                    <div className="d-flex justify-content-end">
-                                                        <div className="d_cartbtn">
-                                                            <div className="d-flex justify-content-around align-items-center">
-                                                                <button className='d_carticon'>-</button>
-                                                                <div className='d_carticon'>1</div>
-                                                                <button className='d_carticon'>+</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="d_later">Save for Later</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-xl-6">
-                                    <div className="d_item">
-                                        <div className="row align-items-center">
-                                            <div className="col-3">
-                                                <div className="d_img">
-                                                    <img src={require('./../Image/bread.png')} alt="" />
-                                                </div>
-                                            </div>
-                                            <div className="col-9">
-                                                <div className="d_desc">
-                                                    <div className="d_type">Bakery & Biscuits</div>
-                                                    <div className="d-flex align-items-center justify-content-between">
-                                                        <div className="d_name">Britannia Brown Bread </div>
-                                                        <div className="d_size">1 Packet</div>
-                                                    </div>
-                                                    <div className="d_saved">You Saved $1 </div>
-                                                    <div className="d-flex align-items-center">
-                                                        <div className="d_price">$10</div>
-                                                        <div className="d_removesize">$11</div>
-                                                    </div>
-                                                    <div className="d-flex justify-content-end">
-                                                        <div className="d_cartbtn">
-                                                            <div className="d-flex justify-content-around align-items-center">
-                                                                <button className='d_carticon'>-</button>
-                                                                <div className='d_carticon'>1</div>
-                                                                <button className='d_carticon'>+</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="d_later">Save for Later</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-xl-6">
-                                    <div className="d_item">
-                                        <div className="row align-items-center">
-                                            <div className="col-3">
-                                                <div className="d_img">
-                                                    <img src={require('./../Image/bread.png')} alt="" />
-                                                </div>
-                                            </div>
-                                            <div className="col-9">
-                                                <div className="d_desc">
-                                                    <div className="d_type">Bakery & Biscuits</div>
-                                                    <div className="d-flex align-items-center justify-content-between">
-                                                        <div className="d_name">Britannia Brown Bread </div>
-                                                        <div className="d_size">1 Packet</div>
-                                                    </div>
-                                                    <div className="d_saved">You Saved $1 </div>
-                                                    <div className="d-flex align-items-center">
-                                                        <div className="d_price">$10</div>
-                                                        <div className="d_removesize">$11</div>
-                                                    </div>
-                                                    <div className="d-flex justify-content-end">
-                                                        <div className="d_cartbtn">
-                                                            <div className="d-flex justify-content-around align-items-center">
-                                                                <button className='d_carticon'>-</button>
-                                                                <div className='d_carticon'>1</div>
-                                                                <button className='d_carticon'>+</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="d_later">Save for Later</div>
-                                        </div>
                                             )
                                         })}
                                     </div>
@@ -373,10 +218,13 @@ const Cart = () => {
                 </div>
             </div>
 
-         <AddressModal 
-         isOpen={addaddressmodalShow}
-         onClose={() => setAddaddressModalShow(false)}
-         />
+            {/* Add Address Modal */}
+            <AddressModal
+                isOpen={addaddressmodalShow}
+                onClose={() => setAddaddressModalShow(false)}
+            />
+
+            {/* Add Address Modal */}
 
         </>
     )
