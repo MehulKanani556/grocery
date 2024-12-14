@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaAngleRight, FaBars } from 'react-icons/fa'
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { data, NavLink } from 'react-router-dom';
 import '../CSS/Sidebar.css';
 import User from '../Image/user.png';
 import MyOrder from '../Image/MyOrder.png';
@@ -10,18 +10,17 @@ import Address from '../Image/address (2).png';
 import Privacy from '../Image/privacy.png';
 import Logout from '../Image/logout.png';
 import Payment from '../Image/payment.png'
-import { Accordion, Modal, Offcanvas } from 'react-bootstrap';
-import { IoCloseSharp } from 'react-icons/io5';
+import { Offcanvas } from 'react-bootstrap';
 import LogoutModal from './LogoutModal';
-// import { FaBagShopping } from 'react-icons/fa6';
+import axios from 'axios';
+
+const BaseUrl = process.env.REACT_APP_BASEURL;
 
 const Sidebar = () => {
 
-
-  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [logoutmodalShow, setLogoutModalShow] = useState(false);
-
+  const [user, setUser] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -30,15 +29,35 @@ const Sidebar = () => {
     setLogoutModalShow(false);
   }
 
-  const logoutUser =() => {
+  const logoutUser = () => {
     localStorage.removeItem('userId');
     localStorage.removeItem('token');
+    localStorage.removeItem('wishlist');
 
-    setLogoutModalShow(false); 
+    setLogoutModalShow(false);
   }
 
-  const UserId = localStorage.getItem('userId');
-  
+  const userId = localStorage.getItem('userId');
+  const token = localStorage.getItem('token');
+  // console.log("userId", userId);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${BaseUrl}/api/getUser/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUser(response.data.data)
+      // console.log("response", response.data.data);
+
+    } catch (error) {
+      console.error('Data Fetching Error:', error);
+    }
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <>
       <div className=' '>
@@ -60,10 +79,10 @@ const Sidebar = () => {
                   <img src={User} alt="User Avatar" />
                 </div>
                 <div className="V_account_data d-flex align-items-center">
-                  <div className="user-data ">
-                    <p className="text-white text-medium mb-0">Ruhi Gupta</p>
-                    <span className="text-white mb-0">+91 9874563210</span>
-                  </div>
+                    <div className="user-data " >
+                      <p className="text-white text-medium mb-0">{user.name || ''}</p>
+                      <span className="text-white mb-0">+91 {user.mobileNo}</span>
+                    </div>
                 </div>
                 <div className="V_account_icon ms-auto">
                   <FaAngleRight className="text-white " />

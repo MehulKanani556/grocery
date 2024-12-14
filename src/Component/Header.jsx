@@ -130,6 +130,15 @@ const Header = () => {
                                 </Link>
                                 <Link to={'/cart'} >
                                     <li className='flex items-center mx-2 relative'>
+                                <li className='flex items-center mx-2 relative'>
+                                    <GoHeart className='text-2xl mx-2' />
+                                    <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-1 left-3 transform translate-x-1/2 -translate-y-1/2'>
+                                        {wishList || 0}
+                                    </span>
+                                    <p className='text-sm ml-3'>Wishlist</p>
+                                </li>
+                                    <Link to={'/cart'}>
+                                <li className='flex items-center mx-2 relative' >
                                         <FiShoppingCart className='text-2xl mx-2 fw-bold' />
                                         <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-2 left-3 transform translate-x-1/2 -translate-y-1/2'>
                                             {AddToCart || 0}
@@ -137,6 +146,8 @@ const Header = () => {
                                         <p className='text-sm ml-3'>My Cart <p className='text-xs text-[#AB92F3] fw-bold'>$10</p></p>
                                     </li>
                                 </Link>
+                                </li>
+                                    </Link>
                                 <li className='flex items-center mx-2'>
                                     <MdOutlineLocationOn className='text-2xl mx-2 fw-bold' />
                                     <p className='text-xs'>Diliver To Karnataka
@@ -242,7 +253,7 @@ const Header = () => {
                                 </Dropdown>
                             </li>
                             <li className='my-3' onClick={() => setLoginModalShow(true)}>
-                                <img src={require('../Image/user.png')} alt="" className='rounded-full' />
+                                <img src={require('../Image/user.png')} alt="" className='rounded-full w-[40px] h-[40px]' />
                             </li>
                         </ul>
                     </Offcanvas.Body>

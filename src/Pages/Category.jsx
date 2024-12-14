@@ -1,24 +1,26 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { MdKeyboardDoubleArrowRight, MdOutlineShoppingCart } from "react-icons/md";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SubHeader from "../Component/SubHeader";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Dropdown } from "react-bootstrap";
 import { BiSortAlt2 } from "react-icons/bi";
-import { jwtDecode } from 'jwt-decode';
 import Login from "../Component/Login";
 
 
 const BaseUrl = process.env.REACT_APP_BASEURL;
 const token = localStorage.getItem('token');
+const userId = localStorage.getItem('userId');
 // console.log("token",token);
 
 const Category = () => {
 
     const location = useLocation();
+    const navigate = useNavigate();
     const id = location.state?.id;   // Get the category ID from location state
 
+    // console.log("id>>>>>>>", id);
 
     const [categoryData, setCategoryData] = useState([]);  // State to store category data
     const [category, setCategory] = useState([]);
@@ -124,47 +126,35 @@ const Category = () => {
         setProductData(sortedData);
     };
     const handleAddWishList = async (productId) => {
-        console.log("token", token);
+        // console.log("token", token);
+        setWishlist([...wishlist, productId]);
 
         if (!token) {
             setLoginModalShow(true);
             return;
         }
 
-        if (wishlist.includes(productId)) {
-            // setWishlist(wishlist.filter(id => id !== productId));
-        } else {
-            setWishlist([...wishlist, productId]);
-
-            try {
-                const decodedToken = jwtDecode(token);
-                const userId = decodedToken._id;
-
-                await axios.post(`${BaseUrl}/api/createWishList`, {
-                    productId,
-                    userId
-                }, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-            } catch (error) {
-                console.error('Data fetching error:', error);
-            }
+        try {
+            await axios.post(`${BaseUrl}/api/createWishList`, {
+                productId,
+                userId
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+        } catch (error) {
+            console.error('Data fetching error:', error);
         }
     };
 
     const handleAddToCart = async (id, quantity) => {
-        console.log("djhfchnjksn");
 
         if (!token) {
             setLoginModalShow(true);
             return;
         }
         try {
-            const decodedToken = jwtDecode(token);
-            const userId = decodedToken._id;
-
             await axios.post(`${BaseUrl}/api/addToCart`, {
                 productId: id,
                 userId: userId,
@@ -177,6 +167,10 @@ const Category = () => {
         } catch (error) {
             console.error('Data Fetching Error');
         }
+    }
+
+    const handleProduct= (id) => {
+        navigate(`/detail/${id}`);
     }
     return (
         <>
@@ -197,7 +191,7 @@ const Category = () => {
                     md:block 
                     ${isSidebarOpen ? 'block absolute top-0 left-10 ' : 'hidden'}
                     bg-white
-                `} style={{ zIndex: '-1' }}>
+                `} >
                     <ul className="ps-4 s_subCat_ul">
                         {categoryData.map((item, index) => (
                             <li
@@ -318,6 +312,7 @@ const Category = () => {
                                             src={`${BaseUrl}/${item.productImage[0].replace(/\\/g, '/')}`}
                                             alt={item.productName}
                                             className="h-40 w-40 object-contain mb-4 mx-auto"
+                                            onClick={() => handleProduct(item._id)}
                                         />
                                         <small className="text-gray-500">{getCategoryName(item.categoryId)}</small>
                                         <h4 className="font-semibold text-lg">{item.productName}</h4>
