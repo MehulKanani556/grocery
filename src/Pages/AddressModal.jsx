@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import '../CSS/dstyle.css';
 import { MdOutlineHomeRepairService } from 'react-icons/md';
@@ -9,8 +9,9 @@ import { IoCloseSharp } from 'react-icons/io5';
 import { RiHome4Line } from 'react-icons/ri';
 import axios from 'axios';
 
-const AddressModal = ({isOpen, onClose}) => {
+const AddressModal = ({ isOpen, onClose, isId }) => {
 
+    // console.log('isId', isId)
 
     const BaseUrl = process.env.REACT_APP_BASEURL;
     const userId = localStorage.getItem('userId');
@@ -26,6 +27,17 @@ const AddressModal = ({isOpen, onClose}) => {
         yourName: '',
         yourPhoneNumber: ''
     });
+
+    const [editAddress, setEditAddress] = useState({
+        orderFor: '',
+        saveAddressAs: '',
+        houseNo: '',
+        floor: '',
+        area: '',
+        locality: '',
+        yourName: '',
+        yourPhoneNumber: ''
+    })
 
     const handleActiveClass = (event, value) => {
 
@@ -43,52 +55,131 @@ const AddressModal = ({isOpen, onClose}) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setAddressValue(prevValues => ({
-            ...prevValues,
-            [name]: value
-        }));
+
+        if (isId) {
+            setEditAddress(prevValues => ({
+                ...prevValues,
+                [name]: value
+            }))
+        } 
+            setAddressValue(prevValues => ({
+                ...prevValues,
+                [name]: value
+            }));
+        
     };
 
-    const handleAddress = async () => {     
 
-        try {
-            const response = await axios.post(`${BaseUrl}/api/createDeliveryAddress`, {
-                userId,
-                ...addressValue,
-            },
-                {
-                    headers: {
-                        Authorization: `Berar ${token}`
-                    }
+
+    const handleAddress = async () => {
+
+        if (isId) {
+            console.log('update api called')
+            console.log(editAddress)
+
+            try {
+
+                const response = await axios.put(`${BaseUrl}/api/updateAddress/${isId}`, {
+                    ...editAddress,
+                },
+                    {
+                        headers: {
+                            Authorization: `Berar ${token}`
+                        }
+                    });
+
+                const editaddressdata = response?.data.data;
+                console.log('editaddressSDFSDF', editaddressdata);
+
+
+                // setAddressValue({
+                //     orderFor: editAddress?.orderFor || editaddressdata.orderFor,
+                //     saveAddressAs: editAddress?.saveAddressAs || editaddressdata.saveAddressAs,
+                //     houseNo: editAddress?.houseNo || editaddressdata.houseNo,
+                //     floor: editAddress?.floor || editaddressdata.floor,
+                //     area: editAddress?.area || editaddressdata.area,
+                //     locality: editAddress?.locality || editaddressdata.locality,
+                //     yourName: editaddressdata.yourName,
+                //     yourPhoneNumber: editaddressdata.yourPhoneNumber,
+                // });
+
+                onClose();
+            }
+            catch (error) {
+                console.error('address is not saved', error);
+            }
+        }
+        else {
+            try {
+                const response = await axios.post(`${BaseUrl}/api/createDeliveryAddress`, {
+                    userId,
+                    ...addressValue,
+                },
+                    {
+                        headers: {
+                            Authorization: `Berar ${token}`
+                        }
+                    });
+
+                const addressdata = response.data;
+                // console.log('address', addressdata);
+
+
+                setAddressValue({
+                    orderFor: '',
+                    saveAddressAs: '',
+                    houseNo: '',
+                    floor: '',
+                    area: '',
+                    locality: '',
+                    yourName: '',
+                    yourPhoneNumber: '',
                 });
 
-            const addressdata = response.data;
-            console.log('address', addressdata);
-
-
-            setAddressValue({
-                orderFor: '',
-                saveAddressAs: '',
-                houseNo: '',
-                floor: '',
-                area: '',
-                locality: '',
-                yourName: '',
-                yourPhoneNumber: '',
-            });
-
-            onClose();
+                onClose();
+            }
+            catch (error) {
+                console.error('address is not saved', error);
+            }
         }
-        catch (error) {
-            console.error('address is not saved', error);
-        }
-
     }
-  return (
-    <>
-       {/* Add Address Modal */}
 
-       <Modal
+
+
+    useEffect(
+        () => {
+            if (isId) {
+                axios.get(`${BaseUrl}/api/getAddress/${isId}`,
+                    {
+                        headers: {
+                            Authorization: `Berar ${token}`
+                        }
+                    }
+
+                ).then((res) => {
+                    // console.log("as", res)
+                    const prevData = res.data.data
+                    // console.log('prev', prevData);
+                    setEditAddress({
+                        orderFor: prevData.orderFor,
+                        saveAddressAs: prevData.saveAddressAs,
+                        houseNo: prevData.houseNo,
+                        floor: prevData.floor,
+                        area: prevData.area,
+                        locality: prevData.locality,
+                        yourName: prevData.yourName,
+                        yourPhoneNumber: prevData.yourPhoneNumber,
+                    });
+                });
+            }
+
+        }, [isId]);
+
+    return (
+        <>
+            {/* Add Address Modal */}
+
+            <Modal
                 show={isOpen}
                 onHide={onClose}
                 size="lg"
@@ -130,7 +221,7 @@ const AddressModal = ({isOpen, onClose}) => {
                                 <div className="d_enteraddress">
                                     <div className="d_head pb-2 d-flex justify-content-between align-items-center">
                                         <h6>Enter complete address </h6>
-                                        <IoCloseSharp  onClick={onClose}/>
+                                        <IoCloseSharp onClick={onClose} />
                                     </div>
                                     <div className="d_ordering">
                                         <div className='d_que'>Who you are ordering for?</div>
@@ -139,7 +230,7 @@ const AddressModal = ({isOpen, onClose}) => {
                                                 <input type="radio" className='me-2' name='orderFor'
                                                     value="Myself"
                                                     onChange={handleChange}
-                                                    checked={addressValue.orderFor === "Myself"}
+                                                    checked={addressValue.orderFor === "Myself" }
                                                 />
                                                 <label>Myself</label>
                                             </div>
@@ -157,7 +248,7 @@ const AddressModal = ({isOpen, onClose}) => {
                                             <p className='mb-1'>Save address as</p>
                                             <div className="d-flex align-items-center flex-wrap">
                                                 <Link className='d-flex align-items-center active me-lg-3 me-2 d_cur' onClick={(event) => handleActiveClass(event, "Home")}>
-                                                    <RiHome4Line     className='me-1 d_addressicon' />
+                                                    <RiHome4Line className='me-1 d_addressicon' />
                                                     <p className='mb-0'>Home</p>
                                                 </Link>
                                                 <Link className='d-flex align-items-center me-lg-3 me-2 d_cur' onClick={(event) => handleActiveClass(event, "Work")}>
@@ -180,28 +271,29 @@ const AddressModal = ({isOpen, onClose}) => {
                                                 <div className="col-12">
                                                     <input type="text" placeholder='Flat / House no / Building name'
                                                         name='houseNo'
-                                                        value={addressValue.houseNo}
+                                                        value={isId ? (editAddress.houseNo) : (addressValue.houseNo)}
                                                         onChange={handleChange}
                                                     />
                                                 </div>
                                                 <div className="col-12">
                                                     <input type="text" placeholder='Floor (optional)'
                                                         name='floor'
-                                                        value={addressValue.floor}
+                                                        value={isId ? (editAddress.floor) : (addressValue.floor)}
                                                         onChange={handleChange}
                                                     />
                                                 </div>
                                                 <div className="col-12">
                                                     <input type="text" placeholder='Area'
                                                         name='area'
-                                                        value={addressValue.area}
+                                                        value={isId ? (editAddress.area) : (addressValue.area)}
                                                         onChange={handleChange}
                                                     />
+                                                    {/* {console.log(addressValue.area)} */}
                                                 </div>
                                                 <div className="col-12">
                                                     <input type="text" placeholder='Sector/Locality'
                                                         name='locality'
-                                                        value={addressValue.locality}
+                                                        value={isId ? (editAddress.locality) : (addressValue.locality)}
                                                         onChange={handleChange}
                                                     />
                                                 </div>
@@ -209,25 +301,27 @@ const AddressModal = ({isOpen, onClose}) => {
                                                 <div className="col-12">
                                                     <input type="text" placeholder='Your name'
                                                         name='yourName'
-                                                        value={addressValue.yourName}
+                                                        value={isId ? (editAddress.yourName) : (addressValue.yourName)}
                                                         onChange={handleChange}
                                                     />
                                                 </div>
                                                 <div className="col-12">
                                                     <input type="text" placeholder='Your phone number'
                                                         name='yourPhoneNumber'
-                                                        value={addressValue.yourPhoneNumber}
+                                                        value={isId ? (editAddress.yourPhoneNumber) : (addressValue.yourPhoneNumber)}
                                                         onChange={handleChange}
                                                     />
                                                 </div>
                                                 <div className="col-12">
-                                                    <Link to="" className='d-block text-center d_saveaddbtn' onClick={handleAddress}>Save address</Link>
+                                                    <Link to="" className='d-block text-center d_saveaddbtn' onClick={handleAddress}> {isId ? 'Edit Address' : 'Save Address'}</Link>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
                 </Modal.Body>
@@ -235,7 +329,7 @@ const AddressModal = ({isOpen, onClose}) => {
 
 
             {/* Add Address Modal */}</>
-  )
+    )
 }
 
 export default AddressModal

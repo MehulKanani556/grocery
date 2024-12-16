@@ -18,6 +18,7 @@ const Adderess = () => {
   const [addaddressmodalShow, setAddaddressModalShow] = useState(false);
   const [myAddress, setMyAddress] = useState([]);
   const [deleteAddress, setdeleteAddress] = useState(0);
+  const [editAddress, setEditAddress ] = useState('');
 
   const BaseUrl = process.env.REACT_APP_BASEURL;
   const userId = localStorage.getItem('userId');
@@ -32,7 +33,7 @@ const Adderess = () => {
       })
       .then((Response) => {
         setMyAddress(Response?.data?.data || []);
-        console.log("Addresses:", Response?.data?.data);
+        // console.log("Addresses:", Response?.data?.data);
       })
       .catch((error) => {
         console.error("Error fetching addresses:", error);
@@ -40,20 +41,39 @@ const Adderess = () => {
   }, [BaseUrl, token, userId, deleteAddress]);
 
   const handleDeleteAddress = async (id) => {
-    console.log('id', id);
+    // console.log('id', id);
     try {
-      await axios.delete(`${BaseUrl}/api/deleteAddress/${id}`,
+     await axios.delete(`${BaseUrl}/api/deleteAddress/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           }
         });
-        setdeleteAddress(deleteAddress + 1)
+      setdeleteAddress(deleteAddress + 1)
     }
     catch (error) {
       console.error('Id is not found for delete address', error);
     }
   }
+
+//   const handleEditAddress = async (id) => {
+//     console.log('id', id);
+//     try {
+//       const editAddressData = await axios.put(`${BaseUrl}/api/updateAddress/${id}`,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           }
+//         }
+//       );
+
+// console.log(editAddressData)
+
+//     }
+//     catch (error) {
+//       console.error('address is not edited successfully', error);
+//     }
+//   }
 
   return (
     <>
@@ -62,7 +82,7 @@ const Adderess = () => {
           <div className=" pt-md-3 d-flex align-items-center justify-content-between">
             <h2 className=" pb-4 py-md-4">Manage Address</h2>
           </div>
-          <div className='V_add_border' onClick={() => setAddaddressModalShow(true)}>
+          <div className='V_add_border' onClick={() => {setAddaddressModalShow(true); setEditAddress('')}}>
             <button type="button" className="V_btn_text" >
               + Add A New Address
             </button>
@@ -82,9 +102,9 @@ const Adderess = () => {
 
                     <Dropdown.Menu className="V_drop_menu">
                       <Dropdown.Item
-                        href="#edit"
+                        href=""
                         className="d-flex"
-                        onClick={() => setAddaddressModalShow(true)}
+                        onClick={() => { setAddaddressModalShow(true); setEditAddress(element._id) }}
                       >
                         <img src={Edit} alt="" className="V_delete pe-3" />
                         <p>Edit</p>
@@ -225,6 +245,7 @@ const Adderess = () => {
       <AddressModal
         isOpen={addaddressmodalShow}
         onClose={() => setAddaddressModalShow(false)}
+        isId={editAddress}
       />
 
       {/* Add Address Modal */}
