@@ -319,12 +319,12 @@ const Cart = () => {
                                         <div className="col-12 col-xl-6">
                                             <div className="d_item">
                                                 <div className="row align-items-center" key={index}>
-                                                    <div className="col-3">
+                                                    <div className="col-12 col-sm-3">
                                                         <div className="d_img">
                                                             <img src={`${BaseUrl}/${item.productId.productImage[0]}`} alt="" />
                                                         </div>
                                                     </div>
-                                                    <div className="col-9">
+                                                    <div className="col-12 col-sm-9">
                                                         <div className="d_desc">
                                                             <div className="d_type">{getSubCatname(item.productId.subCategoryId)}</div>
                                                             <div className="d-flex flex-sm-nowrap flex-wrap align-items-center justify-content-between">

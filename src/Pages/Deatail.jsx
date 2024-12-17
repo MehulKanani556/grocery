@@ -7,6 +7,7 @@ import SubHeader from '../Component/SubHeader'
 import Footer from '../Component/Footer'
 import axios from 'axios'
 import Login from '../Component/Login'
+import { useCart } from '../Context/CartContext'
 
 const Deatail = () => {
 
@@ -24,6 +25,7 @@ const Deatail = () => {
     const [loginmodalShow, setLoginModalShow] = useState(false);
     const [otpmodalShow, setOtpModalShow] = useState(false);
     const [quantity, setQuantity] = useState(1);
+    const { addToCart } = useCart();
 
     const handleImageClick = (imageUrl) => {
         setMainImage(imageUrl);
@@ -36,7 +38,7 @@ const Deatail = () => {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             })
-            // console.log("response", res.data.data);
+            console.log("response", res.data.data);
             setPrdouctDetail(res.data.data);
         }
         catch (error) {
@@ -89,24 +91,26 @@ const Deatail = () => {
         }
     }
     const handleAddToCart = async (id) => {
-        if (!token) {
-            setLoginModalShow(true);
-            return;
-        }
-        try {
-            await axios.post(`${BaseUrl}/api/addToCart`, {
-                productId: id,
-                userId: userId,
-                quantity: quantity
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-        } catch (error) {
-            console.error('Data Fetching Error');
-        }
-    }
+           if (!token) {
+               setLoginModalShow(true);
+               return;
+           }
+           try {
+               await axios.post(`${BaseUrl}/api/addToCart`, {
+                   productId: id,
+                   userId: userId,
+                   quantity: quantity
+               }, {
+                   headers: {
+                       Authorization: `Bearer ${token}`
+                   }
+               });
+               addToCart({id, quantity})
+           } catch (error) {
+               console.error('Data Fetching Error');
+           }
+       }
+
     useEffect(() => {
         if (productdetail?.productImage?.length > 0) {
             setMainImage(productdetail.productImage[0]);
@@ -218,7 +222,7 @@ const Deatail = () => {
                                     <div className="d_type">{subCategoryName}</div>
                                     <div className="d-flex align-items-center justify-content-between">
                                         <div className="d_name">{productdetail?.productName}</div>
-                                        <div className="d_size">{productdetail?.productDetails}</div>
+                                        <div className="d_size">{productdetail?.weight}</div>
                                     </div>
                                     <div className="d_saved">You Saved ${productdetail?.discount} %</div>
                                     <div className="d-flex align-items-center justify-content-between">
