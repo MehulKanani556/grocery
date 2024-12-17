@@ -29,6 +29,7 @@ const Profile = () => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const validationSchema = Yup.object().shape({
@@ -49,10 +50,13 @@ const Profile = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      
-      setUserData(response.data.data);
-      setIsEditing(false);
-      
+      // console.log("response",response.data.success);
+      if (response.data.success) {
+        alert('Profile Update Successfully......');
+        setUserData(response.data.data);
+        setIsEditing(false);
+      }
+
     } catch (error) {
       console.error('Profile Update Error:', error);
     }

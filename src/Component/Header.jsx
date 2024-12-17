@@ -5,7 +5,7 @@ import { MdOutlineKeyboardVoice } from "react-icons/md";
 import { FiShoppingCart } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GoHeart } from 'react-icons/go';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Login from './Login';
 
@@ -25,10 +25,8 @@ const Header = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true)
 
-    const navigate = useNavigate();
-
     const token = localStorage.getItem('token');
-
+    const id = localStorage.getItem('userId');
 
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
@@ -48,7 +46,7 @@ const Header = () => {
 
     const fetchWishList = async () => {
         try {
-            const response = await axios.get(`${BaseUrl}/api/allWishList`, {
+            const response = await axios.get(`${BaseUrl}/api/allMyWishList/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -63,7 +61,7 @@ const Header = () => {
 
     const fetchAddCart = async () => {
         try {
-            const response = await axios.get(`${BaseUrl}/api/allCarts`, {
+            const response = await axios.get(`${BaseUrl}/api/allMyCarts/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

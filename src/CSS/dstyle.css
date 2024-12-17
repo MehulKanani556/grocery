@@ -547,9 +547,9 @@
     font-weight: 600;
     color: #212121;
 }
-.d_deliveryadd .d_savedaddress .d_img img{
+/* .d_deliveryadd .d_savedaddress .d_img img{
     width: 60px;
-}
+} */
 .d_deliveryadd .d_addinput .d_desc{
     font-size: 14px;
     font-weight: 400;

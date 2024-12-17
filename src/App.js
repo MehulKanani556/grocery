@@ -38,7 +38,7 @@ function App() {
             <Route path='/detail/:id' element={<Deatail />} />
 
             <Route path='/category' element={<Category />} />
-            {/* <Route path='/cart' element={<Cart />} /> */}
+            <Route path='/cart' element={<Cart />} />
           </Route>
 
           {/* sidebar */}
