@@ -7,9 +7,12 @@ import { MdOutlineShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Login from './Login';
+import { useCart } from '../Context/CartContext';
 
 const Slider = ({ title, data, type, BaseUrl }) => {
 
+
+    const { addToCart } = useCart();
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
 
@@ -42,14 +45,30 @@ const Slider = ({ title, data, type, BaseUrl }) => {
     }, []);
 
     const handleAddToCart = async (id, quantity) => {
+        // console.log("id",id);
+        
         if (!token) {
             setLoginModalShow(true);
             return;
         }
+    
         try {
-        
-            await axios.post(`${BaseUrl}/api/addToCart`, {
-                productId: id,
+            // Fetch products from the API
+            const productResponse = await axios.get(`${BaseUrl}/api/getUserProduct`);
+            const productData = productResponse.data.data;
+    
+            // Find products matching the categoryId
+            const matchedProducts = productData.filter((item) => item.categoryId === id);
+
+    
+            if (matchedProducts.length === 0) {
+                console.warn(`No products found for categoryId: ${id}`);
+                return;
+            }
+            const productId = matchedProducts[0]._id;
+
+           await axios.post(`${BaseUrl}/api/addToCart`, {
+                productId: productId,
                 userId: userId,
                 quantity: quantity
             }, {
@@ -57,10 +76,13 @@ const Slider = ({ title, data, type, BaseUrl }) => {
                     Authorization: `Bearer ${token}`
                 }
             });
+            addToCart({id, quantity});
         } catch (error) {
-            console.error('Data Fetching Error');
+            console.error('Error while adding product to cart:', error);
         }
-    }
+    };
+
+    
     const getCategoryName = (categoryId) => {
         const catName = category.find((cat) => cat._id === categoryId);
         return catName ? catName.categoryName : "";

@@ -4,14 +4,17 @@ import { MdKeyboardArrowDown, MdOutlineLocationOn } from "react-icons/md";
 import { MdOutlineKeyboardVoice } from "react-icons/md";
 import { FiShoppingCart } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { GoHeart } from 'react-icons/go';
+// import { GoHeart } from 'react-icons/go';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Login from './Login';
+import AddressModal from '../Pages/AddressModal';
+import { useCart } from '../Context/CartContext';
 
 
 const Header = () => {
 
+    const { cartItems } = useCart();
     const BaseUrl = process.env.REACT_APP_BASEURL;
 
     const [showDropdown, setShowDropdown] = useState(false);
@@ -19,11 +22,15 @@ const Header = () => {
     const [loginmodalShow, setLoginModalShow] = useState(false);
     const [otpmodalShow, setOtpModalShow] = useState(false);
     const [catogeroDrop, setCatogeryDrop] = useState([]);
-    const [wishList, setWishList] = useState('');
+    // const [wishList, setWishList] = useState('');
     const [AddToCart, setAddToCart] = useState('');
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true)
+    const handleShow = () => setShow(true);
+
+    const [addaddressmodalShow, setAddaddressModalShow] = useState(false);
+    const [editAddress, setEditAddress] = useState('');
+
 
     const token = localStorage.getItem('token');
     const id = localStorage.getItem('userId');
@@ -44,20 +51,20 @@ const Header = () => {
         }
     }
 
-    const fetchWishList = async () => {
-        try {
-            const response = await axios.get(`${BaseUrl}/api/allMyWishList/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            setWishList(response.data.totalWishList);
+    // const fetchWishList = async () => {
+    //     try {
+    //         const response = await axios.get(`${BaseUrl}/api/allMyWishList/${id}`, {
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //             },
+    //         });
+    //         setWishList(response.data.totalWishList);
 
-            // console.log("wishlist", response.data.totalWishList);
-        } catch (error) {
-            console.error("Data Fetching Error:", error);
-        }
-    };
+    //         // console.log("wishlist", response.data.totalWishList);
+    //     } catch (error) {
+    //         console.error("Data Fetching Error:", error);
+    //     }
+    // };
 
     const fetchAddCart = async () => {
         try {
@@ -76,7 +83,7 @@ const Header = () => {
 
     useEffect(() => {
         fetchcatogerydrop();
-        fetchWishList();
+        // fetchWishList();
         fetchAddCart();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -117,7 +124,7 @@ const Header = () => {
                         </Col>
                         <Col xl={5} lg={12}>
                             <ul className='flex items-center xl:justify-end justify-center xl:mt-0 mt-3'>
-                                <Link to={'/user/wishlist'} >
+                                {/* <Link to={'/user/wishlist'} >
                                     <li className='flex items-center mx-2 relative'>
                                         <GoHeart className='text-2xl mx-2' />
                                         <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-1 left-3 transform translate-x-1/2 -translate-y-1/2'>
@@ -125,17 +132,18 @@ const Header = () => {
                                         </span>
                                         <p className='text-sm ml-3' >Wishlist</p>
                                     </li>
-                                </Link>
+                                </Link> */}
+
                                 <Link to={'/cart'}>
                                     <li className='flex items-center mx-2 relative' >
                                         <FiShoppingCart className='text-2xl mx-2 fw-bold' />
                                         <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-2 left-3 transform translate-x-1/2 -translate-y-1/2'>
-                                            {AddToCart || 0}
+                                            {cartItems.length || 0}
                                         </span>
                                         <p className='text-sm ml-3'>My Cart <p className='text-xs text-[#AB92F3] fw-bold'>$10</p></p>
                                     </li>
                                 </Link>
-                                <li className='flex items-center mx-2'>
+                                <li className='flex items-center mx-2' onClick={() => { setAddaddressModalShow(true); setEditAddress('') }}>
                                     <MdOutlineLocationOn className='text-2xl mx-2 fw-bold' />
                                     <p className='text-xs'>Diliver To Karnataka
                                         <div className='d-flex'>
@@ -204,21 +212,24 @@ const Header = () => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <ul >
-                            <li className='flex items-center my-3 relative'>
+                            {/* <li className='flex items-center my-3 relative'>
                                 <GoHeart className='text-2xl mx-2' />
                                 <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-1 left-3 transform translate-x-1/2 -translate-y-1/2'>
                                     {wishList || 0}
                                 </span>
                                 <p className='text-sm ml-3'>Wishlist</p>
-                            </li>
-                            <li className='flex items-center my-3 relative'>
-                                <FiShoppingCart className='text-2xl mx-2 fw-bold' />
-                                <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-2 left-3 transform translate-x-1/2 -translate-y-1/2'>
-                                    {AddToCart || 0}
-                                </span>
-                                <p className='text-sm ml-3'>My Cart <p className='text-xs text-[#AB92F3] fw-bold'>$10</p></p>
-                            </li>
-                            <li className='flex items-center my-3'>
+                            </li> */}
+
+                            <Link to={'/cart'}>
+                                <li className='flex items-center mx-2 relative' >
+                                    <FiShoppingCart className='text-2xl mx-2 fw-bold' />
+                                    <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-2 left-3 transform translate-x-1/2 -translate-y-1/2'>
+                                        {cartItems.length || 0}
+                                    </span>
+                                    <p className='text-sm ml-3'>My Cart <p className='text-xs text-[#AB92F3] fw-bold'>$10</p></p>
+                                </li>
+                            </Link>
+                            <li className='flex items-center my-3' onClick={() => { setAddaddressModalShow(true); setEditAddress('') }}>
                                 <MdOutlineLocationOn className='text-2xl mx-2 fw-bold' />
                                 <p className='text-xs'>Diliver To Karnataka
                                     <div className='d-flex'>
@@ -254,6 +265,11 @@ const Header = () => {
                 setOtpModalShow={setOtpModalShow}
             />
 
+            <AddressModal
+                isOpen={addaddressmodalShow}
+                onClose={() => setAddaddressModalShow(false)}
+                isId={editAddress}
+            />
         </>
     );
 }
