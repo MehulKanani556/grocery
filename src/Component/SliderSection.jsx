@@ -7,7 +7,6 @@ import { MdOutlineShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Login from './Login';
-import { useCart } from '../Context/CartContext';
 
 const Slider = ({ title, data, type, BaseUrl }) => {
 // console.log("data",data);

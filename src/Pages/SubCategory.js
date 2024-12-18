@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MdKeyboardDoubleArrowRight, MdOutlineShoppingCart } from "react-icons/md";
 import Login from "../Component/Login";
 import { useCart } from "../Context/CartContext";
-
+import { useCallback } from "react";
 const BaseUrl = process.env.REACT_APP_BASEURL;
 const token = localStorage.getItem('token');
 const userId = localStorage.getItem('userId');
@@ -50,26 +50,29 @@ const SubCategory = () => {
         }
     };
 
-    const fetchProducts = async () => {
+
+    const fetchProducts = useCallback(async () => {
         try {
             if (selectedId) {
                 const proResponse = await axios.get(`${BaseUrl}/api/getUserProduct`);
                 const matchingProducts = proResponse.data.data.filter(
                     (product) => product.subCategoryId === selectedId
                 );
+                console.log("Matching Products:", matchingProducts);
                 setProductData(matchingProducts);
-                console.log('Matching Products:', matchingProducts);
             }
         } catch (error) {
-            console.error('Product Fetching Error:', error);
+            console.error("Product Fetching Error:", error);
         }
-    };
+    }, [selectedId]);
+
+    useEffect(() => {
+        fetchProducts();
+    }, [fetchProducts]);
 
     useEffect(() => {
         fetchCategories();
-        fetchProducts();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedId]);
+    }, []);
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -124,7 +127,7 @@ const SubCategory = () => {
                     Authorization: `Bearer ${token}`
                 }
             });
-            // addToCart({id, quantity})
+            addToCart({ id, quantity });
         } catch (error) {
             console.error('Data Fetching Error', error);
         }

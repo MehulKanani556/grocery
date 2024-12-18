@@ -73,7 +73,8 @@ const Cart = () => {
         fetchData();
         fatchSubCategory();
         fetchAddress();
-    }, [address]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleCouponApply = () => {
         navigate('/user/coupon');
@@ -182,8 +183,8 @@ const Cart = () => {
             console.log("orderResponse", orderResponse);
 
             if (orderResponse.data.status === 201) {
-               alert('order Create Successfully');
-               navigate('/user/order');
+                alert('order Create Successfully');
+                navigate('/user/order');
             }
         } catch (error) {
             console.error('Error creating order:', error);
@@ -192,8 +193,9 @@ const Cart = () => {
     };
     return (
         <>
-
-            <SubHeader />
+            <div className="my-3 border-b s_sub_header">
+                <SubHeader />
+            </div>
 
             <div className="container-fluid">
                 <div className="row d_100vh flex-lg-row flex-column-reverse">
