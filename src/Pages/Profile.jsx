@@ -102,7 +102,7 @@ const Profile = () => {
                       placeholder="Enter Name"
                       disabled={!isEditing}
                     />
-                    <ErrorMessage name="name" component="div" className="text-danger" />
+                    <ErrorMessage name="name" component="div" className="text-danger fs-6" />
                   </div>
                   <button className="V_btn_profile_edit" id="editButton" type="button" onClick={handleEditClick}>
                     Edit
@@ -118,7 +118,7 @@ const Profile = () => {
                     placeholder="Enter Number"
                     disabled={!isEditing}
                   />
-                  <ErrorMessage name="mobileNo" component="div" className="text-danger" />
+                  <ErrorMessage name="mobileNo" component="div" className="text-danger fs-6" />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="emailInput" className="form-label">Email</label>
@@ -130,7 +130,7 @@ const Profile = () => {
                     placeholder="Enter Email"
                     disabled={!isEditing}
                   />
-                  <ErrorMessage name="email" component="div" className="text-danger" />
+                  <ErrorMessage name="email" component="div" className="text-danger fs-6" />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="addressInput" className="form-label">Address</label>
@@ -143,7 +143,7 @@ const Profile = () => {
                     placeholder="Enter Address"
                     disabled={!isEditing}
                   />
-                  <ErrorMessage name="address" component="div" className="text-danger" />
+                  <ErrorMessage name="address" component="div" className="text-danger fs-6" />
                 </div>
 
                 <button
