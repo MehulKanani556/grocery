@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import '../CSS/Profile.css';
-import { Dropdown, Modal } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import Drop from '../Image/dropdot.png';
 import Edit from '../Image/edit.png';
 import Delete from '../Image/delete.png';
-import { Link } from 'react-router-dom';
-import { FiSearch } from 'react-icons/fi';
-import { IoCloseSharp } from 'react-icons/io5';
-import { RiHome4Line } from 'react-icons/ri';
-import { MdOutlineHomeRepairService } from 'react-icons/md';
-import { PiBuildingApartmentDuotone } from 'react-icons/pi';
+// import { Link } from 'react-router-dom';
+// import { FiSearch } from 'react-icons/fi';
+// import { IoCloseSharp } from 'react-icons/io5';
+// import { RiHome4Line } from 'react-icons/ri';
+// import { MdOutlineHomeRepairService } from 'react-icons/md';
+// import { PiBuildingApartmentDuotone } from 'react-icons/pi';
 import AddressModal from '../Pages/AddressModal';
 import axios from 'axios';
 
@@ -38,7 +38,7 @@ const Adderess = () => {
       .catch((error) => {
         console.error("Error fetching addresses:", error);
       });
-  }, [BaseUrl, token, userId, deleteAddress]);
+  }, [deleteAddress, addaddressmodalShow  ]);
 
   const handleDeleteAddress = async (id) => {
     // console.log('id', id);

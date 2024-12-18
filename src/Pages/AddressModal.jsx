@@ -61,70 +61,190 @@ const AddressModal = ({ isOpen, onClose, isId }) => {
                 ...prevValues,
                 [name]: value
             }))
-        } 
-            setAddressValue(prevValues => ({
-                ...prevValues,
-                [name]: value
-            }));
-        
+        }
+        setAddressValue(prevValues => ({
+            ...prevValues,
+            [name]: value
+        }));
+
     };
 
 
 
+    // const handleAddress = async () => {
+
+    //     const validateAddress = () => {
+    //         const errors = []; 
+    //         const { orderFor, saveAddressAs, houseNo, area, locality, yourName, yourPhoneNumber } = addressValue;
+
+    //         if (!orderFor) errors.push("Please select who you are ordering for.");
+    //         if (!saveAddressAs) errors.push("Please select how to save this address (Home, Work, etc).");
+    //         if (!houseNo) errors.push("Please enter the flat/house number.");
+    //         if (!area) errors.push("Please enter the area.");
+    //         if (!locality) errors.push("Please enter the sector/locality.");
+    //         if (!yourName) errors.push("Please enter your name.");
+    //         if (!yourPhoneNumber) {
+    //             errors.push("Please enter your phone number.");
+    //         } else if (!/^\d{10}$/.test(yourPhoneNumber)) {
+    //             errors.push("Phone number must be exactly 10 digits.");
+    //         }
+
+    //         return errors; // Return the array of errors
+    //     };
+
+    //     if (isId) {
+    //         console.log('update api called')
+    //         console.log(editAddress)
+
+    //         try {
+
+    //             const response = await axios.put(`${BaseUrl}/api/updateAddress/${isId}`, {
+    //                 ...editAddress,
+    //             },
+    //                 {
+    //                     headers: {
+    //                         Authorization: `Berar ${token}`
+    //                     }
+    //                 });
+
+    //             const editaddressdata = response?.data.data;
+    //             console.log('editaddressSDFSDF', editaddressdata);
+
+    //             onClose();
+    //         }
+    //         catch (error) {
+    //             console.error('address is not saved', error);
+    //         }
+    //     }
+    //     else {
+    //         try {
+
+               
+
+
+    //             const response = await axios.post(`${BaseUrl}/api/createDeliveryAddress`, {
+    //                 userId,
+    //                 ...addressValue,
+    //             },
+    //                 {
+    //                     headers: {
+    //                         Authorization: `Berar ${token}`
+    //                     }
+    //                 });
+
+    //             const addressdata = response.data;
+    //             // console.log('address', addressdata);
+
+
+
+    //             setAddressValue({
+    //                 orderFor: '',
+    //                 saveAddressAs: '',
+    //                 houseNo: '',
+    //                 floor: '',
+    //                 area: '',
+    //                 locality: '',
+    //                 yourName: '',
+    //                 yourPhoneNumber: '',
+    //             });
+
+    //             onClose();
+    //         }
+    //         catch (error) {
+    //             console.error('address is not saved', error);
+    //         }
+    //     }
+    // }
+
+
+
+    // useEffect(
+    //     () => {
+    //         if (isId) {
+    //             axios.get(`${BaseUrl}/api/getAddress/${isId}`,
+    //                 {
+    //                     headers: {
+    //                         Authorization: `Berar ${token}`
+    //                     }
+    //                 }
+
+    //             ).then((res) => {
+    //                 // console.log("as", res)
+    //                 const prevData = res.data.data
+    //                 // console.log('prev', prevData);
+    //                 setEditAddress({
+    //                     orderFor: prevData.orderFor,
+    //                     saveAddressAs: prevData.saveAddressAs,
+    //                     houseNo: prevData.houseNo,
+    //                     floor: prevData.floor,
+    //                     area: prevData.area,
+    //                     locality: prevData.locality,
+    //                     yourName: prevData.yourName,
+    //                     yourPhoneNumber: prevData.yourPhoneNumber,
+    //                 });
+    //             });
+    //         }
+
+    //     }, [isId]);
+
+
+
     const handleAddress = async () => {
-
-        if (isId) {
-            console.log('update api called')
-            console.log(editAddress)
-
-            try {
-
+        const validateAddress = () => {
+            const errors = [];
+            const { orderFor, saveAddressAs, houseNo, area, locality, yourName, yourPhoneNumber } = isId ? editAddress : addressValue;
+    
+            if (!orderFor) errors.push("Please select who you are ordering for.");
+            if (!saveAddressAs) errors.push("Please select how to save this address (Home, Work, etc).");
+            if (!houseNo) errors.push("Please enter the flat/house number.");
+            if (!area) errors.push("Please enter the area.");
+            if (!locality) errors.push("Please enter the sector/locality.");
+            if (!yourName) errors.push("Please enter your name.");
+            if (!yourPhoneNumber) {
+                errors.push("Please enter your phone number.");
+            } else if (!/^\d{10}$/.test(yourPhoneNumber)) {
+                errors.push("Phone number must be exactly 10 digits.");
+            }
+    
+            return errors; // Return the array of errors
+        };
+    
+        try {
+            const errors = validateAddress();
+            if (errors.length > 0) {
+                alert(errors.join("\n")); // Show all validation errors
+                return;
+            }
+    
+            if (isId) {
+                console.log("Update API called");
+                console.log(editAddress);
+    
                 const response = await axios.put(`${BaseUrl}/api/updateAddress/${isId}`, {
                     ...editAddress,
-                },
-                    {
-                        headers: {
-                            Authorization: `Berar ${token}`
-                        }
-                    });
-
-                const editaddressdata = response?.data.data;
-                console.log('editaddressSDFSDF', editaddressdata);
-
-
-                // setAddressValue({
-                //     orderFor: editAddress?.orderFor || editaddressdata.orderFor,
-                //     saveAddressAs: editAddress?.saveAddressAs || editaddressdata.saveAddressAs,
-                //     houseNo: editAddress?.houseNo || editaddressdata.houseNo,
-                //     floor: editAddress?.floor || editaddressdata.floor,
-                //     area: editAddress?.area || editaddressdata.area,
-                //     locality: editAddress?.locality || editaddressdata.locality,
-                //     yourName: editaddressdata.yourName,
-                //     yourPhoneNumber: editaddressdata.yourPhoneNumber,
-                // });
-
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Fixed typo
+                    },
+                });
+    
+                const updatedData = response?.data?.data;
+                console.log("Updated Address:", updatedData);
                 onClose();
-            }
-            catch (error) {
-                console.error('address is not saved', error);
-            }
-        }
-        else {
-            try {
+            } else {
                 const response = await axios.post(`${BaseUrl}/api/createDeliveryAddress`, {
                     userId,
                     ...addressValue,
-                },
-                    {
-                        headers: {
-                            Authorization: `Berar ${token}`
-                        }
-                    });
-
-                const addressdata = response.data;
-                // console.log('address', addressdata);
-
-
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Fixed typo
+                    },
+                });
+    
+                const addressData = response?.data;
+                console.log("Created Address:", addressData);
+    
+                // Reset form fields
                 setAddressValue({
                     orderFor: '',
                     saveAddressAs: '',
@@ -135,45 +255,38 @@ const AddressModal = ({ isOpen, onClose, isId }) => {
                     yourName: '',
                     yourPhoneNumber: '',
                 });
-
+    
                 onClose();
             }
-            catch (error) {
-                console.error('address is not saved', error);
-            }
+        } catch (error) {
+            console.error("Error saving/updating address:", error);
         }
-    }
-
-
-
-    useEffect(
-        () => {
-            if (isId) {
-                axios.get(`${BaseUrl}/api/getAddress/${isId}`,
-                    {
-                        headers: {
-                            Authorization: `Berar ${token}`
-                        }
-                    }
-
-                ).then((res) => {
-                    // console.log("as", res)
-                    const prevData = res.data.data
-                    // console.log('prev', prevData);
-                    setEditAddress({
-                        orderFor: prevData.orderFor,
-                        saveAddressAs: prevData.saveAddressAs,
-                        houseNo: prevData.houseNo,
-                        floor: prevData.floor,
-                        area: prevData.area,
-                        locality: prevData.locality,
-                        yourName: prevData.yourName,
-                        yourPhoneNumber: prevData.yourPhoneNumber,
-                    });
+    };
+    
+    useEffect(() => {
+        if (isId) {
+            axios.get(`${BaseUrl}/api/getAddress/${isId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Fixed typo
+                },
+            }).then((res) => {
+                const prevData = res?.data?.data;
+                setEditAddress({
+                    orderFor: prevData?.orderFor || '',
+                    saveAddressAs: prevData?.saveAddressAs || '',
+                    houseNo: prevData?.houseNo || '',
+                    floor: prevData?.floor || '',
+                    area: prevData?.area || '',
+                    locality: prevData?.locality || '',
+                    yourName: prevData?.yourName || '',
+                    yourPhoneNumber: prevData?.yourPhoneNumber || '',
                 });
-            }
-
-        }, [isId]);
+            }).catch((error) => {
+                console.error("Error fetching address for edit:", error);
+            });
+        }
+    }, [isId]);
+    
 
     return (
         <>
@@ -230,7 +343,7 @@ const AddressModal = ({ isOpen, onClose, isId }) => {
                                                 <input type="radio" className='me-2' name='orderFor'
                                                     value="Myself"
                                                     onChange={handleChange}
-                                                    checked={addressValue.orderFor === "Myself" }
+                                                    checked={addressValue.orderFor === "Myself"}
                                                 />
                                                 <label>Myself</label>
                                             </div>
@@ -269,7 +382,7 @@ const AddressModal = ({ isOpen, onClose, isId }) => {
                                         <div className="d_form pb-0">
                                             <div className="row gy-lg-3 gy-2">
                                                 <div className="col-12">
-                                                    <input type="text" placeholder='Flat / House no / Building name'
+                                                    <input type="number" placeholder='Flat / House no / Building name'
                                                         name='houseNo'
                                                         value={isId ? (editAddress.houseNo) : (addressValue.houseNo)}
                                                         onChange={handleChange}
@@ -306,7 +419,7 @@ const AddressModal = ({ isOpen, onClose, isId }) => {
                                                     />
                                                 </div>
                                                 <div className="col-12">
-                                                    <input type="text" placeholder='Your phone number'
+                                                    <input type="number" placeholder='Your phone number'
                                                         name='yourPhoneNumber'
                                                         value={isId ? (editAddress.yourPhoneNumber) : (addressValue.yourPhoneNumber)}
                                                         onChange={handleChange}

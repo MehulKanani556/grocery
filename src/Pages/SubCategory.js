@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+// import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { MdKeyboardDoubleArrowRight, MdOutlineShoppingCart } from "react-icons/md";
 import Login from "../Component/Login";
+import { useCart } from "../Context/CartContext";
 
 const BaseUrl = process.env.REACT_APP_BASEURL;
 const token = localStorage.getItem('token');
@@ -10,6 +11,7 @@ const userId = localStorage.getItem('userId');
 
 const SubCategory = () => {
 
+    const { addToCart } = useCart();
     const [categoryData, setCategoryData] = useState([]);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [activeSubCategory, setActiveSubCategory] = useState(null);
@@ -17,16 +19,18 @@ const SubCategory = () => {
     const [productData, setProductData] = useState([]);
     const [loginmodalShow, setLoginModalShow] = useState(false);
     const [otpmodalShow, setOtpModalShow] = useState(false);
-    const [wishlist, setWishlist] = useState(() => {
-        // Load wishlist from localStorage when the component mounts
-        const savedWishlist = localStorage.getItem("wishlist");
-        return savedWishlist ? JSON.parse(savedWishlist) : [];
-    });
+    // const [wishlist, setWishlist] = useState(() => {
+    //     // Load wishlist from localStorage when the component mounts
+    //     const savedWishlist = localStorage.getItem("wishlist");
+    //     return savedWishlist ? JSON.parse(savedWishlist) : [];
+    // });
 
     // Save wishlist to localStorage whenever it changes
-    useEffect(() => {
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    }, [wishlist]);
+    // useEffect(() => {
+    //     localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    // }, [wishlist]);
+
+
     const getCategoryName = (categoryId) => {
         const catName = categoryData.find((cat) => cat._id === categoryId);
         return catName ? catName.categoryName : "";
@@ -80,29 +84,29 @@ const SubCategory = () => {
         }
 
     }
-    const handleAddWishList = async (productId) => {
-        // console.log("token", token);
-        setWishlist([...wishlist, productId]);
+    // const handleAddWishList = async (productId) => {
+    //     // console.log("token", token);
+    //     setWishlist([...wishlist, productId]);
 
-        if (!token) {
-            setLoginModalShow(true);
-            return;
-        }
+    //     if (!token) {
+    //         setLoginModalShow(true);
+    //         return;
+    //     }
 
-        try {
+    //     try {
 
-            await axios.post(`${BaseUrl}/api/createWishList`, {
-                productId,
-                userId
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-        } catch (error) {
-            console.error('Data fetching error:', error);
-        }
-    };
+    //         await axios.post(`${BaseUrl}/api/createWishList`, {
+    //             productId,
+    //             userId
+    //         }, {
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`
+    //             }
+    //         });
+    //     } catch (error) {
+    //         console.error('Data fetching error:', error);
+    //     }
+    // };
     const handleAddToCart = async (id, quantity) => {
 
         if (!token) {
@@ -120,6 +124,7 @@ const SubCategory = () => {
                     Authorization: `Bearer ${token}`
                 }
             });
+            // addToCart({id, quantity})
         } catch (error) {
             console.error('Data Fetching Error', error);
         }
@@ -172,13 +177,13 @@ const SubCategory = () => {
                                                 Save {item.discount}%
                                             </small>
                                         </div>
-                                        <div className="px-4 pt-3 text-[#FD7171] cursor-pointer">
+                                        {/* <div className="px-4 pt-3 text-[#FD7171] cursor-pointer">
                                             {wishlist.includes(item._id) ? (
                                                 <FaHeart onClick={() => handleAddWishList(item._id)} />
                                             ) : (
                                                 <FaRegHeart onClick={() => handleAddWishList(item._id)} />
                                             )}
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className="px-4 pb-4">
                                         <img

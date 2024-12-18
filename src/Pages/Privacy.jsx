@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PDelete from '../Image/privacydelete.png';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 import { IoCloseSharp } from 'react-icons/io5';
 import axios from 'axios';
@@ -24,7 +24,7 @@ const Privacy = () => {
         }
 
         try {
-            const response = await axios.delete(`${BaseUrl}/api/deleteUser/${userId}`, {
+             await axios.delete(`${BaseUrl}/api/deleteUser/${userId}`, {
                 headers: {
                     Authorization: `Bearar ${token}`
                 }

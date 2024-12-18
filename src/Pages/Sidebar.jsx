@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { FaAngleRight, FaBars } from 'react-icons/fa'
-import { data, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import '../CSS/Sidebar.css';
 import User from '../Image/user.png';
 import MyOrder from '../Image/MyOrder.png';
-import Wishlist from '../Image/wishlist.png';
+// import Wishlist from '../Image/wishlist.png';
 import Coupon from '../Image/Coupon.png';
 import Address from '../Image/address (2).png';
 import Privacy from '../Image/privacy.png';
@@ -33,9 +33,11 @@ const Sidebar = () => {
     localStorage.removeItem('userId');
     localStorage.removeItem('token');
     localStorage.removeItem('wishlist');
-
+    localStorage.removeItem('googleToken');
+    localStorage.removeItem('userEmail');
     setLogoutModalShow(false);
   }
+
 
   const userId = localStorage.getItem('userId');
   const token = localStorage.getItem('token');
@@ -104,7 +106,7 @@ const Sidebar = () => {
               </div>
             </NavLink>
 
-            <NavLink to="/user/wishlist" className={({ isActive }) =>
+            {/* <NavLink to="/user/wishlist" className={({ isActive }) =>
               `ps-3 V_account_part_2 d-flex align-items-center ${isActive ? "V_account_part_2_active" : ""}`
             }>
               <div className=" d-flex">
@@ -115,7 +117,7 @@ const Sidebar = () => {
                   <p className="mb-0">Wishlist</p>
                 </div>
               </div>
-            </NavLink>
+            </NavLink> */}
 
             <NavLink to="/user/coupon" className={({ isActive }) =>
               `ps-3 V_account_part_2 d-flex align-items-center ${isActive ? "V_account_part_2_active" : ""}`
@@ -224,7 +226,7 @@ const Sidebar = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to="wishlist" className="text-decoration-none " onClick={handleClose}>
+            {/* <NavLink to="wishlist" className="text-decoration-none " onClick={handleClose}>
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">
                   <img src={Wishlist} alt="wishlist" />
@@ -233,7 +235,7 @@ const Sidebar = () => {
                   <p className="mb-0 ">Wishlist</p>
                 </div>
               </div>
-            </NavLink>
+            </NavLink> */}
             <NavLink to="coupon" className="text-decoration-none " onClick={handleClose}>
               <div className="V_account_part_small_2 d-flex align-items-center my-2 py-2">
                 <div className="V_account_small_img_2 d-flex justify-content-center align-items-center ms-2">

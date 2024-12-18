@@ -3,6 +3,7 @@ import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebookSquare, FaGooglePlusSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { TbBrandYoutubeFilled } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 
 const Footer = () => {
@@ -37,7 +38,8 @@ const Footer = () => {
                                 <li>Value</li>
                             </ul>
                             <ul className="mr-4">
-                                <li>Privacy</li>
+                                <li>
+                                    <Link to="/user/privacy">Privacy</Link></li>
                                 <li>Terms</li>
                                 <li>FAQs</li>
                                 <li>Security</li>
@@ -49,7 +51,7 @@ const Footer = () => {
                                 <li>Terms</li>
                                 <li>Seller</li>
                                 <li>Warehouse</li>
-                                <li>Deliver</li>
+                                <li> <Link to="/user/address">Deliver</Link></li>
                                 <li>Resources</li>
                             </ul>
                         </div>
@@ -57,7 +59,7 @@ const Footer = () => {
                     <Col lg={3} sm={6} xs={12} className="mb-md-0 mb-3">
                         <p className="text-[#7171F1] text-lg font-semibold	mb-1">Categories</p>
                         <div className="flex">
-                        <ul className="mr-4">
+                            <ul className="mr-4">
                                 <li>Vegetable</li>
                                 <li>Fruits</li>
                                 <li>Bakery</li>
@@ -74,17 +76,17 @@ const Footer = () => {
                                 <li>Atta, Dal & Rice</li>
                             </ul>
                         </div>
-                        </Col>
-                      
+                    </Col>
+
                     <Col lg={3} sm={6} xs={12} className="mb-md-0 mb-3">
                         <p className="text-[#7171F1] text-lg font-semibold	mb-1">Help</p>
                         <ul>
-                            <li>Payments</li>
+                            <li><Link to="/user/payment">Payments</Link></li>
                             <li>Shipping</li>
-                            <li>Cancellation & Returns</li>
+                            <li><Link to="/user/order">Cancellation & Returns</Link></li>
                             <li>Report</li>
                         </ul>
-                        </Col>
+                    </Col>
                 </Row>
             </footer>
         </>
