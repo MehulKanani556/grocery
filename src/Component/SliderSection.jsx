@@ -10,9 +10,10 @@ import Login from './Login';
 import { useCart } from '../Context/CartContext';
 
 const Slider = ({ title, data, type, BaseUrl }) => {
+// console.log("data",data);
 
 
-    const { addToCart } = useCart();
+    // const { addToCart } = useCart();
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
 
@@ -45,7 +46,7 @@ const Slider = ({ title, data, type, BaseUrl }) => {
     }, []);
 
     const handleAddToCart = async (id, quantity) => {
-        // console.log("id",id);
+        console.log("id",id);
         
         if (!token) {
             setLoginModalShow(true);
@@ -53,22 +54,9 @@ const Slider = ({ title, data, type, BaseUrl }) => {
         }
     
         try {
-            // Fetch products from the API
-            const productResponse = await axios.get(`${BaseUrl}/api/getUserProduct`);
-            const productData = productResponse.data.data;
-    
-            // Find products matching the categoryId
-            const matchedProducts = productData.filter((item) => item.categoryId === id);
-
-    
-            if (matchedProducts.length === 0) {
-                console.warn(`No products found for categoryId: ${id}`);
-                return;
-            }
-            const productId = matchedProducts[0]._id;
 
            await axios.post(`${BaseUrl}/api/addToCart`, {
-                productId: productId,
+                productId: id,
                 userId: userId,
                 quantity: quantity
             }, {
@@ -76,7 +64,7 @@ const Slider = ({ title, data, type, BaseUrl }) => {
                     Authorization: `Bearer ${token}`
                 }
             });
-            addToCart({id, quantity});
+            // addToCart({id, quantity});
         } catch (error) {
             console.error('Error while adding product to cart:', error);
         }
@@ -132,7 +120,7 @@ const Slider = ({ title, data, type, BaseUrl }) => {
                                     <p className="font-semibold">{item.categoryName}</p>
                                 </div>
                             )} */}
-
+                                
                                 {type === 'products' && (
                                     <div className="p-4 bg-white rounded-lg border ">
                                         <img
@@ -144,7 +132,7 @@ const Slider = ({ title, data, type, BaseUrl }) => {
                                         <h4 className="font-semibold text-lg">{item.productName}</h4>
                                         <p className="font-semibold text-[#AB92F3]">${item.price}</p>
                                         <small>Qty : {item.totalQuantity ? item.totalQuantity : item.quantity}</small>
-                                        <button className="mt-3 s_btn_puprle text-white w-full" onClick={() => handleAddToCart(item._id, 1)} >
+                                        <button className="mt-3 s_btn_puprle text-white w-full"  onClick={() => handleAddToCart(item.productId || item._id, 1)} >
                                             <MdOutlineShoppingCart className='inline-block mr-2' />Add to cart
                                         </button>
                                     </div>
