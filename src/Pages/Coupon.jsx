@@ -69,7 +69,7 @@ const Coupon = () => {
                                 style={{ cursor: "pointer" }}
                             >
                                 <div className="px-3">
-                                    <img src={`${BaseUrl}/${item.coupenImage.replace(/\\/g, '/')}`} alt="Axis logo" className="V_upi_img_size" />
+                                    <img src={`${BaseUrl}/${item.coupenImage?.replace(/\\/g, '/')}`} alt="Axis logo" className="V_upi_img_size" />
                                 </div>
                                 <div className="ps-2 align-self-center">
                                     <p className="fw-bold V_flat">{item.coupenName}</p>

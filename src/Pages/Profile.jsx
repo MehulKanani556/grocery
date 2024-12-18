@@ -102,7 +102,7 @@ const Profile = () => {
                       placeholder="Enter Name"
                       disabled={!isEditing}
                     />
-                    <ErrorMessage name="name" component="div" className="text-danger" />
+                    <ErrorMessage name="name" component="div" className="text-danger " />
                   </div>
                   <button className="V_btn_profile_edit" id="editButton" type="button" onClick={handleEditClick}>
                     Edit

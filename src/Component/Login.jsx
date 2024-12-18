@@ -250,6 +250,7 @@ const Login = ({
                             maxLength="1"
                             ref={(el) => (inputRefs.current[index] = el)}
                             onChange={(e) => handleOtpInput(e, index)}
+                            onKeyDown={(e) => handleKeyDown(e, index)}
                           />
                         ))}
                       </div>
