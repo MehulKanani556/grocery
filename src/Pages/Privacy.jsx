@@ -24,15 +24,18 @@ const Privacy = () => {
         }
 
         try {
-             await axios.delete(`${BaseUrl}/api/deleteUser/${userId}`, {
+            await axios.delete(`${BaseUrl}/api/deleteUser/${userId}`, {
                 headers: {
                     Authorization: `Bearar ${token}`
                 }
             });
             // console.log("Account deleted successfully:", response.data);
 
-            localStorage.removeItem('token'); 
             localStorage.removeItem('userId');
+            localStorage.removeItem('token');
+            // localStorage.removeItem('wishlist');
+            // localStorage.removeItem('googleToken');
+            // localStorage.removeItem('userEmail');
             setDeleteaccountModalShow(false);
             navigate('/');
         } catch (error) {

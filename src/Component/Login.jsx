@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { IoCloseSharp } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 const Login = ({
@@ -24,34 +24,34 @@ const Login = ({
   const handleOtpInput = (e, index) => {
     const value = e.target.value;
 
-    
+
     if (!/^\d*$/.test(value)) return;
 
     setOtp((prevOtp) => {
-        const newOtp = [...prevOtp];
-        newOtp[index] = value.slice(-1); 
-        return newOtp;
+      const newOtp = [...prevOtp];
+      newOtp[index] = value.slice(-1);
+      return newOtp;
     });
 
     // Move focus to the next input field
     if (value && index < 3) {
-        inputRefs.current[index + 1]?.focus();
+      inputRefs.current[index + 1]?.focus();
     }
-};
+  };
 
-const handleKeyDown = (e, index) => {
-   
+  const handleKeyDown = (e, index) => {
+
     if (e.key === "Backspace" && !otp[index]) {
-        setOtp((prevOtp) => {
-            const newOtp = [...prevOtp];
-            newOtp[index - 1] = ''; 
-            return newOtp;
-        });
-        if (index > 0) {
-            inputRefs.current[index - 1]?.focus();
-        }
+      setOtp((prevOtp) => {
+        const newOtp = [...prevOtp];
+        newOtp[index - 1] = '';
+        return newOtp;
+      });
+      if (index > 0) {
+        inputRefs.current[index - 1]?.focus();
+      }
     }
-};
+  };
 
   const maskedPhoneNumber = `${mobileNumber?.slice(0, 2)}******${mobileNumber?.slice(-4)}`;
 
@@ -85,37 +85,37 @@ const handleKeyDown = (e, index) => {
     const otpString = otp.join('');
 
     if (otpString.length !== 4) {
-        setIsOtpValid(false);
-        return;
+      setIsOtpValid(false);
+      return;
     }
 
     try {
-        const otpAsNumber = Number(otpString);
-        const response = await axios.post('http://localhost:4000/api/verifyOtp', {
-            mobileNo: mobileNumber,
-            otp: otpAsNumber,
-        });
+      const otpAsNumber = Number(otpString);
+      const response = await axios.post('http://localhost:4000/api/verifyOtp', {
+        mobileNo: mobileNumber,
+        otp: otpAsNumber,
+      });
 
-        const token = response.data.token;
-        console.log("token", token);
+      const token = response.data.token;
+      console.log("token", token);
 
 
-        if (response.data.success) {
-            const decodedToken = jwtDecode(token);
-            const userId = decodedToken._id;
-            localStorage.setItem('token', token);
-            localStorage.setItem('userId', userId);
+      if (response.data.success) {
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken._id;
+        localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
 
-            setOtpModalShow(false);
-            navigate('/');
-        } else {
-            setIsOtpValid(false);
-        }
-    } catch (error) {
-        console.error('Error verifying OTP:', error);
+        setOtpModalShow(false);
+        navigate('/');
+      } else {
         setIsOtpValid(false);
+      }
+    } catch (error) {
+      console.error('Error verifying OTP:', error);
+      setIsOtpValid(false);
     }
-};
+  };
 
   return (
     <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
@@ -148,22 +148,34 @@ const handleKeyDown = (e, index) => {
                     </p>
                     {/* <div className="d_mixinput">
                       <div className="d-flex align-items-center justify-content-center"> */}
-                        {/* Google Login Button */}
-                        <GoogleLogin
-                          onSuccess={(credentialResponse) => {
-                            const token = credentialResponse.credential;
-                            const userInfo = jwtDecode(token);
-                          
-                            localStorage.setItem('googleToken', token);
-                            localStorage.setItem('userEmail', userInfo.email);
+                    {/* Google Login Button */}
+                    <GoogleLogin
+                      onSuccess={async (credentialResponse) => {
 
-                            navigate('/');
-                          }}
-                          onError={() => {
-                            console.error('Google Login Failed');
-                          }}
-                        />
-                      {/* </div>
+                        const googleToken = credentialResponse.credential;
+                        const userInfo = jwtDecode(googleToken);
+                        const { name, email, picture, sub: googleId } = userInfo;
+
+                        const response = await axios.post(`${BaseUrl}/api/login`, {
+                          name,
+                          email,
+                          picture,
+                          googleId,
+                        });
+
+                        const token = response.data.token;
+                        const decodedToken = jwtDecode(token);
+                        const userId = decodedToken._id;
+
+                        localStorage.setItem('token', token);
+                        localStorage.setItem('userId', userId);
+
+                        setLoginModalShow(false);
+                        navigate('/');
+                      }}
+
+                    />
+                    {/* </div>
                     </div> */}
                     <div className="d_or text-center">OR</div>
                     <div className="d_mixinput mt-2 px-3">

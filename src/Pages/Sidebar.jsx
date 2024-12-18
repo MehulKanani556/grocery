@@ -32,9 +32,9 @@ const Sidebar = () => {
   const logoutUser = () => {
     localStorage.removeItem('userId');
     localStorage.removeItem('token');
-    localStorage.removeItem('wishlist');
-    localStorage.removeItem('googleToken');
-    localStorage.removeItem('userEmail');
+    // localStorage.removeItem('wishlist');
+    // localStorage.removeItem('googleToken');
+    // localStorage.removeItem('userEmail');
     setLogoutModalShow(false);
   }
 
@@ -83,7 +83,7 @@ const Sidebar = () => {
                 <div className="V_account_data d-flex align-items-center">
                     <div className="user-data " >
                       <p className="text-white text-medium mb-0">{user.name || ''}</p>
-                      <span className="text-white mb-0">+91 {user.mobileNo}</span>
+                      <span className="text-white mb-0 break-all">{user.email ? user.email : `+91 ${user.mobileNo}`}</span>
                     </div>
                 </div>
                 <div className="V_account_icon ms-auto">
@@ -207,8 +207,10 @@ const Sidebar = () => {
                 </div>
                 <div className="V_small_account_data d-flex align-items-center ms-3">
                   <div className="V_small_user_data">
-                    <p className="text-white text-medium mb-0">Ruhi Gupta</p>
-                    <span className="text-white mb-0">+91 9874563210</span>
+                  <p className="text-white text-medium mb-0">{user.name || ''}</p>
+                  <span className="text-white mb-0 break-all">{user.email ? user.email : `+91 ${user.mobileNo}`}</span>
+
+
                   </div>
                 </div>
                 <div className="V_account_icon ms-auto">
