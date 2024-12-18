@@ -73,7 +73,7 @@ const Cart = () => {
         fetchData();
         fatchSubCategory();
         fetchAddress();
-    }, []);
+    }, [address]);
 
     const handleCouponApply = () => {
         navigate('/user/coupon');

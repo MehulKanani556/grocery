@@ -10,6 +10,7 @@ import axios from 'axios';
 import Login from './Login';
 import AddressModal from '../Pages/AddressModal';
 import { useCart } from '../Context/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
@@ -24,6 +25,7 @@ const Header = () => {
     const [catogeroDrop, setCatogeryDrop] = useState([]);
     // const [wishList, setWishList] = useState('');
     const [AddToCart, setAddToCart] = useState('');
+    const [cartNumber, setCartNumber] = useState();
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -38,6 +40,16 @@ const Header = () => {
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
     };
+
+    const navigate = useNavigate();
+    const handlelogin = () => {
+        if (id) {
+            navigate('/user/profile');
+        } else {
+            setLoginModalShow(true);
+        }
+    }
+
 
     const fetchcatogerydrop = async () => {
         try {
@@ -74,7 +86,11 @@ const Header = () => {
                 },
             });
             setAddToCart(response.data.totalCarts);
+            
 
+            // let cartnumber = response.data.data.length;
+            // console.log('addtocart', cartnumber);
+            setCartNumber(response.data.data.length);
             // console.log("wishlist", response.data.totalWishList);
         } catch (error) {
             console.error("Data Fetching Error:", error);
@@ -86,7 +102,7 @@ const Header = () => {
         // fetchWishList();
         fetchAddCart();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [cartNumber])
 
     return (
         <>
@@ -138,7 +154,7 @@ const Header = () => {
                                     <li className='flex items-center mx-2 relative' >
                                         <FiShoppingCart className='text-2xl mx-2 fw-bold' />
                                         <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-2 left-3 transform translate-x-1/2 -translate-y-1/2'>
-                                            {cartItems.length || 0}
+                                            {cartNumber || 0}
                                         </span>
                                         <p className='text-sm ml-3'>My Cart <p className='text-xs text-[#AB92F3] fw-bold'>$10</p></p>
                                     </li>
@@ -164,7 +180,7 @@ const Header = () => {
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </li>
-                                <li className='mx-2 d_cur' onClick={() => setLoginModalShow(true)}>
+                                <li className='mx-2 d_cur' onClick={handlelogin}>
                                     <img src={require('../Image/user.png')} alt="" className='rounded-full w-[40px] h-[40px]' />
                                 </li>
                             </ul>
@@ -224,7 +240,7 @@ const Header = () => {
                                 <li className='flex items-center mx-2 relative' >
                                     <FiShoppingCart className='text-2xl mx-2 fw-bold' />
                                     <span className='h-[20px] w-[20px] rounded-full bg-[#AB92F3] flex items-center justify-center text-white text-xs absolute top-2 left-3 transform translate-x-1/2 -translate-y-1/2'>
-                                        {cartItems.length || 0}
+                                        {cartNumber || 0}
                                     </span>
                                     <p className='text-sm ml-3'>My Cart <p className='text-xs text-[#AB92F3] fw-bold'>$10</p></p>
                                 </li>
@@ -250,7 +266,7 @@ const Header = () => {
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </li>
-                            <li className='my-3' onClick={() => setLoginModalShow(true)}>
+                            <li className='my-3' onClick={handlelogin}>
                                 <img src={require('../Image/user.png')} alt="" className='rounded-full w-[40px] h-[40px]' />
                             </li>
                         </ul>
