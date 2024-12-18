@@ -45,7 +45,7 @@ const Slider = ({ title, data, type, BaseUrl }) => {
     }, []);
 
     const handleAddToCart = async (id, quantity) => {
-        // console.log("id",id);
+        console.log("id",id);
         
         if (!token) {
             setLoginModalShow(true);
@@ -53,22 +53,9 @@ const Slider = ({ title, data, type, BaseUrl }) => {
         }
     
         try {
-            // Fetch products from the API
-            const productResponse = await axios.get(`${BaseUrl}/api/getUserProduct`);
-            const productData = productResponse.data.data;
-    
-            // Find products matching the categoryId
-            const matchedProducts = productData.filter((item) => item.categoryId === id);
-
-    
-            if (matchedProducts.length === 0) {
-                console.warn(`No products found for categoryId: ${id}`);
-                return;
-            }
-            const productId = matchedProducts[0]._id;
 
            await axios.post(`${BaseUrl}/api/addToCart`, {
-                productId: productId,
+                productId: id,
                 userId: userId,
                 quantity: quantity
             }, {
