@@ -81,10 +81,10 @@ const Sidebar = () => {
                   <img src={User} alt="User Avatar" />
                 </div>
                 <div className="V_account_data d-flex align-items-center">
-                    <div className="user-data " >
-                      <p className="text-white text-medium mb-0">{user.name || ''}</p>
-                      <span className="text-white mb-0 break-all">{user.email ? user.email : `+91 ${user.mobileNo}`}</span>
-                    </div>
+                  <div className="user-data " >
+                    <p className="text-white text-medium mb-0">{user.name || ''}</p>
+                    <span className="text-white mb-0 break-all">{user.email ? user.email : `+91 ${user.mobileNo}`}</span>
+                  </div>
                 </div>
                 <div className="V_account_icon ms-auto">
                   <FaAngleRight className="text-white " />
@@ -207,8 +207,8 @@ const Sidebar = () => {
                 </div>
                 <div className="V_small_account_data d-flex align-items-center ms-3">
                   <div className="V_small_user_data">
-                  <p className="text-white text-medium mb-0">{user.name || ''}</p>
-                  <span className="text-white mb-0 break-all">{user.email ? user.email : `+91 ${user.mobileNo}`}</span>
+                    <p className="text-white text-medium mb-0">{user.name || ''}</p>
+                    <span className="text-white mb-0 break-all">{user.email ? user.email : `+91 ${user.mobileNo}`}</span>
 
 
                   </div>
