@@ -59,7 +59,7 @@ const Sidebar = () => {
   }
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [user]);
   return (
     <>
       <div className=' '>
